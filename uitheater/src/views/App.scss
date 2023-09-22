@@ -1,63 +1,42 @@
-.App {
-  text-align: center;
-}
 
-.App-logo {
-  height: 20;
-  pointer-events: none;
-}
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: white;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-.App-text {
+.text {
   font-family: "Lilita One";
-  color: darkblue;
+  font-size: 300px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
+//font
 @font-face {
-  font-family: "Inter";
+  font-family: "InterRegular";
   src: url("../assets/fonts/Inter-Regular.ttf") format("truetype");
 }
+.inter-regular{
+  font-family: "InterRegular";
+}
+
 @font-face {
-  font-family: "Inter";
+  font-family: "InterBold";
   src: url("../assets/fonts/Inter-Bold.ttf") format("truetype");
   font-weight: bold;
 }
+.inter-bold{
+  font-family: "InterBold";
+}
+
 @font-face {
-  font-family: "Inter";
+  font-family: "InterExtraBoldItalic";
   src: url("../assets/fonts/Inter-ExtraBold.ttf") format("truetype");
   font-style: italic;
   font-weight: 900;
 }
+.inter-extrabold-italic{
+  font-family: "InterExtraBoldItalic";
+}
+
 @font-face {
   font-family: "Lilita One";
   src: url("../assets/fonts/LilitaOne-Regular.ttf") format("truetype");
+}
+.lilita-one{
+  font-family: "Lilita One";
 }

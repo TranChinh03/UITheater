@@ -1,41 +1,35 @@
-body {
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-      sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-  
-  code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-      monospace;
-  }
-
-  .text {
-    font-family: 'InterBold';
-    color: red
-  }
-button{
-  width: 200px;
-}
   //fonts
-@font-face {
+  @font-face {
     font-family: "InterRegular";
     src: url("../assets/fonts/Inter-Regular.ttf") format("truetype");
-}
-@font-face {
+  }
+  .inter-regular{
+    font-family: "InterRegular";
+  }
+  
+  @font-face {
     font-family: "InterBold";
     src: url("../assets/fonts/Inter-Bold.ttf") format("truetype");
     font-weight: bold;
-}
-@font-face {
+  }
+  .inter-bold{
+    font-family: "InterBold";
+  }
+  
+  @font-face {
     font-family: "InterExtraBoldItalic";
     src: url("../assets/fonts/Inter-ExtraBold.ttf") format("truetype");
     font-style: italic;
     font-weight: 900;
-}
-@font-face {
+  }
+  .inter-extrabold-italic{
+    font-family: "InterExtraBoldItalic";
+  }
+  
+  @font-face {
     font-family: "Lilita One";
     src: url("../assets/fonts/LilitaOne-Regular.ttf") format("truetype");
-}
+  }
+  .lilita-one{
+    font-family: "Lilita One";
+  }
