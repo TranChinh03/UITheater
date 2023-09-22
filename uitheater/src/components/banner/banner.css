@@ -1,0 +1,9 @@
+.container {
+    display: block;
+    height: 300px;
+    width: 100%;
+}
+.bannerImage {
+    width: 100%;
+    height: auto;
+}
