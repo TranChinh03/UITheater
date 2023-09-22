@@ -1,10 +1,10 @@
-import BookingFilter from '../components/BookingFilter/bookingFilter';
-import './App.scss'
+import Banner from '../components/banner/banner';
+import BookingFilter from '../components/bookingFilter';
 
 function App() {
   return (
     <div>
-      <BookingFilter></BookingFilter>
+      <Banner></Banner>
     </div>
   );
 }
