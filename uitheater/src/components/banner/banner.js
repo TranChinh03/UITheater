@@ -7,7 +7,7 @@ function Banner() {
   return (
     <div className="container">
       <img className="bannerImage" src={bannerImage} alt="banner image"/>
-    </div>
+    </div>  
   );
 }
 
