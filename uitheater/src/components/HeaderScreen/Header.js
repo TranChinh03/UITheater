@@ -1,6 +1,8 @@
+import { Route, Redirect } from "react-router-dom/cjs/react-router-dom.min";
 import "./header.scss";
 
-import {NavLink} from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import Movies from "../../views/MoviesScreen/Movies";
 
 const Header = () => {
   return (
@@ -18,7 +20,9 @@ const Header = () => {
         </div>
       </div>
       <div class="NavBar">
-        <NavLink class="active" to="/" exact={true}>Home</NavLink>
+        <NavLink to="/" exact={true}>
+          Home
+        </NavLink>
         <NavLink to="/movies">Movies</NavLink>
         <NavLink to="/schedule">Schedule</NavLink>
         <NavLink to="/about">About</NavLink>
