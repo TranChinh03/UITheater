@@ -1,16 +1,14 @@
-import { Route, Redirect } from "react-router-dom/cjs/react-router-dom.min";
 import "./header.scss";
-
+import { SVG_LOGO, SVG_Search} from "../../assets/icons";
 import { NavLink } from "react-router-dom";
-import Movies from "../../views/MoviesScreen/Movies";
 
 const Header = () => {
   return (
     <div className="headerContainer">
-      <img className="headerLogo" src="/logo.svg" alt="Logo" />
+      <img className="headerLogo" src={SVG_LOGO} alt="Logo" />
       <div className="searchBar">
         <input className="searchInput" type="text" placeholder="Search.." />
-        <img className="icon" src="/search.svg" alt="Search Icon" />
+        <img className="icon" src={SVG_Search} alt="Search Icon" />
       </div>
       <div className="SignInContainer">
         <div
@@ -23,9 +21,9 @@ const Header = () => {
         <NavLink to="/" exact={true}>
           Home
         </NavLink>
-        <NavLink to="/movies">Movies</NavLink>
-        <NavLink to="/schedule">Schedule</NavLink>
-        <NavLink to="/about">About</NavLink>
+        <NavLink to="/movies" className={"BetweenNav"}>Movies</NavLink>
+        <NavLink to="/schedule" className={"BetweenNav"}>Schedule</NavLink>
+        <NavLink to="/about" className={"EndNav"}>About</NavLink>
       </div>
     </div>
   );
