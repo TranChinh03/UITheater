@@ -10,8 +10,8 @@
 @font-face {
     font-family: "InterExtraBoldItalic";
     src: url("./Inter-ExtraBold.ttf") format("truetype");
-    font-style: italic;
-    font-weight: 900;
+    /* font-style: italic;
+    font-weight: 900; */
 }
 @font-face {
     font-family: "Lilita One";

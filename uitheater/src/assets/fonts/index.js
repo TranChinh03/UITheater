@@ -1,5 +1,0 @@
-import './Inter-Black.ttf'
-import './Inter-Bold.ttf'
-import './Inter-ExtraBold.ttf'
-import './Inter-Regular.ttf'
-import './LilitaOne-Regular.ttf'
