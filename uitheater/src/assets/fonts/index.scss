@@ -1,0 +1,32 @@
+
+@font-face {
+    font-family: "InterRegular";
+    src:local(InterRegular), url("./Inter-Regular.ttf") format("truetype");
+  }
+  .inter-regular {
+    font-family: "InterRegular";
+  }
+@font-face {
+    font-family: "InterBold";
+    src:local(InterBold), url("./Inter-Bold.ttf") format("truetype");
+    font-weight: bold;
+  }
+  .inter-bold {
+    font-family: "InterBold";
+  }
+@font-face {
+    font-family: "InterExtraBold";
+    src:local(InterExtraBold), url("./Inter-ExtraBold.ttf") format("truetype");
+    font-style: italic;
+    font-weight: 900;
+  }
+  .inter-extra-bold {
+    font-family: "InterExtraBold";
+  }
+@font-face {
+    font-family: "LilitaOneRegular";
+    src:local(LilitaOneRegular) url("./LilitaOne-Regular.ttf") format("truetype");
+  }
+  .LilitaOneRegular {
+    font-family: "LilitaOneRegular";
+  }

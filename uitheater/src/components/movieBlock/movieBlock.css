@@ -1,0 +1,28 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    background-color: #FFFAF5;
+}
+
+.imageContainer {
+    flex: 0.8;
+}
+
+.imageContainer img {
+    width: 100%;
+    height: auto;
+    display: block;
+    pointer-events: none;
+}
+
+.movieName {
+    flex: 0.2;
+    background-color: blue;
+}
+
+.movieName p {
+    text-align: center;
+    font-family: "InterBold";
+    text-wrap: break-word;
+    padding: 0 20px;
+}
