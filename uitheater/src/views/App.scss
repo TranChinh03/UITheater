@@ -1,12 +1,3 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 20;
-  pointer-events: none;
-}
-
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -38,14 +29,14 @@
   to {
     transform: rotate(360deg);
   }
+.text {
+  font-family: "Lilita One";
+  font-size: 300px;
+
 }
 @font-face {
   font-family: "InterRegular";
   src: url("../assets/fonts/Inter-Regular.ttf") format("truetype");
-}
-
-.inter-regular{
-  font-family: "InterRegular";
 }
 
 //font
