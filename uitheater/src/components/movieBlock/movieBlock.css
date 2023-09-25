@@ -1,7 +1,8 @@
-.container {
+.movieBlockContainer {
     display: flex;
     flex-direction: column;
-    background-color: #FFFAF5;
+    align-items: center;
+    justify-content: center;
 }
 
 .imageContainer {

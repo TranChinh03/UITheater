@@ -2,11 +2,11 @@ import React from "react";
 import "../../styles/global.scss";
 import "./movieBlock.css"
 import "../../assets/fonts/fonts.css";
-import src from "../../assets/img/shin-cau-be-but-chi.jpg";
+import src from "../../assets/imgs/shin-cau-be-but-chi.jpg";
 
 function MovieBlock() {
   return (
-    <div className="container">
+    <div className="movieBlockContainer">
       <div className="imageContainer">
         <img src={src} alt="Ảnh phim"/>
       </div>
