@@ -42,7 +42,7 @@ function BookingFilter() {
               </div>
             </div>
           </div>
-          <div className="item1">
+          <div className="item3">
             <div className="dropdown">
               <button className="dropbtn">
                 <div className="droptext">Choose Date</div>
@@ -54,7 +54,7 @@ function BookingFilter() {
               </div>
             </div>
           </div>
-          <div className="item1">
+          <div className="item4">
             <div className="dropdown">
               <button className="dropbtn">
                 <div className="droptext">Choose Showtime</div>
