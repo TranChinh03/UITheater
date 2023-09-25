@@ -1,34 +1,70 @@
 import React from "react";
-import "../BookingFilter/bookingStyle.css"
+import "../BookingFilter/bookingStyle.css";
 
 function BookingFilter() {
   return (
     <>
       <div
-        className="bookingContainer"
+        className="booking-container"
         style={{
           background:
             "linear-gradient(to right, #C70039, #E06F84, #C1ADB1, #312849)",
           height: "160px",
         }}
       >
-        <div
-          style={{
-            fontFamily: "InterExtraBoldItalic",
-            fontSize: 40,
-            color: "#FFFAF5",
-            alignSelf: "center",
-            marginLeft: 180,
-          }}
-        >
-          BOOK THE<br/>TICKET NOW!
+        <div className="banner-content">
+          BOOK THE
+          <br />
+          TICKET NOW!
         </div>
-        <div class="dropdown">
-          <button class="dropbtn">Choose Movie</button>
-          <div class="dropdown-content">
-            <a href="#">Link 1</a>
-            <a href="#">Link 2</a>
-            <a href="#">Link 3</a>
+        <div className="box-grid-container">
+          <div className="item1">
+            <div className="dropdown">
+              <button className="dropbtn">
+                <div className="droptext">Choose Movie</div>
+              </button>
+              <div className="dropdown-content">
+                <a href="#">Link 1</a>
+                <a href="#">Link 2</a>
+                <a href="#">Link 3</a>
+              </div>
+            </div>
+          </div>
+          <div className="item2">
+            <div className="dropdown">
+              <button className="dropbtn">
+                <div className="droptext">Choose Theater</div>
+              </button>
+              <div className="dropdown-content">
+                <a href="#">Link 1</a>
+                <a href="#">Link 2</a>
+                <a href="#">Link 3</a>
+              </div>
+            </div>
+          </div>
+          <div className="item1">
+            <div className="dropdown">
+              <button className="dropbtn">
+                <div className="droptext">Choose Date</div>
+              </button>
+              <div className="dropdown-content">
+                <a href="#">Link 1</a>
+                <a href="#">Link 2</a>
+                <a href="#">Link 3</a>
+              </div>
+            </div>
+          </div>
+          <div className="item1">
+            <div className="dropdown">
+              <button className="dropbtn">
+                <div className="droptext">Choose Showtime</div>
+              </button>
+              <div className="dropdown-content">
+                <a href="#">Link 1</a>
+                <a href="#">Link 2</a>
+                <a href="#">Link 3</a>
+              </div>
+            </div>
           </div>
         </div>
       </div>

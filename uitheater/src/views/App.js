@@ -1,10 +1,9 @@
-import Banner from '../components/banner/banner';
-import BookingFilter from '../components/bookingFilter';
+import BookingFilter from '../components/BookingFilter/bookingFilter';
 
 function App() {
   return (
     <div>
-      <Banner></Banner>
+      <BookingFilter></BookingFilter>
     </div>
   );
 }
