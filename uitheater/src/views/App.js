@@ -6,7 +6,7 @@ import MoviesNavBar from "../components/moviesNavBar/moviesNavBar";
 function App() {
   return (
     <div>
-      <MoviesNavBar></MoviesNavBar>
+      <BookingFilter></BookingFilter>
     </div>
   );
 }
