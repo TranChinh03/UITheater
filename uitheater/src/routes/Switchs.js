@@ -11,18 +11,26 @@ import {
   Link
 } from "react-router-dom";
 
-function App() {
+const Switchs=()=> {
   return (
     <Router>
       <Header />
       <Switch>
-        <Route path="/" exact component={Home} />
-        <Route path="/movies" component={Movies} />
-        <Route path="/schedule" component={Schedule} />
-        <Route path="/about" component={About} />
+          <Route path="/about">
+            <About />
+          </Route>
+          <Route path="/movies">
+            <Movies />
+          </Route>
+          <Route path="/schedule">
+            <Schedule />
+          </Route>
+          <Route path="/">
+            <Home />
+          </Route>
         </Switch>
     </Router>
   );
 }
 
-export default App;
+export default Switchs;

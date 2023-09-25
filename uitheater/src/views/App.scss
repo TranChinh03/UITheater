@@ -27,37 +27,59 @@
 .App-link {
   color: #61dafb;
 }
-
 .App-text {
   font-family: "Lilita One";
-  color: darkblue;
 }
 
 @keyframes App-logo-spin {
   from {
-    transform: rotate(0deg);
+    transform: rotate(0deg);  
   }
   to {
     transform: rotate(360deg);
   }
 }
-
 @font-face {
-  font-family: "Inter";
+  font-family: "InterRegular";
   src: url("../assets/fonts/Inter-Regular.ttf") format("truetype");
 }
+
+.inter-regular{
+  font-family: "InterRegular";
+}
+
+//font
 @font-face {
-  font-family: "Inter";
+  font-family: "InterRegular";
+  src: url("../assets/fonts/Inter-Regular.ttf") format("truetype");
+}
+.inter-regular{
+  font-family: "InterRegular";
+}
+
+@font-face {
+  font-family: "InterBold";
   src: url("../assets/fonts/Inter-Bold.ttf") format("truetype");
   font-weight: bold;
 }
+.inter-bold{
+  font-family: "InterBold";
+}
+
 @font-face {
-  font-family: "Inter";
+  font-family: "InterExtraBoldItalic";
   src: url("../assets/fonts/Inter-ExtraBold.ttf") format("truetype");
   font-style: italic;
   font-weight: 900;
 }
+.inter-extrabold-italic{
+  font-family: "InterExtraBoldItalic";
+}
+
 @font-face {
   font-family: "Lilita One";
   src: url("../assets/fonts/LilitaOne-Regular.ttf") format("truetype");
+}
+.lilita-one{
+  font-family: "Lilita One";
 }
