@@ -1,0 +1,39 @@
+.container {
+    width: 100%;
+    background-color: #231B5B;
+}
+
+.movieContainer {
+    width: 100%;
+    height: auto;
+    display: flex;
+    background-color: grey;
+}
+
+.movieContent {
+    position: relative;
+    width: 100%;
+    height: auto;
+    background-color: #FFFAF5;
+    padding: 30px 0 10px 0;
+    min-height: 470px;
+}
+
+.movieWrap {
+    width: 100%;
+    display: block;
+    margin: 0 auto;
+}
+
+.movieLoad {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.movieLoad div {
+    flex: 1;
+    width: 90%;
+    background-color: #FFFAF5;
+}

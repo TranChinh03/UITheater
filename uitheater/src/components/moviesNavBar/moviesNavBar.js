@@ -1,35 +1,29 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../../styles/global.scss";
 import "./moviesNavBar.css"
 import "../../assets/fonts/fonts.css";
 
-function MoviesNavBar() {
-
-    const [currentTab, setCurrentTab] = useState("NOW SHOWING");
-    
-    const handleTabHover = (tabName) => {
-        setCurrentTab(tabName)
-    }
+function MoviesNavBar({selectedTab, onChangeTab}) {
 
   return (
     <div className="container">
       <ul>
         <li 
             style={{zIndex: 3}} 
-            className={currentTab === "NOW SHOWING" ? "current" :""}
-            onClick={() => handleTabHover("NOW SHOWING")}>
+            className={selectedTab === "NOW SHOWING" ? "current" :""}
+            onClick={() => onChangeTab("NOW SHOWING")}>
                 <a>NOW SHOWING</a>
         </li>
         <li 
             style={{zIndex: 2}} 
-            className={currentTab === "COMING SHOW" ? "current" :""}
-            onClick={() => handleTabHover("COMING SHOW")}>
+            className={selectedTab === "COMING SHOW" ? "current" :""}
+            onClick={() => onChangeTab("COMING SHOW")}>
                 <a>COMING SHOW</a>
         </li>
         <li 
             style={{zIndex: 1}} 
-            className={currentTab === "SPECIAL SCREENINGS" ? "current" :""}
-            onClick={() => handleTabHover("SPECIAL SCREENINGS")}>
+            className={selectedTab === "SPECIAL SCREENINGS" ? "current" :""}
+            onClick={() => onChangeTab("SPECIAL SCREENINGS")}>
                 <a>SPECIAL SCREENINGS</a>
         </li>
       </ul>
