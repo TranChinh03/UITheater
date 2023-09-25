@@ -1,18 +1,17 @@
 .container {
     display: flex;
     flex-direction: column;
+    background-color: #FFFAF5;
 }
 
 .imageContainer {
     flex: 0.8;
-    background-color: red;
 }
 
 .imageContainer img {
     width: 100%;
     height: auto;
     display: block;
-    max-height: 300px;
     pointer-events: none;
 }
 
@@ -25,5 +24,5 @@
     text-align: center;
     font-family: "InterBold";
     text-wrap: break-word;
-    padding: 1em;
+    padding: 0 20px;
 }
