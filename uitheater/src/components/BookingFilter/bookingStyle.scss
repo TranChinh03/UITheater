@@ -8,8 +8,8 @@
   color: #FFFAF5;
   font-family: "InterExtraBoldItalic";
   font-size: 50px;
-  font-weight: bold;
   font-style: italic;
+  font-weight: bold;
   align-self: center;
   margin-left: 180px;
 }
@@ -31,6 +31,9 @@
 /* Style The Dropdown Button */
 .dropbtn {
     background-color: #42385D;
+    display: flex;
+    flex-direction: row;
+    width: 220px;
     opacity: 100%;
     padding: 16px;
     border-radius: 30px;
@@ -39,16 +42,23 @@
     border-color: #FFFAF5;
     cursor: pointer;
     align-self: center;
+    justify-content: space-between;
+  }
+
+  .drop-icon {
+    position: relative;
+    width: 20px;
+    height: 20px;
+    color: #FFFAF5;
   }
 
   .droptext {
     color: #FFFAF5;
     opacity: 100%;
-    font-family: "LilitaOne";
+    font-family: "Lilita One";
     font-size: 20px;
-    font-weight: bolder;
   }
-  
+
   /* The container <div> - needed to position the dropdown content */
   .dropdown {
     position: relative;
@@ -60,23 +70,26 @@
     display: none;
     position: absolute;
     background-color: #FFFAF5;
-    min-width: 160px;
+    width: 220px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
+    border-radius: 20px; 
     justify-self: center;
     align-self: center;
+    overflow: hidden;
   }
   
   /* Links inside the dropdown */
-  .dropdown-content a {
+  .dropdown-item {
     color: #1A1444;
     padding: 12px 16px;
     font-family: "Lilita One";
     display: block;
+    cursor: pointer;
   }
-  
+
   /* Change color of dropdown links on hover */
-  .dropdown-content a:hover {background-color: #FFFAF5}
+  .dropdown-item:hover {background-color: #F1E8EA;}
   
   /* Show the dropdown menu on hover */
   .dropdown:hover .dropdown-content {
