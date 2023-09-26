@@ -20,7 +20,7 @@ function BookingFilter() {
   const [isRotated, setIsRotated] = useState([false, false, false, false]);
   const catagories = ["movies", "theaters", "dates", "showTime"];
   const Info = {
-    movies: ["Meo Di Hia", "Cu Shin", "Doraemon"],
+    movies: ["Meo Di Hia", "Cu Shin", "Doraemon", "Tham tu lung danh Conan"],
     theaters: ["CGV", "BHD", "Cinestar"],
     dates: ["31/02", "01/04", "24/12"],
     showTime: ["12:00", "18:00", "23:00"],
@@ -42,7 +42,7 @@ function BookingFilter() {
         </div>
         <div className="box-grid-container">
           {isRotated.map((value, index) => (
-            <div id="drop1">
+            <div id="drop">
               <div
                 onClick={() => {
                   isRotated.forEach(
