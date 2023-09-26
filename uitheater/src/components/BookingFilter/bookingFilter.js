@@ -28,7 +28,7 @@ function BookingFilter() {
           TICKET NOW!
         </div>
         <div className="box-grid-container">
-          <div className="item1">
+          <div id="drop1">
             <div className="dropdown">
               <button className="dropbtn">
                 <div className="droptext">{movieSelected}</div>
@@ -44,7 +44,7 @@ function BookingFilter() {
               </div>
             </div>
           </div>
-          <div className="item2">
+          <div id="drop2">
             <div className="dropdown">
               <button className="dropbtn">
                 <div className="droptext">{theaterSelected}</div>
@@ -60,7 +60,7 @@ function BookingFilter() {
               </div>
             </div>
           </div>
-          <div className="item3">
+          <div id="drop3">
             <div className="dropdown">
               <button className="dropbtn">
                 <div className="droptext">{dateSelected}</div>
@@ -76,7 +76,7 @@ function BookingFilter() {
               </div>
             </div>
           </div>
-          <div className="item4">
+          <div id="drop4">
             <div className="dropdown">
               <button className="dropbtn">
                 <div className="droptext">{showTimeSelected}</div>
