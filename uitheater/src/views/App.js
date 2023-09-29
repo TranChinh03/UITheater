@@ -15,7 +15,16 @@ import {
 
 function App() {
   return (
-    <BookingFilter></BookingFilter>
+    <Router>
+      <Header />
+      <BookingFilter></BookingFilter>
+      <Switch>
+        <Route path="/" exact component={Home} />
+        <Route path="/movies" component={Movies} />
+        <Route path="/schedule" component={Schedule} />
+        <Route path="/about" component={About} />
+        </Switch>
+    </Router>
   );
 }
 

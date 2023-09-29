@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "../BookingFilter/bookingStyle.scss";
-import selectDown from "../../assets/icons/selectDown.svg";
+import { SVG_SelectDown } from "../../assets/icons";
 
 function BookingFilter() {
   const [movieSelected, setMovieSelected] = useState("");
@@ -32,7 +32,7 @@ function BookingFilter() {
             <div className="dropdown">
               <button className="dropbtn">
                 <div className="droptext">{movieSelected}</div>
-                <img className="drop-icon" src={selectDown} alt="Select Icon" />
+                <img className="drop-icon" src={SVG_SelectDown} alt="Select Icon" />
               </button>
               <div className="dropdown-content">
               {movieOptions.map(option => (
@@ -48,7 +48,7 @@ function BookingFilter() {
             <div className="dropdown">
               <button className="dropbtn">
                 <div className="droptext">{theaterSelected}</div>
-                <img className="drop-icon" src={selectDown} alt="Select Icon" />
+                <img className="drop-icon" src={SVG_SelectDown} alt="Select Icon" />
               </button>
               <div className="dropdown-content">
               {theaterOptions.map(option => (
@@ -64,7 +64,7 @@ function BookingFilter() {
             <div className="dropdown">
               <button className="dropbtn">
                 <div className="droptext">{dateSelected}</div>
-                <img className="drop-icon" src={selectDown} alt="Select Icon" />
+                <img className="drop-icon" src={SVG_SelectDown} alt="Select Icon" />
               </button>
               <div className="dropdown-content">
               {dateOptions.map(option => (
@@ -80,7 +80,7 @@ function BookingFilter() {
             <div className="dropdown">
               <button className="dropbtn">
                 <div className="droptext">{showTimeSelected}</div>
-                <img className="drop-icon" src={selectDown} alt="Select Icon" />
+                <img className="drop-icon" src={SVG_SelectDown} alt="Select Icon" />
               </button>
               <div className="dropdown-content">
               {showTimeOptions.map(option => (
