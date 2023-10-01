@@ -6,8 +6,16 @@ import SignIn from "../SignInModal/SignIn";
 import { TEModal, TERipple } from "tw-elements-react";
 import { useState } from "react";
 const Header = () => {
-  const [show, setShowModal] = useState(false);
-  console.log(show);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
+  const handleOk = () => {
+    setIsModalOpen(false);
+  };
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
   return (
     <div className="headerContainer">
       <img className="headerLogo" src={SVG_LOGO} alt="Logo" />
@@ -17,7 +25,7 @@ const Header = () => {
             <input className="searchInput" type="text" placeholder="Search..." />
             <img className="searchLogo" src={SVG_Search} alt="Search" />
           </div>
-          <div className="signIn">
+          <div className="signIn" onClick={showModal}>
             <div className="signInText">Sign In</div>
           </div>
         </div>
@@ -43,6 +51,10 @@ const Header = () => {
         </NavLink>
         </div> 
       </div>
+      <SignIn 
+    isModalOpen = {isModalOpen}
+    handleOk ={handleOk}
+    handleCancel={handleCancel}/>
     </div>
   );
 };

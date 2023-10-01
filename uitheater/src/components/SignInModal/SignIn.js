@@ -1,42 +1,107 @@
-import React, { useState } from "react";
-import {
-  TERipple,
-  TEModal,
-  TEModalDialog,
-  TEModalContent,
-  TEModalHeader,
-  TEModalBody,
-  TEModalFooter,
-} from "tw-elements-react";
+import React, { useEffect, useState } from "react";
+import { Button, Modal, ConfigProvider, Space } from "antd";
+import "./SignIn.scss";
+import { Form, Input } from "antd";
+const SignIn = (props) => {
+  const { isModalOpen, handleOk, handleCancel } = props;
+  const [form] = Form.useForm();
+  const [clientReady, setClientReady] = useState(false);
 
-export default function SignIn(props) {
+  // To disable submit button at the beginning.
+  useEffect(() => {
+    setClientReady(true);
+  }, []);
   return (
-    <TEModal show={props.show} setShow={props.setShow}>
-        <TEModalDialog>
-          <TEModalContent>
-            {/* <!--Modal body--> */}
-            <TEModalBody>Modal body text goes here.</TEModalBody>
-            <TEModalFooter>
-              <TERipple rippleColor="light">
-                <button
-                  type="button"
-                  className="inline-block rounded bg-primary-100 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-primary-700 transition duration-150 ease-in-out hover:bg-primary-accent-100 focus:bg-primary-accent-100 focus:outline-none focus:ring-0 active:bg-primary-accent-200"
-                  //onClick={() => setShowModal(false)}
+    <ConfigProvider
+      theme={{
+        token: {
+          borderRadius: 40,
+          paddingLG: 100,
+        },
+        components: {
+          Modal: {
+            colorBgElevated: "#231B5B",
+            colorIcon: "#FFFFFF",
+          },
+          Form: {
+            labelColor: "#FFFFFF",
+          },
+          Button: {
+            borderRadius: 45,
+            colorBorder: "#231B5B",
+            colorBgContainer: "#231B5B",
+            colorText: "#FFFFFF",
+          },
+        },
+      }}
+    >
+      <Modal
+        style={{display:"flex", marginRight:"163px", top: "50px",}}
+        open={isModalOpen}
+        onOk={handleOk}
+        onCancel={handleCancel}
+        footer={null}
+        width={300}
+      >
+        <Form form={form} size="small" layout="vertical">
+        <Form.Item label="Username: " style={{height:"40px"}}>
+            <Input
+              style={{ borderRadius: 45, fontSize: 14 }}
+              className="input"
+              placeholder="Please enter your email/username"
+            />
+          </Form.Item>
+          <Form.Item label="Password: " style={{height:"fit-content"}}>
+            <Input style={{ borderRadius: 45, fontSize: 14 }} className="input" placeholder="Please enter your password" />
+          </Form.Item>
+          <Space>
+              <Button
+                style={{
+                  width: "fit-content",
+                  height: "fit-content",
+                  fontSize: 27,
+                  borderRadius: 45,
+                  display: "flex",
+                  alignItems: "center",
+                  fontFamily: "Lilita One",
+                  textShadow: "none",
+                }}
+              >
+                SIGN IN
+              </Button>
+            <Space wrap >
+                <Button type="link"
+                  style={{
+                    width: "fit-content",
+                    height: "fit-content",
+                    display: "flex",
+                    alignItems: "center",
+                    textShadow: "none",
+                    marginRight: 20,
+                    fontStyle: "italic",
+                    color: "#FFFFFF",
+                  }}
                 >
-                  Close
-                </button>
-              </TERipple>
-              <TERipple rippleColor="light">
-                <button
-                  type="button"
-                  className="ml-1 inline-block rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
+                  Forget password?
+                </Button>
+                <Button type="link" 
+                  style={{
+                    width: "fit-content",
+                    height: "fit-content",
+                    display: "flex",
+                    alignItems: "center",
+                    fontFamily: "Lilita One",
+                    textShadow: "none",
+                    color: "#FFFFFF",
+                  }}
                 >
-                  Save changes
-                </button>
-              </TERipple>
-            </TEModalFooter>
-          </TEModalContent>
-        </TEModalDialog>
-      </TEModal>
+                  Create new account
+                </Button>
+            </Space>
+          </Space>
+        </Form>
+      </Modal>
+    </ConfigProvider>
   );
-}
+};
+export default SignIn;
