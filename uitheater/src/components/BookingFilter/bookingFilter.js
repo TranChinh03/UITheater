@@ -2,16 +2,29 @@ import React, { useState } from "react";
 import "../BookingFilter/bookingStyle.scss";
 import { SVG_SelectDown } from "../../assets/icons";
 
-function BookingFilter() {
-  const [movieSelected, setMovieSelected] = useState("");
-  const [theaterSelected, setTheaterSelected] = useState("");
-  const [dateSelected, setDateSelected] = useState("");
-  const [showTimeSelected, setShowTimeSelected] = useState("");
-  const movieOptions = ["Meo Di Hia", "Cu Shin", "Doraemon"];
-  const theaterOptions = ["CGV", "BHD", "Cinestar"];
-  const dateOptions = ["31/02", "01/04", "24/12"];
-  const showTimeOptions = ["12:00", "18:00", "23:00"];
+const rotation = (isRotated) => {
+  return {
+    transform: isRotated ? "rotate(180deg)" : "rotate(0deg)",
+    transition: "transform 0.25s ease-in-out", // Adjust transition duration as needed
+  };
+};
 
+function BookingFilter() {
+  const [isOpen, setIsOpen] = useState([false, false, false, false]);
+  const [selectedInfo, setSelectedInfo] = useState({
+    movies: "Choose Movie",
+    theaters: "Choose Theater",
+    dates: "Choose Date",
+    showTime: "Choose Showtime",
+  });
+  const [isRotated, setIsRotated] = useState([false, false, false, false]);
+  const catagories = ["movies", "theaters", "dates", "showTime"];
+  const Info = {
+    movies: ["Meo Di Hia", "Cu Shin", "Doraemon", "Tham tu lung danh Conan"],
+    theaters: ["CGV", "BHD", "Cinestar"],
+    dates: ["31/02", "01/04", "24/12"],
+    showTime: ["12:00", "18:00", "23:00"],
+  };
   return (
     <>
       <div
@@ -28,70 +41,50 @@ function BookingFilter() {
           TICKET NOW!
         </div>
         <div className="box-grid-container">
-          <div id="drop1">
-            <div className="dropdown">
-              <button className="dropbtn">
-                <div className="droptext">{movieSelected}</div>
-                <img className="drop-icon" src={SVG_SelectDown} alt="Select Icon" />
-              </button>
-              <div className="dropdown-content">
-              {movieOptions.map(option => (
-                <div
-                  onClick={(e) => setMovieSelected(option)}
-                  className="dropdown-item"
-                >{option}</div>
-              ))}
+          {isRotated.map((value, index) => (
+            <div id="drop">
+              <div
+                onClick={() => {
+                  isRotated.forEach(
+                    (value, idx) => {
+                      isRotated[idx] = ((index !== idx) ? false : !value)
+                      isOpen[idx] = ((index !== idx) ? false : !value)
+                    }
+                  );
+                  setIsRotated(isOpen);
+                  setIsOpen(isRotated);
+                }}
+                className="dropdown"
+              >
+                <button className="dropbtn">
+                  <div className="droptext">
+                    {selectedInfo[catagories[index]]}
+                  </div>
+                  <img
+                    className={`drop-icon `}
+                    src={selectDown}
+                    alt="Select Icon"
+                    style={rotation(value)}
+                  />
+                </button>
+                {isOpen[index] && (
+                  <div className="dropdown-content">
+                    {Info[catagories[index]].map((option) => (
+                      <div
+                        onClick={(e) => {
+                          selectedInfo[catagories[index]] = option;
+                          setSelectedInfo(selectedInfo);
+                        }}
+                        className="dropdown-item"
+                      >
+                        {option}
+                      </div>
+                    ))}
+                  </div>
+                )}
               </div>
             </div>
-          </div>
-          <div id="drop2">
-            <div className="dropdown">
-              <button className="dropbtn">
-                <div className="droptext">{theaterSelected}</div>
-                <img className="drop-icon" src={SVG_SelectDown} alt="Select Icon" />
-              </button>
-              <div className="dropdown-content">
-              {theaterOptions.map(option => (
-                <div
-                  onClick={(e) => setTheaterSelected(option)}
-                  className="dropdown-item"
-                >{option}</div>
-              ))}
-              </div>
-            </div>
-          </div>
-          <div id="drop3">
-            <div className="dropdown">
-              <button className="dropbtn">
-                <div className="droptext">{dateSelected}</div>
-                <img className="drop-icon" src={SVG_SelectDown} alt="Select Icon" />
-              </button>
-              <div className="dropdown-content">
-              {dateOptions.map(option => (
-                <div
-                  onClick={(e) => setDateSelected(option)}
-                  className="dropdown-item"
-                >{option}</div>
-              ))}
-              </div>
-            </div>
-          </div>
-          <div id="drop4">
-            <div className="dropdown">
-              <button className="dropbtn">
-                <div className="droptext">{showTimeSelected}</div>
-                <img className="drop-icon" src={SVG_SelectDown} alt="Select Icon" />
-              </button>
-              <div className="dropdown-content">
-              {showTimeOptions.map(option => (
-                <div
-                  onClick={(e) => setShowTimeSelected(option)}
-                  className="dropdown-item"
-                >{option}</div>
-              ))}
-              </div>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </>
