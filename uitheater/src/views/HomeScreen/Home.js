@@ -3,7 +3,7 @@ import "./home.css"
 import "../../assets/fonts/fonts.css"
 import MoviesNavBar from "../../components/moviesNavBar/moviesNavBar";
 import MovieBlock from "../../components/movieBlock/movieBlock";
-import LeftArrow from "../../assets/icons/LeftArrow.svg"
+import { SVG_LeftArrow } from "../../assets/icons";
 
 function Home() {
     
@@ -28,7 +28,7 @@ function Home() {
                     <div className="movieWrap">
                         <div className="movieLoad">
                             <div>
-                                <img className="arrow" src={LeftArrow}/>
+                                <img className="arrow" src={SVG_LeftArrow}/>
                             </div>
                             <div>
                                 <MovieBlock></MovieBlock>
@@ -46,7 +46,7 @@ function Home() {
                                 <MovieBlock></MovieBlock>
                             </div>
                             <div>
-                                <img className="arrow arrow-right" src={LeftArrow}/>
+                                <img className="arrow arrow-right" src={SVG_LeftArrow}/>
                             </div>
                         </div>
                     </div>

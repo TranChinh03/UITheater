@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "../BookingFilter/bookingStyle.scss";
-import selectDown from "../../assets/icons/selectDown.svg";
+import { SVG_SelectDown } from "../../assets/icons";
 
 const rotation = (isRotated) => {
   return {
