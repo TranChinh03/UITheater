@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Button, Modal, ConfigProvider, Space } from "antd";
 import "./SignIn.scss";
 import { Form, Input } from "antd";
+import { NavLink } from "react-router-dom";
 const SignIn = (props) => {
   const { isModalOpen, handleOk, handleCancel } = props;
   const [form] = Form.useForm();
@@ -36,7 +37,7 @@ const SignIn = (props) => {
       }}
     >
       <Modal
-        style={{display:"flex", marginRight:"163px", top: "50px",}}
+        style={{ display: "flex", marginRight: "163px", top: "50px" }}
         open={isModalOpen}
         onOk={handleOk}
         onCancel={handleCancel}
@@ -44,59 +45,63 @@ const SignIn = (props) => {
         width={300}
       >
         <Form form={form} size="small" layout="vertical">
-        <Form.Item label="Username: " style={{height:"40px"}}>
+          <Form.Item label="Username: " style={{ height: "40px" }}>
             <Input
-              style={{ borderRadius: 45, fontSize: 14 }}
+              style={{ borderRadius: 35, fontSize: 14, height: "30px" }}
               className="input"
               placeholder="Please enter your email/username"
             />
           </Form.Item>
-          <Form.Item label="Password: " style={{height:"fit-content"}}>
-            <Input style={{ borderRadius: 45, fontSize: 14 }} className="input" placeholder="Please enter your password" />
+          <Form.Item label="Password: " style={{ height: "fit-content" }}>
+            <Input.Password
+              style={{paddingLeft:10, borderRadius: 35, fontSize: 14, height: "30px" }}
+              placeholder="Please enter your password"
+            />
           </Form.Item>
           <Space>
+            <Button
+              style={{
+                width: "fit-content",
+                height: "fit-content",
+                fontSize: 31,
+                borderRadius: 45,
+                display: "flex",
+                alignItems: "center",
+                fontFamily: "Lilita One",
+                textShadow: "none",
+              }}
+            >
+              SIGN IN
+            </Button>
+            <Space wrap>
               <Button
+                type="link"
                 style={{
                   width: "fit-content",
                   height: "fit-content",
-                  fontSize: 27,
-                  borderRadius: 45,
+                  display: "flex",
+                  alignItems: "center",
+                  textShadow: "none",
+                  marginRight: 20,
+                  fontStyle: "italic",
+                }}
+              >
+                Forget password?
+              </Button>
+              <Button
+                type="link"
+                onProgress={() => {}}
+                style={{
+                  width: "fit-content",
+                  height: "fit-content",
                   display: "flex",
                   alignItems: "center",
                   fontFamily: "Lilita One",
                   textShadow: "none",
                 }}
               >
-                SIGN IN
+                <NavLink to="/register">Create new account</NavLink>
               </Button>
-            <Space wrap >
-                <Button type="link"
-                  style={{
-                    width: "fit-content",
-                    height: "fit-content",
-                    display: "flex",
-                    alignItems: "center",
-                    textShadow: "none",
-                    marginRight: 20,
-                    fontStyle: "italic",
-                    color: "#FFFFFF",
-                  }}
-                >
-                  Forget password?
-                </Button>
-                <Button type="link" 
-                  style={{
-                    width: "fit-content",
-                    height: "fit-content",
-                    display: "flex",
-                    alignItems: "center",
-                    fontFamily: "Lilita One",
-                    textShadow: "none",
-                    color: "#FFFFFF",
-                  }}
-                >
-                  Create new account
-                </Button>
             </Space>
           </Space>
         </Form>

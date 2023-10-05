@@ -13,6 +13,7 @@ import {
   Link
 } from "react-router-dom";
 import SignIn from '../components/SignInModal/SignIn';
+import Register from './RegisterScreen/Register';
 
 
 function App() {
@@ -22,12 +23,12 @@ function App() {
     <>
     <Router>
       <Header />
-      <BookingFilter></BookingFilter>
       <Switch>
         <Route path="/" exact component={Home} />
         <Route path="/movies" component={Movies} />
         <Route path="/schedule" component={Schedule} />
         <Route path="/about" component={About} />
+        <Route path="/register" component={Register} />
         </Switch>
     </Router>
   </>

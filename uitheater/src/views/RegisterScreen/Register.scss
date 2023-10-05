@@ -1,0 +1,21 @@
+.Container{
+    background-color: #231B5B;
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+.select_holder {
+    display: flex;
+    justify-content: center;
+    height: 34px;
+    align-content: center;
+    width: 100px;
+    border-radius: 45px;
+    overflow: hidden;
+    border: 1px solid green;
+  }
+.select_holder:focus-within {
+    outline: none;
+}
