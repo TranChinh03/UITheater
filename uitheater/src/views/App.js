@@ -1,10 +1,10 @@
+import React, { useState } from 'react';
 import BookingFilter from '../components/BookingFilter/bookingFilter';
 import Header from '../components/HeaderScreen/Header';
 import About from '../views/AboutScreen/About';
 import Home from '../views/HomeScreen/Home';
 import Movies from '../views/MoviesScreen/Movies';
 import Schedule from '../views/ScheduleScreen/Schedule';
-import React, { useState } from 'react';
 import { Button, Modal } from 'antd';
 import {
   BrowserRouter as Router,
@@ -13,14 +13,15 @@ import {
   Link
 } from "react-router-dom";
 import SignIn from '../components/SignInModal/SignIn';
-
+import MovieInfo from '../components/MovieInfo/movieInfo';
 
 function App() {
 
 
   return (
     <>
-    <Router>
+    <MovieInfo></MovieInfo>
+    {/* <Router>
       <Header />
       <BookingFilter></BookingFilter>
       <Switch>
@@ -29,7 +30,7 @@ function App() {
         <Route path="/schedule" component={Schedule} />
         <Route path="/about" component={About} />
         </Switch>
-    </Router>
+    </Router> */}
   </>
   );
 }

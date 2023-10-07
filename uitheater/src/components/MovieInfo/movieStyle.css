@@ -1,0 +1,17 @@
+.bg-container {
+    width: 600px;
+    height: 340px;
+    flex-direction: row;
+    display: flex;
+    align-items: center;
+    background-color: #F9DEC9;
+}
+
+.info-container {
+    background-color: #D80032;
+    width: 350px;
+    height: 300px;
+    margin-right: 5px;
+    border-radius: 25px;
+    box-shadow: #BBA797;
+}
