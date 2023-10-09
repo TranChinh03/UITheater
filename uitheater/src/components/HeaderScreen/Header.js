@@ -1,9 +1,7 @@
 import "./header.scss";
 import { SVG_LOGO, SVG_Search } from "../../assets/icons";
 import { NavLink } from "react-router-dom";
-import Switcher from "../../routes/Switchs";
 import SignIn from "../SignInModal/SignIn";
-import { TEModal, TERipple } from "tw-elements-react";
 import { useState } from "react";
 const Header = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
