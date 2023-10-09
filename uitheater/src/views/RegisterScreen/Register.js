@@ -1,5 +1,6 @@
 import Banner from "../../components/banner/banner";
 import "./Register.scss";
+import axios from "axios";
 import React, { useState } from "react";
 import {
   Button,
@@ -45,12 +46,51 @@ const tailFormItemLayout = {
 const Register = () => {
   const [form] = Form.useForm();
 
+  const [name,setName]=useState("");
+  const [email,setEmail]=useState("");
+  const [password,setPassword]=useState("");
+  const [confirm,setConfirm]=useState("");
+  const [date,setDate]=useState("");
+  const [gender,setGender]=useState("");
+
   const onFinish = (values) => {
     console.log("Received values of form: ", values);
   };
-  const onChange = (date, dateString) => {
+  const onChangeDate = (date, dateString) => {
     console.log(date, dateString);
+    setDate(dateString);
   };
+  const onChangeGender = (value) => {
+    console.log(value);
+    setGender(value);
+  };
+
+
+  async function onClickRegister(e){
+    e.preventDefault();
+
+    try{
+
+        await axios.post("https://uitlogachcu.onrender.com/register",{
+            name,email,password,date,gender
+        })
+        .then(res=>{
+          if(res.data==="exist"){
+              alert("User already exists")
+          }
+      })
+      .catch(e=>{
+          alert("wrong details")
+          console.log(e);
+      })
+
+  }
+  catch(e){
+      console.log(e);
+
+  }
+
+}
   return (
     <ConfigProvider
       theme={{
@@ -110,6 +150,7 @@ const Register = () => {
               ]}
             >
               <Input
+                onChange={(e)=>{setName(e.target.value)}}
                 style={{
                   paddingLeft: 10,
                   borderRadius: 35,
@@ -141,6 +182,7 @@ const Register = () => {
               ]}
             >
               <Input
+                onChange={(e)=>{setEmail(e.target.value)}}
                 style={{
                   paddingLeft: 10,
                   borderRadius: 35,
@@ -169,6 +211,7 @@ const Register = () => {
               hasFeedback
             >
               <Input.Password
+              onChange={(e)=>{setPassword(e.target.value)}}
                 style={{
                   paddingLeft: 14.5,
                   borderRadius: 35,
@@ -209,6 +252,7 @@ const Register = () => {
               ]}
             >
               <Input.Password
+                onChange={(e)=>{setConfirm(e.target.value)}}
                 style={{
                   paddingLeft: 14.5,
                   borderRadius: 35,
@@ -219,7 +263,7 @@ const Register = () => {
               />
             </Form.Item>
             <Space style={{ justifyContent: "center", display: "flex" }}>
-              <Form.Item 
+              <Form.Item
                 name="date"
                 label="Date of birth"
                 labelCol={{ span: 24 }}
@@ -235,10 +279,11 @@ const Register = () => {
                   },
                 ]}
               >
-                <div className="select_holder" style={{ width: "235px" }}>
+                <div className="select_holder" style={{ width: "fit-content" }}>
                   <DatePicker
-                    onChange={onChange}
-                    style={{ width: "235px", height: "34px" }}
+                    onChange={onChangeDate}
+                    format={"DD/MM/YYYY"}
+                    style={{ width: "243px", height: "34px" }}
                   />
                 </div>
               </Form.Item>
@@ -251,7 +296,7 @@ const Register = () => {
                   alignItems: "center",
                   display: "flex",
                   width: "100%",
-                  borderRadius: "30px" ,
+                  borderRadius: "30px",
                 }}
                 rules={[
                   {
@@ -260,14 +305,14 @@ const Register = () => {
                 ]}
               >
                 <div className="select_holder">
-                  <Select placeholder="Gender" style={{ height: "34px" }}>
+                  <Select placeholder="Gender" style={{ height: "34px" }} onChange={onChangeGender}>
                     <Option value="male">Male</Option>
                     <Option value="female">Female</Option>
                     <Option value="other">Other</Option>
                   </Select>
                 </div>
               </Form.Item>
-            </Space >
+            </Space>
             <Form.Item
               name="agreement"
               valuePropName="checked"
@@ -281,29 +326,38 @@ const Register = () => {
               ]}
               {...tailFormItemLayout}
             >
-              <Checkbox style={{color:"white"}} >
-                I agree the <a style={{color:"white", fontWeight:"600"}} href="">Terms of Use</a>
+              <Checkbox style={{ color: "white" }}>
+                I agree the{" "}
+                <a style={{ color: "wheat", fontWeight: "600" }} href="">
+                  Terms of Use
+                </a>
               </Checkbox>
             </Form.Item>
-            <Form.Item    style={{
+            <Form.Item
+              style={{
                 justifyContent: "center",
                 alignItems: "center",
                 display: "flex",
                 width: "100%",
-              }}>
-              <Button style={{
+              }}
+            >
+              <Button
+                style={{
                   paddingLeft: 14.5,
                   borderStartEndRadius: 11,
                   borderBottomLeftRadius: 11,
-                  backgroundColor:"#1A1444",
-                  color:"white",
-                  fontWeight:500,
+                  backgroundColor: "#1A1444",
+                  color: "white",
+                  fontWeight: 500,
                   fontSize: 24,
                   height: "53px",
                   width: "357px",
+                  border: "none",
                   fontFamily: "Lilita One",
-                  textShadow:"none"
-                }}>
+                  textShadow: "none",
+                }}
+                onClick={onClickRegister}
+              >
                 Register
               </Button>
             </Form.Item>

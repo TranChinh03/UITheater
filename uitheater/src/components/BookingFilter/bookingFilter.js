@@ -62,7 +62,7 @@ function BookingFilter() {
                   </div>
                   <img
                     className={`drop-icon `}
-                    src={selectDown}
+                    src={SVG_SelectDown}
                     alt="Select Icon"
                     style={rotation(value)}
                   />

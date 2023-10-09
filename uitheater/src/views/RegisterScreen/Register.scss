@@ -14,8 +14,15 @@
     width: 100px;
     border-radius: 45px;
     overflow: hidden;
-    border: 1px solid green;
   }
 .select_holder:focus-within {
     outline: none;
+    border: none;
 }
+@font-face {
+    font-family: "Lilita One";
+    src: url("../../assets/fonts/LilitaOne-Regular.ttf") format("truetype");
+  }
+  .lilita-one{
+    font-family: "Lilita One";
+  }
