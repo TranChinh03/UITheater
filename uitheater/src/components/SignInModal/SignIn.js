@@ -3,12 +3,39 @@ import { Button, Modal, ConfigProvider, Space } from "antd";
 import "./SignIn.scss";
 import { Form, Input } from "antd";
 import { NavLink } from "react-router-dom";
+import axios from "axios";
 const SignIn = (props) => {
   const { isModalOpen, handleOk, handleCancel } = props;
   const [form] = Form.useForm();
   const [clientReady, setClientReady] = useState(false);
 
   // To disable submit button at the beginning.
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  async function onClickSignIn(e) {
+    e.preventDefault();
+
+    try {
+      await axios
+        .post("https://uitlogachcu.onrender.com/sign_in", {
+          email,
+          password,
+        })
+        .then((res) => {
+          console.log(res.data);
+          if (res.data === "notexist") {
+            alert("User have not sign up");
+          }
+        })
+        .catch((e) => {
+          alert("wrong details");
+          console.log(e);
+        });
+    } catch (e) {
+      console.log(e);
+    }
+  }
   useEffect(() => {
     setClientReady(true);
   }, []);
@@ -44,22 +71,30 @@ const SignIn = (props) => {
         footer={null}
         width={300}
       >
-        <Form form={form} size="small" layout="vertical">
-          <Form.Item label="Username: " style={{ height: "40px" }}>
+        <Form form={form} size="small" layout="vertical" onSubmitCapture={(e) => console.log(e)}>
+          <Form.Item label="Email: " style={{ height: "40px" }}>
             <Input
               style={{ borderRadius: 35, fontSize: 14, height: "30px" }}
               className="input"
-              placeholder="Please enter your email/username"
+              placeholder="Please enter your email"
+              onChange={(e) => { setEmail(e.target.value) }}
             />
           </Form.Item>
           <Form.Item label="Password: " style={{ height: "fit-content" }}>
             <Input.Password
-              style={{paddingLeft:10, borderRadius: 35, fontSize: 14, height: "30px" }}
+              style={{
+                paddingLeft: 10,
+                borderRadius: 35,
+                fontSize: 14,
+                height: "30px",
+              }}
+              onChange={(e) => { setPassword(e.target.value) }}
               placeholder="Please enter your password"
             />
           </Form.Item>
           <Space>
             <Button
+            onClick={onClickSignIn}
               style={{
                 width: "fit-content",
                 height: "fit-content",
@@ -90,7 +125,6 @@ const SignIn = (props) => {
               </Button>
               <Button
                 type="link"
-                onProgress={() => {}}
                 style={{
                   width: "fit-content",
                   height: "fit-content",
