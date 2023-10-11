@@ -10,10 +10,12 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import SignIn from "../components/SignInModal/SignIn";
 import Register from "./RegisterScreen/Register";
 import NotFoundScreen from "./NotFoundScreen/NotFoundScreen";
+import Info from "./InfoScreen/Info";
 
 function App() {
   return (
     <>
+    {/* <Info></Info> */}
       <Router>
         <Header />
         <Switch>

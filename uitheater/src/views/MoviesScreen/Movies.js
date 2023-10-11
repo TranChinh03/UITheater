@@ -1,13 +1,13 @@
 import Header from "../../components/HeaderScreen/Header";
-  
-  function Movies() {
-    return (
-      <div className="Container">
-        <div style={{marginTop: 200}} >
-          CCCCCCCCC
-        </div>
+
+function Movies() {
+  return (
+    <div className="Container">
+      <div style={{ marginTop: 200 }} >
+        CCCCCCCCC
       </div>
-    );
-  }
-  
-  export default Movies;
+    </div>
+  );
+}
+
+export default Movies;
