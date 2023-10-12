@@ -10,11 +10,14 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import SignIn from "../components/SignInModal/SignIn";
 import Register from "./RegisterScreen/Register";
 import NotFoundScreen from "./NotFoundScreen/NotFoundScreen";
+import Info from "./InfoScreen/Info";
+import MovieInfo from "../components/MovieInfo/movieInfo";
 
 function App() {
   return (
     <>
-      <Router>
+    <MovieInfo></MovieInfo>
+      {/* <Router>
         <Header />
         <Switch>
           <Route path="/" exact component={Home} />
@@ -24,7 +27,7 @@ function App() {
           <Route path="/register" component={Register} />
           <Route path="*" component={NotFoundScreen} />
         </Switch>
-      </Router>
+      </Router> */}
     </>
   );
 }
