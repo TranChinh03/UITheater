@@ -16,7 +16,7 @@ import MovieInfo from "../components/MovieInfo/movieInfo";
 function App() {
   return (
     <>
-    <MovieInfo></MovieInfo>
+    <Movies></Movies>
       {/* <Router>
         <Header />
         <Switch>
