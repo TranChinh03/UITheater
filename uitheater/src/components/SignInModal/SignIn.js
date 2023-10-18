@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Button, Modal, ConfigProvider, Space } from "antd";
+import { useCookies } from 'react-cookie';
 import "./SignIn.scss";
 import { Form, Input } from "antd";
 import { NavLink } from "react-router-dom";
@@ -8,6 +9,7 @@ const SignIn = (props) => {
   const { isModalOpen, handleOk, handleCancel } = props;
   const [form] = Form.useForm();
   const [clientReady, setClientReady] = useState(false);
+  const [cookies, setCookie] = useCookies(['userToken']);
 
   // To disable submit button at the beginning.
   const [email, setEmail] = useState("");
@@ -15,26 +17,29 @@ const SignIn = (props) => {
 
   async function onClickSignIn(e) {
     e.preventDefault();
+    let data = JSON.stringify({
+      "email": email,
+      "password": password
+    });
 
-    try {
-      await axios
-        .post("https://uitlogachcu.onrender.com/sign_in", {
-          email,
-          password,
-        })
-        .then((res) => {
-          console.log(res.data);
-          if (res.data === "notexist") {
-            alert("User have not sign up");
-          }
-        })
-        .catch((e) => {
-          alert("wrong details");
-          console.log(e);
-        });
-    } catch (e) {
-      console.log(e);
-    }
+    let config = {
+      method: 'post',
+      url: 'https://uitlogachcu.onrender.com/sign_in',
+      headers: { 
+        'Content-Type': 'application/json', 
+      },
+      data : data
+    };
+
+    
+    axios.request(config)
+    .then((response) => {
+      localStorage.setItem('Token', response.data);
+      // setCookie('Token', response.data, { path: '/' });
+    })
+    .catch((error) => {
+      console.log(error);
+    });
   }
   useEffect(() => {
     setClientReady(true);

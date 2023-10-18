@@ -57,7 +57,7 @@ const Register = () => {
     console.log("Received values of form: ", values);
   };
   const onChangeDate = (date, dateString) => {
-    console.log(date, dateString);
+    console.log(date, dateString);  
     setDate(dateString);
   };
   const onChangeGender = (value) => {
