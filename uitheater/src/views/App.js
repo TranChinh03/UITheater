@@ -12,11 +12,12 @@ import Register from "./RegisterScreen/Register";
 import NotFoundScreen from "./NotFoundScreen/NotFoundScreen";
 import Info from "./InfoScreen/Info";
 import MovieInfo from "../components/MovieInfo/movieInfo";
+import BookingInfo from "../components/BookingInfo/bookingInfo";
 
 function App() {
   return (
     <>
-    <Movies></Movies>
+      <BookingInfo> </BookingInfo>
       {/* <Router>
         <Header />
         <Switch>
