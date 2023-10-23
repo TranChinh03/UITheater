@@ -2,8 +2,6 @@ import React from 'react';
 import '../BookingInfo/bookinginfoStyle.scss'
 import { SVG_Close } from "../../assets/icons";
 
-
-
 function BookingInfo() {
   return (
     <>
