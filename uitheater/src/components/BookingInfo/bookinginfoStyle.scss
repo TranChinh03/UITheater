@@ -41,7 +41,7 @@
 .info {
 	width: 100%;
 	height: 60%;
-	background-color: #fffaf5;
+	background-color: #0c0326;
 }
 
 .info1 {
@@ -49,18 +49,26 @@
 	height: 50%;
 	display: flex;
 	flex-direction: row;
-	background-color: brown;
+	background-color: #0c0326;
 }
 
 .infofo {
 	display: flex;
 	flex-direction: column;
+	background-color: #1a1444;
 }
 
 .info-title {
+	font-size: 20px;
+	color: #fffaf5;
+	margin-top: 3px;
+	margin-bottom: 8px;
 }
 
 .info-data {
+	font-size: 40px;
+	font-family: 'Lilita One';
+	color: #fffaf5;
 }
 
 .info2 {
