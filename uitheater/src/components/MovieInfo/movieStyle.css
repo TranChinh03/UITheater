@@ -3,8 +3,8 @@
  height: 340px;
  flex-direction: row;
  display: flex;
- align-items: center;
  background-color: #f9dec9;
+ align-items: center;
 }
 
 .info-container {
@@ -24,6 +24,7 @@
  margin-top: 15px;
  font-size: 18px;
  padding: 0 20px;
+ text-align: left;
 }
 
 .detailContainer {
@@ -42,6 +43,7 @@
  height: 70px;
  font-family: "Inter";
  overflow: hidden;
+ text-align: justify;
  text-overflow: ellipsis;
  display: -webkit-box;
  line-height: 16px;
@@ -65,6 +67,7 @@
  margin-left: 30px;
  overflow: hidden;
  border-radius: 20px 0 20px 0;
+ padding: 0px 10px;
 }
 
 .date {
@@ -95,6 +98,7 @@
  color: #1a1444;
  font-family: "InterBold";
  font-size: 15px;
+ border-style: none;
 }
 
 .bookingBtn {
