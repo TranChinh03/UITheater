@@ -9,15 +9,15 @@ import TextField from '@mui/material/TextField';
 function DetailSelect() {
   const [countS, setCountS] = useState(0);
   const [countD, setCountD] = useState(0);
-
-  const singleID = document.getElementById('single');
-  function increaseF() {
-    if (singleID) setCountS(countS + 1);
-    setCountD(countD + 1);
-  }
-  function decreaseF() {
-    if (singleID) setCountS(countS - 1);
-    setCountD(countD - 1);
+  const max = 10;
+  const maxS = 100000;
+  const maxD = 200000;
+  function changeF(id, step = 1) {
+    if (id == 'single')
+      if (!(countS + step > max || countS + step < 0)) setCountS(countS + step);
+      else return;
+    else if (!(countD + step > max || countD + step < 0))
+      setCountD(countD + step);
   }
 
   return (
@@ -28,7 +28,9 @@ function DetailSelect() {
             <td className="box-title">Ticket Type</td>
             <td className="box-title">Amount</td>
             <td className="box-title">Price</td>
-            <td className="box-title">Total Price</td>
+            <td className="box-title" style={{width: '300px'}}>
+              Total Price
+            </td>
           </thead>
           <tbody style={{backgroundColor: '#EB8596'}}>
             <tr>
@@ -41,7 +43,7 @@ function DetailSelect() {
                   <IconButton
                     aria-label="add"
                     className="icon-container"
-                    onClick={() => decreaseF()}>
+                    onClick={() => changeF('single', -1)}>
                     <RemoveIcon
                       style={{
                         width: '50px',
@@ -53,12 +55,20 @@ function DetailSelect() {
                     id="single"
                     tagName="single"
                     variant="outlined"
+                    type="text"
+                    onChange={e => {
+                      const temp = parseInt(
+                        e.target.value.replace(/[^0-9]/g, ''),
+                      ); //Remove all alphabet character and parse Int
+                      if (!isNaN(temp)) changeF('single', temp - countS);
+                      else changeF('single', -countS);
+                    }}
                     className="input-container"
                     value={countS}></TextField>
                   <IconButton
                     aria-label="add"
                     className="icon-container"
-                    onClick={() => increaseF()}>
+                    onClick={() => changeF('single', 1)}>
                     <AddIcon
                       style={{
                         width: '50px',
@@ -68,8 +78,10 @@ function DetailSelect() {
                   </IconButton>
                 </div>
               </td>
-              <td className="box-title">200.000 VND</td>
-              <td>3</td>
+              <td className="box-title">{maxS.toLocaleString('en-US')} VND</td>
+              <td className="box-title">
+                {(maxS * countS).toLocaleString('en-US')} VND
+              </td>
             </tr>
             <tr>
               <td className="box-title1">
@@ -81,7 +93,7 @@ function DetailSelect() {
                   <IconButton
                     aria-label="add"
                     className="icon-container"
-                    onClick={() => decreaseF()}>
+                    onClick={() => changeF('double', -1)}>
                     <RemoveIcon
                       style={{
                         width: '50px',
@@ -93,12 +105,19 @@ function DetailSelect() {
                     id="double"
                     tagName="double"
                     variant="outlined"
+                    onChange={e => {
+                      const temp = parseInt(
+                        e.target.value.replace(/[^0-9]/g, ''),
+                      ); //Remove all alphabet character and parse Int
+                      if (!isNaN(temp)) changeF('double', temp - countD);
+                      else changeF('double', -countD);
+                    }}
                     className="input-container"
                     value={countD}></TextField>
                   <IconButton
                     aria-label="add"
                     className="icon-container"
-                    onClick={() => increaseF()}>
+                    onClick={() => changeF('double', 1)}>
                     <AddIcon
                       style={{
                         width: '50px',
@@ -108,8 +127,10 @@ function DetailSelect() {
                   </IconButton>
                 </div>
               </td>
-              <td className="box-title">200.000 VND</td>
-              <td>4</td>
+              <td className="box-title">{maxD.toLocaleString('en-US')} VND</td>
+              <td className="box-title">
+                {(maxD * countD).toLocaleString('en-US')} VND
+              </td>
             </tr>
           </tbody>
         </table>
