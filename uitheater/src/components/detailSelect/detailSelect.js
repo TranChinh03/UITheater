@@ -135,7 +135,10 @@ function DetailSelect() {
           </tbody>
         </table>
       </div>
-      <div className="total-container"></div>
+      <div className="total-container">
+        <div></div>
+        <div></div>
+      </div>
     </>
   );
 }
