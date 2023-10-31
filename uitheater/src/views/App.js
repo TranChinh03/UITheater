@@ -1,24 +1,24 @@
-import BookingFilter from "../components/BookingFilter/bookingFilter";
-import Header from "../components/HeaderScreen/Header";
-import About from "../views/AboutScreen/About";
-import Home from "../views/HomeScreen/Home";
-import Movies from "../views/MoviesScreen/Movies";
-import Schedule from "../views/ScheduleScreen/Schedule";
-import React, { useState } from "react";
-import { Button, Modal } from "antd";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import SignIn from "../components/SignInModal/SignIn";
-import Register from "./RegisterScreen/Register";
-import NotFoundScreen from "./NotFoundScreen/NotFoundScreen";
-import Info from "./InfoScreen/Info";
-import MovieInfo from "../components/MovieInfo/movieInfo";
-import BookingInfo from "../components/BookingInfo/bookingInfo";
-import DetailSelect from "../components/detailSelect/detailSelect";
+import BookingFilter from '../components/BookingFilter/bookingFilter';
+import Header from '../components/HeaderScreen/Header';
+import About from '../views/AboutScreen/About';
+import Home from '../views/HomeScreen/Home';
+import Movies from '../views/MoviesScreen/Movies';
+import Schedule from '../views/ScheduleScreen/Schedule';
+import React, {useState} from 'react';
+import {Button, Modal} from 'antd';
+import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
+import SignIn from '../components/SignInModal/SignIn';
+import Register from './RegisterScreen/Register';
+import NotFoundScreen from './NotFoundScreen/NotFoundScreen';
+import Info from './InfoScreen/Info';
+import MovieInfo from '../components/MovieInfo/movieInfo';
+import BookingInfo from '../components/BookingInfo/bookingInfo';
+import DetailSelect from '../components/detailSelect/detailSelect';
 
 function App() {
   return (
     <>
-      <DetailSelect></DetailSelect>
+      <Info></Info>
       {/* <Router>
         <Header />
         <Switch>
