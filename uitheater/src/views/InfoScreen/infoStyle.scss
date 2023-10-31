@@ -67,9 +67,10 @@
 }
 
 .info-cont {
-  width: 50vw;
-  height: 300px;
+  width: 500px;
+  height: fit-content;
   margin-left: 150px;
+  margin-bottom: 30px;
 }
 
 .textC {
@@ -81,7 +82,7 @@
 }
 
 .text {
-  width: 150px;
+  width: 170px;
   font-family: 'InterRegular';
   font-size: 20px;
   font-weight: 700;
@@ -106,4 +107,10 @@
   border: none;
   font-size: 20px;
   color: #fffaf5;
+}
+
+.member-container {
+  width: 50vw;
+  height: 300px;
+  margin-left: 150px;
 }

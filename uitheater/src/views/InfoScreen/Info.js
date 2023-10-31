@@ -148,7 +148,28 @@ function Info() {
               </>
             )}
           </div>
-          <div className="member-container"></div>
+          <div
+            style={{
+              marginLeft: '100px',
+              display: 'flex',
+              flexDirection: 'row',
+            }}>
+            <div className="title">Membership:</div>
+          </div>
+          <div className="member-container">
+            <div className="textC">
+              <div className="text">Status: </div>
+              <div className="textt">Member</div>
+            </div>
+            <div className="textC">
+              <div className="text">Register Date: </div>
+              <div className="textt">21 - 12 - 2023</div>
+            </div>
+            <div className="textC">
+              <div className="text">Total Spending: </div>
+              <div className="textt">1.000.000 VND</div>
+            </div>
+          </div>
           <div className="history-container"></div>
         </div>
       </div>
