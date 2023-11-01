@@ -11,15 +11,42 @@ function Info() {
     phone: '',
   });
 
+  const [edit, setEdit] = useState({
+    name: '',
+    gender: '',
+    dob: '',
+    email: '',
+    phone: '',
+  });
+
+  function assignInfo(state, edit) {
+    state.name = edit.name;
+    state.gender = edit.gender;
+    state.dob = edit.dob;
+    state.email = edit.email;
+    state.phone = edit.phone;
+  }
+
   function handleAction() {
+    assignInfo(edit, state);
     setAction(!action);
   }
+
   function handleChange(evt) {
     const value = evt.target.value;
-    setState({
-      ...state,
+    setEdit({
+      ...edit,
       [evt.target.name]: value,
     });
+  }
+
+  function handleSave() {
+    assignInfo(state, edit);
+    handleAction();
+  }
+
+  function handleCancel() {
+    handleAction();
   }
 
   return (
@@ -47,6 +74,7 @@ function Info() {
                     marginLeft: '100px',
                     display: 'flex',
                     flexDirection: 'row',
+                    marginBottom: '20px',
                   }}>
                   <div className="title">Infomation:</div>
                   <button
@@ -89,11 +117,11 @@ function Info() {
                   <div className="title">Infomation:</div>
                   <button
                     name="cancel"
-                    onClick={() => handleAction()}
+                    onClick={() => handleCancel()}
                     className="buttonCancel">
                     <div style={{color: '#FFFFFF'}}>Cancel</div>
                   </button>
-                  <button onClick={() => handleAction()} className="buttonSave">
+                  <button onClick={() => handleSave()} className="buttonSave">
                     <div style={{color: '#FFFFFF'}}>Save</div>
                   </button>
                 </div>
@@ -104,7 +132,7 @@ function Info() {
                       className="input-text"
                       type="text"
                       name="name"
-                      value={state.name}
+                      value={edit.name}
                       onChange={e => handleChange(e)}
                       required></input>
                   </div>
@@ -114,7 +142,7 @@ function Info() {
                       className="input-text"
                       type="text"
                       name="gender"
-                      value={state.gender}
+                      value={edit.gender}
                       onChange={e => handleChange(e)}></input>
                   </div>
                   <div className="textC">
@@ -123,7 +151,7 @@ function Info() {
                       className="input-text"
                       type="text"
                       name="dob"
-                      value={state.dob}
+                      value={edit.dob}
                       onChange={e => handleChange(e)}></input>
                   </div>
                   <div className="textC">
@@ -132,7 +160,7 @@ function Info() {
                       className="input-text"
                       type="text"
                       name="email"
-                      value={state.email}
+                      value={edit.email}
                       onChange={e => handleChange(e)}></input>
                   </div>
                   <div className="textC">
@@ -141,7 +169,7 @@ function Info() {
                       className="input-text"
                       type="text"
                       name="phone"
-                      value={state.phone}
+                      value={edit.phone}
                       onChange={e => handleChange(e)}></input>
                   </div>
                 </div>
@@ -153,6 +181,7 @@ function Info() {
               marginLeft: '100px',
               display: 'flex',
               flexDirection: 'row',
+              marginBottom: '20px',
             }}>
             <div className="title">Membership:</div>
           </div>
