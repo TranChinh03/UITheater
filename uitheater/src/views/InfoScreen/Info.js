@@ -199,7 +199,47 @@ function Info() {
               <div className="textt">1.000.000 VND</div>
             </div>
           </div>
-          <div className="history-container"></div>
+          <div
+            style={{
+              marginLeft: '100px',
+              display: 'flex',
+              flexDirection: 'row',
+              marginBottom: '20px',
+            }}>
+            <div className="title">History:</div>
+          </div>
+          <div className="history-container">
+            <table className="history-table">
+              <thead style={{backgroundColor: '#0c0326'}}>
+                <td className="header-title" style={{width: '6%'}}>
+                  No.
+                </td>
+                <td className="header-title" style={{width: 'auto'}}>
+                  Movie Title
+                </td>
+                <td className="header-title" style={{width: '13%'}}>
+                  Date
+                </td>
+                <td className="header-title" style={{width: '10%'}}>
+                  Showtime
+                </td>
+                <td className="header-title" style={{width: '7%'}}>
+                  Ticket
+                </td>
+                <td className="header-title" style={{width: '20%'}}>
+                  Total
+                </td>
+              </thead>
+              <tbody
+                style={{
+                  overflowY: 'scroll',
+                  width: '80%',
+                  height: '50px',
+                  maxHeight: '500px',
+                  display: 'block',
+                }}></tbody>
+            </table>
+          </div>
         </div>
       </div>
     </>
