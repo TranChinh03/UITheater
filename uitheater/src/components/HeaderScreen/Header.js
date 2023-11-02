@@ -1,27 +1,30 @@
 import "./header.scss";
-import { SVG_LOGO, SVG_Search } from "../../assets/icons";
+import { SVG_Human, SVG_LOGO, SVG_Search } from "../../assets/icons";
 import { NavLink } from "react-router-dom";
+import {useNavigate} from "react-router-dom"
 import SignIn from "../SignInModal/SignIn";
-import { useCookies } from "react-cookie";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import getLastWord from "../../store/getLastWord";
-// import getLastWord from "../../store/getLastWord";
 const Header = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [cookies, setCookie] = useCookies(["userToken"]);
+  const navigate = useNavigate();
   const [response, setResponse] = useState("");
+  const Token = localStorage.getItem("Token");
   const showModal = () => {
+    console.log("1");
     setIsModalOpen(true);
   };
   const handleOk = () => {
+    console.log("2");
     setIsModalOpen(false);
   };
   const handleCancel = () => {
+    console.log("3");
     setIsModalOpen(false);
   };
   const isLogin = () => {
-    if (localStorage.getItem("Token") === null) {
+    if (Token === null) {
       return false;
     }
     return true;
@@ -32,7 +35,7 @@ const Header = () => {
     url: "https://uitlogachcu.onrender.com/me",
     headers: {
       "Content-Type": "application/json",
-      Authorization: "Bearer " + localStorage.getItem("Token"),
+      Authorization: "Bearer " + Token,
     },
   };
   useEffect(() => {
@@ -44,8 +47,8 @@ const Header = () => {
       })
       .catch((error) => {
         console.log(error);
-      });
-  }, [cookies]);
+      }); 
+  }, [isLogin]);
 
   return (
     <div className="headerContainer">
@@ -60,14 +63,15 @@ const Header = () => {
             />
             <img className="searchLogo" src={SVG_Search} alt="Search" />
           </div>
-          {!isLogin ? (
+          {!isLogin() ? (
             <div className="signIn" onClick={showModal}>
               <div className="signInText">Sign In</div>
             </div>
           ) : (
-            <div className="signIn">
+            <button style={{backgroundColor: "transparent",border: "none"}} className="signIn" onClick={()=> {navigate("/me")}}>
+              <img className="human" src={SVG_Human} alt ="avt"/>
               <div className="signInText">{getLastWord(response)}</div>
-            </div>
+            </button>
           )}
         </div>
         <div className="NavBar">
@@ -87,7 +91,6 @@ const Header = () => {
       </div>
       <SignIn
         isModalOpen={isModalOpen}
-        handleOk={handleOk}
         handleCancel={handleCancel}
       />
     </div>
