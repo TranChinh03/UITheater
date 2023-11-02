@@ -25,7 +25,7 @@
             width: 100%;
             height: 30%;
             display: flex;
-            padding-left: 6%;
+            padding-right: 6%;
             flex-direction: row;
             justify-content: flex-end;
             background-color: #231B5B;
@@ -63,13 +63,18 @@
                 display: flex;
                 width: 20%;
                 height: 100%;
-                justify-content: center;
+                justify-content: space-around;
                 cursor: pointer;
                 .signInText{
                     align-self: center;
                     font-family: "Lilita One";
                     color: white;
                     font-size: 25px;
+                }
+                .human{
+                    width: 30%;
+                    align-self: center;
+                    height: 60%;
                 }
             }
             .signIn :hover{
@@ -92,7 +97,8 @@
             justify-content: center;
             .NavBarText{
                 color: white;
-                font-family: "Lilita One";               
+                font-family: "Lilita One";
+                text-decoration: none;          
                 font-size: 20px;
             }
         }
@@ -112,12 +118,14 @@
         .NavBar a:hover {
             background-color: #1A1444;
             color: white;
+            text-decoration: none; 
         }
     
         /* Add a color to the active/current link */
         .NavBar a.active {
             background-color: #1A1444;
             color: white;
+            text-decoration: none;   
         }
         .NavBar a.BetweenNav{
             width: 23%;
