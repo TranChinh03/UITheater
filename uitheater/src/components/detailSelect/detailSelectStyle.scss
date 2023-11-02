@@ -1,0 +1,88 @@
+.container {
+  width: 100%;
+  height: 500px;
+  background-color: #f9dec9;
+  display: flex;
+  flex-direction: column;
+}
+
+.table-container {
+  width: 80%;
+  height: 60%;
+  background-color: #ffffff;
+  margin-top: -90px;
+}
+
+.box-title {
+  font-size: 30px;
+  font-family: 'Lilita One';
+  font-weight: bold;
+  color: white;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  justify-content: center;
+}
+
+.box-title1 {
+  font-size: 25px;
+  font-family: 'InterRegular';
+  font-weight: 900;
+  color: #0c0326;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  justify-content: center;
+}
+
+.counter-container {
+  display: flex;
+  flex-direction: row;
+  //justify-content: center;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.icon-container {
+  width: 50px;
+  height: 50px;
+  border: 'black';
+  border-width: 5px;
+  color: #0c0326;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.input-container {
+  width: 60px;
+  height: auto;
+  background-color: #ffffff;
+  border-radius: 4px;
+  margin-left: 20px;
+  margin-right: 20px;
+  text-align-last: center;
+  .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input {
+    font: inherit;
+    font-size: x-large;
+    font-family: 'Lilita One';
+    letter-spacing: inherit;
+    color: currentColor;
+    padding: 4px 0 5px;
+    border: 0;
+    box-sizing: content-box;
+    background: none;
+    height: 1.4375em;
+    margin: 0;
+    -webkit-tap-highlight-color: transparent;
+    display: block;
+    min-width: 0;
+    width: 100%;
+    -webkit-animation-name: mui-auto-fill-cancel;
+    animation-name: mui-auto-fill-cancel;
+    -webkit-animation-duration: 10ms;
+    animation-duration: 10ms;
+    padding: 16.5px 14px;
+  }
+}
