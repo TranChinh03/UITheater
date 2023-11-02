@@ -15,7 +15,6 @@ import Info from './InfoScreen/Info';
 function App() {
   return (
     <>
-      <Info></Info>
       <Router>
         <Header />
         <Routes>
