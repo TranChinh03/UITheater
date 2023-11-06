@@ -7,7 +7,7 @@ import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Register from "./RegisterScreen/Register";
 import NotFoundScreen from "./NotFoundScreen/NotFoundScreen";
-import Info from "./InfoScreen/infoScreen";
+import Info from "./InfoScreen/Info";
 
 function App() {
   return (
