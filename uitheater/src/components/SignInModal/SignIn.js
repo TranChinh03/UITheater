@@ -1,40 +1,54 @@
 import React, { useEffect, useState } from "react";
 import { Button, Modal, ConfigProvider, Space } from "antd";
+import cookie from "react-cookies";
 import "./SignIn.scss";
 import { Form, Input } from "antd";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import axios from "axios";
 const SignIn = (props) => {
-  const { isModalOpen, handleOk, handleCancel } = props;
+  const { isModalOpen, handleCancel } = props;
+  const handleOk = handleCancel;
+  const navigate = useNavigate();
   const [form] = Form.useForm();
   const [clientReady, setClientReady] = useState(false);
 
   // To disable submit button at the beginning.
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+  const onLogin = () => {
+    cookie.save("UserToken", localStorage.getItem("Token"), { path: "/" });
+  };
   async function onClickSignIn(e) {
     e.preventDefault();
+    let data = JSON.stringify({
+      email: email,
+      password: password,
+    });
 
-    try {
-      await axios
-        .post("https://uitlogachcu.onrender.com/sign_in", {
-          email,
-          password,
-        })
-        .then((res) => {
-          console.log(res.data);
-          if (res.data === "notexist") {
-            alert("User have not sign up");
-          }
-        })
-        .catch((e) => {
-          alert("wrong details");
-          console.log(e);
-        });
-    } catch (e) {
-      console.log(e);
-    }
+    let config = {
+      method: "post",
+      url: "https://uitlogachcu.onrender.com/sign_in",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      data: data,
+    };
+
+    axios
+      .request(config)
+      .then((response) => {
+        localStorage.setItem("Token", response.data);
+      })
+      .then(() => {
+        onLogin();
+      })
+      .then(() => {
+        handleOk();
+        navigate("/");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
   useEffect(() => {
     setClientReady(true);
@@ -71,13 +85,20 @@ const SignIn = (props) => {
         footer={null}
         width={300}
       >
-        <Form form={form} size="small" layout="vertical" onSubmitCapture={(e) => console.log(e)}>
+        <Form
+          form={form}
+          size="small"
+          layout="vertical"
+          onSubmitCapture={(e) => console.log(e)}
+        >
           <Form.Item label="Email: " style={{ height: "40px" }}>
             <Input
               style={{ borderRadius: 35, fontSize: 14, height: "30px" }}
               className="input"
               placeholder="Please enter your email"
-              onChange={(e) => { setEmail(e.target.value) }}
+              onChange={(e) => {
+                setEmail(e.target.value);
+              }}
             />
           </Form.Item>
           <Form.Item label="Password: " style={{ height: "fit-content" }}>
@@ -88,13 +109,15 @@ const SignIn = (props) => {
                 fontSize: 14,
                 height: "30px",
               }}
-              onChange={(e) => { setPassword(e.target.value) }}
+              onChange={(e) => {
+                setPassword(e.target.value);
+              }}
               placeholder="Please enter your password"
             />
           </Form.Item>
           <Space>
             <Button
-            onClick={onClickSignIn}
+              onClick={onClickSignIn}
               style={{
                 width: "fit-content",
                 height: "fit-content",

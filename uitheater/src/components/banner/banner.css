@@ -1,9 +1,12 @@
 .container {
-    display: block;
     height: 300px;
+    display: block;
     width: 100%;
 }
 .bannerImage {
     width: 100%;
+    display: flex;
+    align-self: baseline;
     height: auto;
+
 }
