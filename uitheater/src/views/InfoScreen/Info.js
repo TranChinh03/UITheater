@@ -1,4 +1,5 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
+import axios from 'axios';
 import './infoStyle.scss';
 
 function Info() {
@@ -6,7 +7,7 @@ function Info() {
   const [state, setState] = useState({
     name: '',
     gender: '',
-    dob: '',
+    date: '',
     email: '',
     phone: '',
   });
@@ -14,7 +15,7 @@ function Info() {
   const [edit, setEdit] = useState({
     name: '',
     gender: '',
-    dob: '',
+    date: '',
     email: '',
     phone: '',
   });
@@ -22,7 +23,7 @@ function Info() {
   function assignInfo(state, edit) {
     state.name = edit.name;
     state.gender = edit.gender;
-    state.dob = edit.dob;
+    state.date = edit.date;
     state.email = edit.email;
     state.phone = edit.phone;
   }
@@ -48,7 +49,25 @@ function Info() {
   function handleCancel() {
     handleAction();
   }
+  const Token = localStorage.getItem('Token');
 
+  useEffect(() => {
+    let config = {
+      method: 'get',
+      maxBodyLength: Infinity,
+      url: 'https://uitlogachcu.onrender.com/me',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: 'Bearer ' + Token,
+      },
+    };
+    axios
+      .request(config)
+      .then(res => {
+        setState({...res.data});
+      })
+      .catch(e => console.log(e));
+  }, []);
   return (
     <>
       <div className="scontainer">
@@ -94,7 +113,7 @@ function Info() {
                   </div>
                   <div className="textC">
                     <div className="text">Date of birth: </div>
-                    <div className="textt">{state.dob}</div>
+                    <div className="textt">{state.date}</div>
                   </div>
                   <div className="textC">
                     <div className="text">Email: </div>
@@ -149,9 +168,9 @@ function Info() {
                     <div className="text">Date of birth: </div>
                     <input
                       className="input-text"
-                      type="text"
-                      name="dob"
-                      value={edit.dob}
+                      type="date"
+                      name="date"
+                      value={edit.date}
                       onChange={e => handleChange(e)}></input>
                   </div>
                   <div className="textC">
@@ -199,7 +218,47 @@ function Info() {
               <div className="textt">1.000.000 VND</div>
             </div>
           </div>
-          <div className="history-container"></div>
+          <div
+            style={{
+              marginLeft: '100px',
+              display: 'flex',
+              flexDirection: 'row',
+              marginBottom: '20px',
+            }}>
+            <div className="title">History:</div>
+          </div>
+          <div className="history-container">
+            <table className="history-table">
+              <thead style={{backgroundColor: '#0c0326'}}>
+                <td className="header-title" style={{width: '6%'}}>
+                  No.
+                </td>
+                <td className="header-title" style={{width: 'auto'}}>
+                  Movie Title
+                </td>
+                <td className="header-title" style={{width: '13%'}}>
+                  Date
+                </td>
+                <td className="header-title" style={{width: '10%'}}>
+                  Showtime
+                </td>
+                <td className="header-title" style={{width: '7%'}}>
+                  Ticket
+                </td>
+                <td className="header-title" style={{width: '20%'}}>
+                  Total
+                </td>
+              </thead>
+              <tbody
+                style={{
+                  overflowY: 'scroll',
+                  width: '80%',
+                  height: '50px',
+                  maxHeight: '500px',
+                  display: 'block',
+                }}></tbody>
+            </table>
+          </div>
         </div>
       </div>
     </>
