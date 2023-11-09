@@ -1,0 +1,28 @@
+.container {
+  background-color: #231b5b;
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+.selectHolder {
+  display: flex;
+  justify-content: center;
+  height: 34px;
+  align-content: center;
+  width: 100px;
+  border-radius: 45px;
+  overflow: hidden;
+}
+.selectHolder:focus-within {
+  outline: none;
+  border: none;
+}
+@font-face {
+  font-family: 'Lilita One';
+  src: url('../../assets/fonts/LilitaOne-Regular.ttf') format('truetype');
+}
+.lilita-one {
+  font-family: 'Lilita One';
+}

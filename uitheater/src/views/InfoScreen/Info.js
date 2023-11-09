@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
-import './infoStyle.scss';
+import styles from './infoscreen.module.scss';
 
 function Info() {
   const [action, setAction] = useState(true);
@@ -70,10 +70,10 @@ function Info() {
   }, []);
   return (
     <>
-      <div className="scontainer">
-        <div className="form-container">
-          <div className="top-container">
-            <div className="title" style={{marginBottom: '20px'}}>
+      <div className={styles.container}>
+        <div className={styles.formContainer}>
+          <div className={styles.topContainer}>
+            <div className={styles.title} style={{marginBottom: '20px'}}>
               Welcome, Tran Dong Dong!
             </div>
             <div className="avatar"></div>
@@ -95,33 +95,33 @@ function Info() {
                     flexDirection: 'row',
                     marginBottom: '20px',
                   }}>
-                  <div className="title">Infomation:</div>
+                  <div className={styles.title}>Infomation:</div>
                   <button
                     onClick={() => handleAction()}
-                    className="buttonChangeInfo">
+                    className={styles.buttonChangeInfo}>
                     <div style={{color: '#FFFFFF'}}>Change</div>
                   </button>
                 </div>
-                <div className="info-cont">
-                  <div className="textC">
-                    <div className="text">Name: </div>
-                    <div className="textt">{state.name}</div>
+                <div className={styles.infoCont}>
+                  <div className={styles.textC}>
+                    <div className={styles.text}>Name: </div>
+                    <div className={styles.textt}>{state.name}</div>
                   </div>
-                  <div className="textC">
-                    <div className="text">Gender: </div>
-                    <div className="textt">{state.gender}</div>
+                  <div className={styles.textC}>
+                    <div className={styles.text}>Gender: </div>
+                    <div className={styles.textt}>{state.gender}</div>
                   </div>
-                  <div className="textC">
-                    <div className="text">Date of birth: </div>
-                    <div className="textt">{state.date}</div>
+                  <div className={styles.textC}>
+                    <div className={styles.text}>Date of birth: </div>
+                    <div className={styles.textt}>{state.date}</div>
                   </div>
-                  <div className="textC">
-                    <div className="text">Email: </div>
-                    <div className="textt">{state.email}</div>
+                  <div className={styles.textC}>
+                    <div className={styles.text}>Email: </div>
+                    <div className={styles.textt}>{state.email}</div>
                   </div>
-                  <div className="textC">
-                    <div className="text">Phone: </div>
-                    <div className="textt">{state.phone}</div>
+                  <div className={styles.textC}>
+                    <div className={styles.text}>Phone: </div>
+                    <div className={styles.textt}>{state.phone}</div>
                   </div>
                 </div>
               </>
@@ -133,7 +133,7 @@ function Info() {
                     display: 'flex',
                     flexDirection: 'row',
                   }}>
-                  <div className="title">Infomation:</div>
+                  <div className={styles.title}>Infomation:</div>
                   <button
                     name="cancel"
                     onClick={() => handleCancel()}
@@ -144,48 +144,48 @@ function Info() {
                     <div style={{color: '#FFFFFF'}}>Save</div>
                   </button>
                 </div>
-                <div className="info-cont">
-                  <div className="textC">
-                    <div className="text">Name: </div>
+                <div className={styles.infoCont}>
+                  <div className={styles.textC}>
+                    <div className={styles.text}>Name: </div>
                     <input
-                      className="input-text"
+                      className={styles.inputText}
                       type="text"
                       name="name"
                       value={edit.name}
                       onChange={e => handleChange(e)}
                       required></input>
                   </div>
-                  <div className="textC">
-                    <div className="text">Gender: </div>
+                  <div className={styles.textC}>
+                    <div className={styles.text}>Gender: </div>
                     <input
-                      className="input-text"
+                      className={styles.inputText}
                       type="text"
                       name="gender"
                       value={edit.gender}
                       onChange={e => handleChange(e)}></input>
                   </div>
-                  <div className="textC">
-                    <div className="text">Date of birth: </div>
+                  <div className={styles.textC}>
+                    <div className={styles.text}>Date of birth: </div>
                     <input
-                      className="input-text"
+                      className={styles.inputText}
                       type="date"
                       name="date"
                       value={edit.date}
                       onChange={e => handleChange(e)}></input>
                   </div>
-                  <div className="textC">
-                    <div className="text">Email: </div>
+                  <div className={styles.textC}>
+                    <div className={styles.text}>Email: </div>
                     <input
-                      className="input-text"
+                      className={styles.inputText}
                       type="text"
                       name="email"
                       value={edit.email}
                       onChange={e => handleChange(e)}></input>
                   </div>
-                  <div className="textC">
-                    <div className="text">Phone: </div>
+                  <div className={styles.textC}>
+                    <div className={styles.text}>Phone: </div>
                     <input
-                      className="input-text"
+                      className={styles.inputText}
                       type="text"
                       name="phone"
                       value={edit.phone}
@@ -202,20 +202,20 @@ function Info() {
               flexDirection: 'row',
               marginBottom: '20px',
             }}>
-            <div className="title">Membership:</div>
+            <div className={styles.title}>Membership:</div>
           </div>
-          <div className="member-container">
-            <div className="textC">
-              <div className="text">Status: </div>
-              <div className="textt">Member</div>
+          <div className={styles.memberContainer}>
+            <div className={styles.textC}>
+              <div className={styles.text}>Status: </div>
+              <div className={styles.textt}>Member</div>
             </div>
-            <div className="textC">
-              <div className="text">Register Date: </div>
-              <div className="textt">21 - 12 - 2023</div>
+            <div className={styles.textC}>
+              <div className={styles.text}>Register Date: </div>
+              <div className={styles.textt}>21 - 12 - 2023</div>
             </div>
-            <div className="textC">
-              <div className="text">Total Spending: </div>
-              <div className="textt">1.000.000 VND</div>
+            <div className={styles.textC}>
+              <div className={styles.text}>Total Spending: </div>
+              <div className={styles.textt}>1.000.000 VND</div>
             </div>
           </div>
           <div
@@ -225,27 +225,27 @@ function Info() {
               flexDirection: 'row',
               marginBottom: '20px',
             }}>
-            <div className="title">History:</div>
+            <div className={styles.title}>History:</div>
           </div>
-          <div className="history-container">
-            <table className="history-table">
+          <div className={styles.historyContainer}>
+            <table className={styles.historyTable}>
               <thead style={{backgroundColor: '#0c0326'}}>
-                <td className="header-title" style={{width: '6%'}}>
+                <td className={styles.headerTitle} style={{width: '6%'}}>
                   No.
                 </td>
-                <td className="header-title" style={{width: 'auto'}}>
+                <td className={styles.headerTitle} style={{width: 'auto'}}>
                   Movie Title
                 </td>
-                <td className="header-title" style={{width: '13%'}}>
+                <td className={styles.headerTitle} style={{width: '13%'}}>
                   Date
                 </td>
-                <td className="header-title" style={{width: '10%'}}>
+                <td className={styles.headerTitle} style={{width: '10%'}}>
                   Showtime
                 </td>
-                <td className="header-title" style={{width: '7%'}}>
+                <td className={styles.headerTitle} style={{width: '7%'}}>
                   Ticket
                 </td>
-                <td className="header-title" style={{width: '20%'}}>
+                <td className={styles.headerTitle} style={{width: '20%'}}>
                   Total
                 </td>
               </thead>
