@@ -1,45 +1,45 @@
 import React from 'react';
-import '../BookingInfo/bookinginfoStyle.scss';
 import {SVG_Close} from '../../assets/icons';
+import styles from './bookinginfo.module.scss';
 
 function BookingInfo() {
   return (
     <>
-      <div className="container">
-        <div className="col-container"></div>
-        <div className="info-container">
-          <div className="title-container">
-            <div className="movie-title">
+      <div className={styles.container}>
+        <div className={styles.colContainer}></div>
+        <div className={styles.infoContainer}>
+          <div className={styles.titleContainer}>
+            <div className={styles.movieTitle}>
               3DCG! SHIN CẬU BÉ BÚT CHÌ 2D LT (P): <br />
               ĐẠI CHIẾN SIÊU NĂNG LỰC SUSHI BAY
             </div>
           </div>
-          <div className="info">
-            <div className="info1">
+          <div className={styles.info}>
+            <div className={styles.info1}>
               <div
-                className="infofo"
+                className={styles.infofo}
                 style={{width: '230px', borderRight: 'white solid 1px'}}>
-                <div className="info-title">Showtime:</div>
-                <div className="info-data">13:00</div>
+                <div className={styles.infoTitle}>Showtime:</div>
+                <div className={styles.infoData}>13:00</div>
               </div>
               <div
-                className="infofo"
+                className={styles.infofo}
                 style={{width: '350px', borderRight: 'white solid 1px'}}>
-                <div className="info-title">Date:</div>
-                <div className="info-data">31 - 02 - 2023</div>
+                <div className={styles.infoTitle}>Date:</div>
+                <div className={styles.infoData}>31 - 02 - 2023</div>
               </div>
               <div
-                className="infofo"
+                className={styles.infofo}
                 style={{width: '260px', borderRight: 'white solid 1px'}}>
-                <div className="info-title">Ticket:</div>
-                <div className="info-data">2 tickets</div>
+                <div className={styles.infoTitle}>Ticket:</div>
+                <div className={styles.infoData}>2 tickets</div>
               </div>
-              <div className="infofo" style={{width: '420px'}}>
-                <div className="info-title">Total:</div>
-                <div className="info-data">200.000 VND</div>
+              <div className={styles.infofo} style={{width: '420px'}}>
+                <div className={styles.infoTitle}>Total:</div>
+                <div className={styles.infoData}>200.000 VND</div>
               </div>
             </div>
-            <div className="info2">
+            <div className={styles.info2}>
               <div
                 style={{
                   display: 'flex',
@@ -57,11 +57,11 @@ function BookingInfo() {
             </div>
           </div>
         </div>
-        <div className="col-container">
+        <div className={styles.colContainer}>
           <button
             onClick={console.log('nhan duoc kh nhi?')}
-            className="close-button">
-            <img className="closeSVG" src={SVG_Close} alt="Close"></img>
+            className={styles.closeButton}>
+            <img className={styles.closeSVG} src={SVG_Close} alt="Close"></img>
           </button>
         </div>
       </div>

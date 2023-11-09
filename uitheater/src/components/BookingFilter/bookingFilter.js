@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import '../BookingFilter/bookingStyle.scss';
-import { SVG_SelectDown } from '../../assets/icons';
+import React, {useState} from 'react';
+import styles from './bookingfilter.module.scss';
+import {SVG_SelectDown} from '../../assets/icons';
 
-const rotation = (isRotated) => {
+const rotation = isRotated => {
   return {
     transform: isRotated ? 'rotate(180deg)' : 'rotate(0deg)',
     transition: 'transform 0.25s ease-in-out', // Adjust transition duration as needed
@@ -28,17 +28,18 @@ function BookingFilter() {
   return (
     <>
       <div
-        className="booking-container"
+        className={styles.bookingContainer}
         style={{
-          background: 'linear-gradient(to right, #C70039, #E06F84, #C1ADB1, #312849)',
+          background:
+            'linear-gradient(to right, #C70039, #E06F84, #C1ADB1, #312849)',
           height: '160px',
         }}>
-        <div className="banner-content">
+        <div className={styles.bannerContent}>
           BOOK THE
           <br />
           TICKET NOW!
         </div>
-        <div className="box-grid-container">
+        <div className={styles.boxGridContainer}>
           {isRotated.map((value, index) => (
             <div id="drop">
               <div
@@ -50,25 +51,27 @@ function BookingFilter() {
                   setIsRotated(isOpen);
                   setIsOpen(isRotated);
                 }}
-                className="dropdown">
-                <button className="dropbtn">
-                  <div className="droptext">{selectedInfo[catagories[index]]}</div>
+                className={styles.dropDown}>
+                <button className={styles.dropBtn}>
+                  <div className={styles.dropText}>
+                    {selectedInfo[catagories[index]]}
+                  </div>
                   <img
-                    className={`drop-icon `}
+                    className={styles.dropIcon}
                     src={SVG_SelectDown}
                     alt="Select Icon"
                     style={rotation(value)}
                   />
                 </button>
                 {isOpen[index] && (
-                  <div className="dropdown-content">
-                    {Info[catagories[index]].map((option) => (
+                  <div className={styles.dropDownContent}>
+                    {Info[catagories[index]].map(option => (
                       <div
-                        onClick={(e) => {
+                        onClick={e => {
                           selectedInfo[catagories[index]] = option;
                           setSelectedInfo(selectedInfo);
                         }}
-                        className="dropdown-item">
+                        className={styles.dropDownItem}>
                         {option}
                       </div>
                     ))}
