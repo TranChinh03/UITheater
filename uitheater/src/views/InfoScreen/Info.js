@@ -76,15 +76,15 @@ function Info() {
             <div className={styles.title} style={{marginBottom: '20px'}}>
               Welcome, Tran Dong Dong!
             </div>
-            <div className="avatar"></div>
+            <div className={styles.avatar}></div>
             <button
               onClick={() => {}}
-              className="buttonChangeAvt"
+              className={styles.buttonChangeAvt}
               style={{backgroundColor: '#BEBEBE'}}>
               <div style={{color: '#FFFFFF'}}>Change</div>
             </button>
           </div>
-          <div className="status-container"></div>
+          <div className={styles.statusContainer}></div>
           <div style={{marginTop: '50px'}}>
             {action ? (
               <>

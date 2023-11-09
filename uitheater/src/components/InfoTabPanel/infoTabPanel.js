@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import './infoTabPanel.scss';
+import './infotabpanel.module.scss';
 import '../../assets/fonts/fonts.css';
 import {useNavigate} from 'react-router-dom';
 
