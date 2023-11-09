@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
-import '../detailSelect/detailSelectStyle.scss';
 import IconButton from '@mui/material/IconButton';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import {Input} from '@mui/material';
 import TextField from '@mui/material/TextField';
+import styles from './detailselect.module.scss';
 
 function DetailSelect() {
   const [countS, setCountS] = useState(0);
@@ -23,26 +23,26 @@ function DetailSelect() {
   return (
     <>
       <div className="container">
-        <table className="table-container">
+        <table className={styles.tableContainer}>
           <thead style={{backgroundColor: '#D80032'}}>
-            <td className="box-title">Ticket Type</td>
-            <td className="box-title">Amount</td>
-            <td className="box-title">Price</td>
-            <td className="box-title" style={{width: '300px'}}>
+            <td className={styles.boxTitle}>Ticket Type</td>
+            <td className={styles.boxTitle}>Amount</td>
+            <td className={styles.boxTitle}>Price</td>
+            <td className={styles.boxTitle} style={{width: '300px'}}>
               Total Price
             </td>
           </thead>
           <tbody style={{backgroundColor: '#EB8596'}}>
             <tr>
-              <td className="box-title1">
+              <td className={styles.boxTitle1}>
                 Adult <br />
                 (single seat)
               </td>
               <td>
-                <div className="counter-container">
+                <div className={styles.counterContainer}>
                   <IconButton
                     aria-label="add"
-                    className="icon-container"
+                    className={styles.iconContainer}
                     onClick={() => changeF('single', -1)}>
                     <RemoveIcon
                       style={{
@@ -63,11 +63,11 @@ function DetailSelect() {
                       if (!isNaN(temp)) changeF('single', temp - countS);
                       else changeF('single', -countS);
                     }}
-                    className="input-container"
+                    className={styles.iputContainer}
                     value={countS}></TextField>
                   <IconButton
                     aria-label="add"
-                    className="icon-container"
+                    className={styles.iconContainer}
                     onClick={() => changeF('single', 1)}>
                     <AddIcon
                       style={{
@@ -78,21 +78,23 @@ function DetailSelect() {
                   </IconButton>
                 </div>
               </td>
-              <td className="box-title">{maxS.toLocaleString('en-US')} VND</td>
-              <td className="box-title">
+              <td className={styles.boxTitle}>
+                {maxS.toLocaleString('en-US')} VND
+              </td>
+              <td className={styles.boxTitle}>
                 {(maxS * countS).toLocaleString('en-US')} VND
               </td>
             </tr>
             <tr>
-              <td className="box-title1">
+              <td className={styles.boxTitle1}>
                 Adult <br />
                 (double seats)
               </td>
               <td>
-                <div className="counter-container">
+                <div className={styles.counterContainer}>
                   <IconButton
                     aria-label="add"
-                    className="icon-container"
+                    className={styles.iconContainer}
                     onClick={() => changeF('double', -1)}>
                     <RemoveIcon
                       style={{
@@ -112,11 +114,11 @@ function DetailSelect() {
                       if (!isNaN(temp)) changeF('double', temp - countD);
                       else changeF('double', -countD);
                     }}
-                    className="input-container"
+                    className={styles.inputContainer}
                     value={countD}></TextField>
                   <IconButton
                     aria-label="add"
-                    className="icon-container"
+                    className={styles.iconContainer}
                     onClick={() => changeF('double', 1)}>
                     <AddIcon
                       style={{
@@ -127,15 +129,17 @@ function DetailSelect() {
                   </IconButton>
                 </div>
               </td>
-              <td className="box-title">{maxD.toLocaleString('en-US')} VND</td>
-              <td className="box-title">
+              <td className={styles.boxTitle}>
+                {maxD.toLocaleString('en-US')} VND
+              </td>
+              <td className={styles.boxTitle}>
                 {(maxD * countD).toLocaleString('en-US')} VND
               </td>
             </tr>
           </tbody>
         </table>
       </div>
-      <div className="total-container">
+      <div className={styles.totalContainer}>
         <div></div>
         <div></div>
       </div>
