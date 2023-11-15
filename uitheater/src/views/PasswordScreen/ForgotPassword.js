@@ -1,14 +1,11 @@
 import React, {useState, useEffect} from 'react';
 import styles from './passwordscreen.module.scss';
-import {Form, Input} from 'antd';
 
-function Password() {
-  const [form] = Form.useForm();
-
+function ForgotPassword() {
   return (
     <>
       <div className={styles.container}>
-        <div className={styles.formContainer}>
+        <div className={styles.formContainer} style={{height: '300px'}}>
           <div className={styles.title} style={{marginBottom: '20px'}}>
             Forgot your password?
           </div>
@@ -28,4 +25,4 @@ function Password() {
   );
 }
 
-export default Password;
+export default ForgotPassword;

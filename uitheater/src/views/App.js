@@ -8,12 +8,13 @@ import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import Register from './RegisterScreen/Register';
 import NotFoundScreen from './NotFoundScreen/NotFoundScreen';
 import Info from './InfoScreen/Info';
-import Password from './PasswordScreen/Password';
+import ForgotPassword from './PasswordScreen/ForgotPassword';
+import ResetPassword from './PasswordScreen/ResetPassword';
 
 function App() {
   return (
     <>
-      <Password></Password>
+      <ResetPassword></ResetPassword>
       {/* <Router>
         <Header />
         <Routes>
