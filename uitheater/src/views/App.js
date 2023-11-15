@@ -8,11 +8,13 @@ import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import Register from './RegisterScreen/Register';
 import NotFoundScreen from './NotFoundScreen/NotFoundScreen';
 import Info from './InfoScreen/Info';
+import Password from './PasswordScreen/Password';
 
 function App() {
   return (
     <>
-      <Router>
+      <Password></Password>
+      {/* <Router>
         <Header />
         <Routes>
           <Route path="/" exact={true} element={<Home />} />
@@ -23,7 +25,7 @@ function App() {
           <Route path="/me" element={<Info />} />
           <Route path="*" element={<NotFoundScreen />} />
         </Routes>
-      </Router>
+      </Router> */}
     </>
   );
 }

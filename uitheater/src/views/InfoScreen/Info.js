@@ -137,10 +137,12 @@ function Info() {
                   <button
                     name="cancel"
                     onClick={() => handleCancel()}
-                    className="buttonCancel">
+                    className={styles.buttonCancel}>
                     <div style={{color: '#FFFFFF'}}>Cancel</div>
                   </button>
-                  <button onClick={() => handleSave()} className="buttonSave">
+                  <button
+                    onClick={() => handleSave()}
+                    className={styles.buttonSave}>
                     <div style={{color: '#FFFFFF'}}>Save</div>
                   </button>
                 </div>
