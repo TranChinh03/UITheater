@@ -42,6 +42,32 @@ function Info() {
   }
 
   function handleSave() {
+    console.log(edit.name);
+    let data = JSON.stringify({
+      name: edit.name,
+      email: edit.email,
+      date: edit.date,
+      gender: edit.gender,
+      phone: edit.phone,
+    });
+    let config = {
+      method: 'patch',
+      maxBodyLength: Infinity,
+      url: 'https://uitlogachcu.onrender.com/me/info',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: 'Bearer ' + Token,
+      },
+      data: data,
+    };
+    axios
+      .request(config)
+      .then(response => {
+        console.log(JSON.stringify(response.data));
+      })
+      .catch(error => {
+        console.log(error);
+      });
     assignInfo(state, edit);
     handleAction();
   }
@@ -50,7 +76,6 @@ function Info() {
     handleAction();
   }
   const Token = localStorage.getItem('Token');
-
   useEffect(() => {
     let config = {
       method: 'get',
@@ -169,6 +194,7 @@ function Info() {
                     <input
                       className="input-text"
                       type="date"
+                      format="dd/MM/yyyy"
                       name="date"
                       value={edit.date}
                       onChange={e => handleChange(e)}></input>

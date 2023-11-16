@@ -47,6 +47,7 @@ const SignIn = (props) => {
         navigate("/");
       })
       .catch((error) => {
+        console.log("ERR");
         console.log(error);
       });
   }
