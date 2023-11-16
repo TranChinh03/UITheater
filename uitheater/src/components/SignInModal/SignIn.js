@@ -46,7 +46,10 @@ const SignIn = props => {
         handleOk();
         navigate('/');
       })
-      .catch(error => {
+
+      .catch((error) => {
+        console.log("ERR");
+
         console.log(error);
       });
   }
