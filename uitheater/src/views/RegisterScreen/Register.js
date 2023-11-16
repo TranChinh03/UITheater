@@ -1,5 +1,5 @@
 import Banner from '../../components/banner/banner';
-import './Register.scss';
+import styles from './registerscreen.module.scss';
 import axios from 'axios';
 import React, {useState} from 'react';
 import {
@@ -102,7 +102,7 @@ const Register = () => {
           },
         },
       }}>
-      <div className="Container">
+      <div className={styles.container}>
         <Space
           style={{
             backgroundColor: '#D80032',
@@ -277,7 +277,9 @@ const Register = () => {
                     required: true,
                   },
                 ]}>
-                <div className="select_holder" style={{width: 'fit-content'}}>
+                <div
+                  className={styles.selectHolder}
+                  style={{width: 'fit-content'}}>
                   <DatePicker
                     onChange={onChangeDate}
                     format={'DD/MM/YYYY'}
@@ -301,7 +303,7 @@ const Register = () => {
                     required: true,
                   },
                 ]}>
-                <div className="select_holder">
+                <div className={styles.selectHolder}>
                   <Select
                     placeholder="Gender"
                     style={{height: '34px'}}

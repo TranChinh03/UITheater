@@ -1,22 +1,22 @@
-import React, { useEffect, useState } from "react";
-import { Button, Modal, ConfigProvider, Space } from "antd";
-import cookie from "react-cookies";
-import "./SignIn.scss";
-import { Form, Input } from "antd";
-import { NavLink, useNavigate } from "react-router-dom";
-import axios from "axios";
-const SignIn = (props) => {
-  const { isModalOpen, handleCancel } = props;
+import React, {useEffect, useState} from 'react';
+import {Button, Modal, ConfigProvider, Space} from 'antd';
+import cookie from 'react-cookies';
+import styles from './signin.module.scss';
+import {Form, Input} from 'antd';
+import {NavLink, useNavigate} from 'react-router-dom';
+import axios from 'axios';
+const SignIn = props => {
+  const {isModalOpen, handleCancel} = props;
   const handleOk = handleCancel;
   const navigate = useNavigate();
   const [form] = Form.useForm();
   const [clientReady, setClientReady] = useState(false);
 
   // To disable submit button at the beginning.
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const onLogin = () => {
-    cookie.save("UserToken", localStorage.getItem("Token"), { path: "/" });
+    cookie.save('UserToken', localStorage.getItem('Token'), {path: '/'});
   };
   async function onClickSignIn(e) {
     e.preventDefault();
@@ -26,28 +26,30 @@ const SignIn = (props) => {
     });
 
     let config = {
-      method: "post",
-      url: "https://uitlogachcu.onrender.com/sign_in",
+      method: 'post',
+      url: 'https://uitlogachcu.onrender.com/sign_in',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
       data: data,
     };
 
     axios
       .request(config)
-      .then((response) => {
-        localStorage.setItem("Token", response.data);
+      .then(response => {
+        localStorage.setItem('Token', response.data);
       })
       .then(() => {
         onLogin();
       })
       .then(() => {
         handleOk();
-        navigate("/");
+        navigate('/');
       })
+
       .catch((error) => {
         console.log("ERR");
+
         console.log(error);
       });
   }
@@ -63,54 +65,51 @@ const SignIn = (props) => {
         },
         components: {
           Modal: {
-            colorBgElevated: "#231B5B",
-            colorIcon: "#FFFFFF",
+            colorBgElevated: '#231B5B',
+            colorIcon: '#FFFFFF',
           },
           Form: {
-            labelColor: "#FFFFFF",
+            labelColor: '#FFFFFF',
           },
           Button: {
             borderRadius: 45,
-            colorBorder: "#231B5B",
-            colorBgContainer: "#231B5B",
-            colorText: "#FFFFFF",
+            colorBorder: '#231B5B',
+            colorBgContainer: '#231B5B',
+            colorText: '#FFFFFF',
           },
         },
-      }}
-    >
+      }}>
       <Modal
-        style={{ display: "flex", marginRight: "163px", top: "50px" }}
+        style={{display: 'flex', marginRight: '163px', top: '50px'}}
         open={isModalOpen}
         onOk={handleOk}
         onCancel={handleCancel}
         footer={null}
-        width={300}
-      >
+        width={300}>
         <Form
           form={form}
           size="small"
           layout="vertical"
-          onSubmitCapture={(e) => console.log(e)}
-        >
-          <Form.Item label="Email: " style={{ height: "40px" }}>
+          onSubmitCapture={e => console.log(e)}>
+          <Form.Item label="Email: " style={{height: '40px'}}>
             <Input
-              style={{ borderRadius: 35, fontSize: 14, height: "30px" }}
-              className="input"
+              style={{borderRadius: 35, fontSize: 14, height: '30px'}}
+              className={styles.input}
               placeholder="Please enter your email"
-              onChange={(e) => {
+              onChange={e => {
                 setEmail(e.target.value);
               }}
             />
           </Form.Item>
-          <Form.Item label="Password: " style={{ height: "fit-content" }}>
+          <Form.Item label="Password: " style={{height: 'fit-content'}}>
             <Input.Password
               style={{
                 paddingLeft: 10,
                 borderRadius: 35,
                 fontSize: 14,
-                height: "30px",
+                height: '30px',
               }}
-              onChange={(e) => {
+              onChange={e => {
                 setPassword(e.target.value);
               }}
               placeholder="Please enter your password"
@@ -120,44 +119,41 @@ const SignIn = (props) => {
             <Button
               onClick={onClickSignIn}
               style={{
-                width: "fit-content",
-                height: "fit-content",
+                width: 'fit-content',
+                height: 'fit-content',
                 fontSize: 31,
                 borderRadius: 45,
-                display: "flex",
-                alignItems: "center",
-                fontFamily: "Lilita One",
-                textShadow: "none",
-              }}
-            >
+                display: 'flex',
+                alignItems: 'center',
+                fontFamily: 'Lilita One',
+                textShadow: 'none',
+              }}>
               SIGN IN
             </Button>
             <Space wrap>
               <Button
                 type="link"
                 style={{
-                  width: "fit-content",
-                  height: "fit-content",
-                  display: "flex",
-                  alignItems: "center",
-                  textShadow: "none",
+                  width: 'fit-content',
+                  height: 'fit-content',
+                  display: 'flex',
+                  alignItems: 'center',
+                  textShadow: 'none',
                   marginRight: 20,
-                  fontStyle: "italic",
-                }}
-              >
+                  fontStyle: 'italic',
+                }}>
                 Forget password?
               </Button>
               <Button
                 type="link"
                 style={{
-                  width: "fit-content",
-                  height: "fit-content",
-                  display: "flex",
-                  alignItems: "center",
-                  fontFamily: "Lilita One",
-                  textShadow: "none",
-                }}
-              >
+                  width: 'fit-content',
+                  height: 'fit-content',
+                  display: 'flex',
+                  alignItems: 'center',
+                  fontFamily: 'Lilita One',
+                  textShadow: 'none',
+                }}>
                 <NavLink to="/register">Create new account</NavLink>
               </Button>
             </Space>
