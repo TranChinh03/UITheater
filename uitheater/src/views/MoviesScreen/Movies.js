@@ -1,7 +1,10 @@
-import React from 'react';
+import React, {useState} from 'react';
 import MovieInfo from '../../components/MovieInfo/movieInfo';
 import {Grid, Box} from '@mui/material';
 import styles from './moviescreen.module.scss';
+import MoviesNavBar from '../../components/moviesNavBar/moviesNavBar';
+import BookingFilter from '../../components/BookingFilter/bookingFilter';
+import {IM_Banner} from '../../assets/imgs';
 
 const movieInfoList = [
   {
@@ -55,27 +58,46 @@ const movieInfoList = [
 ];
 
 function Movies() {
+  const [currentTab, setCurrentTab] = useState('NOW SHOWING');
+  const handleTabChanged = tabName => {
+    setCurrentTab(tabName);
+  };
+
   return (
     <>
-      <div className={styles.container}>
-        <Grid container rowSpacing={1} columnSpacing={{xs: 1, sm: 2, md: 3}}>
-          {movieInfoList.map((value, id) => (
-            <Grid
-              item
-              xs={6}
-              key={id}
-              style={{
-                display: 'flex',
-                justifyContent: 'space-around',
-                backgroundColor: '#231b5b',
-              }}>
-              <MovieInfo
-                title={value.title}
-                detail={value.detail}
-                premiere={value.premiere}></MovieInfo>
-            </Grid>
-          ))}
-        </Grid>
+      <div style={{backgroundColor: '#231b5b'}}>
+        <img style={{width: '100%', height: '300px'}} src={IM_Banner} alt="" />
+        <div className={styles.bookingContainer}>
+          <BookingFilter></BookingFilter>
+        </div>
+        <div className={styles.movieNavContainer}>
+          <MoviesNavBar
+            onChangeTab={handleTabChanged}
+            selectedTab={currentTab}
+            className={styles.moviesNav}
+          />
+        </div>
+        <div className={styles.movieListContainer}>
+          <Grid container rowSpacing={1} columnSpacing={{xs: 1, sm: 2, md: 3}}>
+            {movieInfoList.map((value, id) => (
+              <Grid
+                item
+                xs={6}
+                key={id}
+                style={{
+                  display: 'flex',
+                  justifyContent: 'space-around',
+                  backgroundColor: '#231b5b',
+                  marginTop: '20px',
+                }}>
+                <MovieInfo
+                  title={value.title}
+                  detail={value.detail}
+                  premiere={value.premiere}></MovieInfo>
+              </Grid>
+            ))}
+          </Grid>
+        </div>
       </div>
     </>
   );
