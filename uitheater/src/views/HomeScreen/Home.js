@@ -8,7 +8,6 @@ import BookingFilter from '../../components/BookingFilter/bookingFilter';
 import styles from './homescreen.module.scss';
 import { Splide, SplideTrack, SplideSlide } from '@splidejs/react-splide';
 import '@splidejs/react-splide/css';
-import src from '../../assets/imgs/shin-cau-be-but-chi.jpg';
 
 function Home() {
   const [currentTab, setCurrentTab] = useState('NOW SHOWING');
@@ -59,11 +58,11 @@ function Home() {
             </SplideTrack>
 
             <div className="splide__arrows splide__arrows--ltr">
-              <button className={`splide__arrow splide__arrow--prev ${styles.splide__prevArrow}`} aria-label="Previous slide" aria-controls="splide01-track">
-                <img className="arrow" src={SVG_LeftArrow} alt="arr" focusa ble="false"/>
+              <button className={`splide__arrow ${styles.splide__prevArrow}`} aria-label="Previous slide" aria-controls="splide01-track">
+                <img className="splide__arrow--prev" src={SVG_LeftArrow}/>
               </button>
-              <button className={`splide__arrow splide__arrow--next ${styles.splide__nextArrow}`} aria-label="Next slide" aria-controls="splide01-track">
-                <img className={styles.arrowRight} src={SVG_LeftArrow} />
+              <button className={`splide__arrow  ${styles.splide__nextArrow}`} aria-label="Next slide" aria-controls="splide01-track">
+                <img className={`splide__arrow--next ${styles.arrowRight}`} src={SVG_LeftArrow} />
               </button>
             </div>
           </Splide>

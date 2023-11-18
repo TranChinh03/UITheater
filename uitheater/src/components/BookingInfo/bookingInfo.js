@@ -2,7 +2,7 @@ import React from 'react';
 import {SVG_Close} from '../../assets/icons';
 import styles from './bookinginfo.module.scss';
 
-function BookingInfo() {
+function BookingInfo({selectedSeats}) {
   return (
     <>
       <div className={styles.container}>
@@ -32,37 +32,44 @@ function BookingInfo() {
                 className={styles.infofo}
                 style={{width: '260px', borderRight: 'white solid 1px'}}>
                 <div className={styles.infoTitle}>Ticket:</div>
-                <div className={styles.infoData}>2 tickets</div>
+                <div className={styles.infoData}>{selectedSeats.length} tickets</div>
               </div>
               <div className={styles.infofo} style={{width: '420px'}}>
                 <div className={styles.infoTitle}>Total:</div>
-                <div className={styles.infoData}>200.000 VND</div>
+                <div className={styles.infoData}>{(200000*selectedSeats.length).toLocaleString()} VND</div>
               </div>
             </div>
             <div className={styles.info2}>
               <div
                 style={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  width: '200px',
-                  fontSize: '20px',
-                  color: '#0C0326',
-                  height: '100%',
-                  justifyContent: 'center',
+                  display: "inline-flex",
+                  justifyContent: "center",
+                  alignItems: 'center',
+                  width: '20%',
                   borderRight: '#0C0326 solid 1px',
+                  height: "100%",
+                  fontFamily: 'Lilita One',
+                  fontSize: "40px",
+                  textAlign: "center",
+                  lineHeight: "100%",
                 }}>
                 Seat number:
               </div>
-              <div>seat de do day ne</div>
+              <div
+                style={{
+                  display: "inline-flex",
+                  justifyContent: "center",
+                  alignItems: 'center',
+                  height: "100%",
+                  fontFamily: 'Lilita One',
+                  fontSize: "40px",
+                  textAlign: "center",
+                  lineHeight: "100%",
+                  marginLeft: '10px',
+                }}
+              >{selectedSeats.length === 0 ? "No seats selected!" : selectedSeats.map((seat) => `  ${seat}  `)}</div>
             </div>
           </div>
-        </div>
-        <div className={styles.colContainer}>
-          <button
-            onClick={console.log('nhan duoc kh nhi?')}
-            className={styles.closeButton}>
-            <img className={styles.closeSVG} src={SVG_Close} alt="Close"></img>
-          </button>
         </div>
       </div>
     </>
