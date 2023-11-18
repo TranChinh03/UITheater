@@ -1,7 +1,7 @@
-import React from "react";
-import MovieInfo from "../../components/MovieInfo/movieInfo";
-import { Grid, Box } from "@mui/material";
-import "./movie.css";
+import React from 'react';
+import MovieInfo from '../../components/MovieInfo/movieInfo';
+import {Grid, Box} from '@mui/material';
+import styles from './moviescreen.module.scss';
 
 const movieInfoList = [
   {
@@ -51,17 +51,28 @@ const movieInfoList = [
     title: 'Ca Voi Sat Thu',
     detail: 'Mac cai gi ma bay qua ca voi luon z tr',
     premiere: '77/77/7777',
-  }
-]
+  },
+];
 
 function Movies() {
   return (
     <>
-      <div className="container">
-        <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+      <div className={styles.container}>
+        <Grid container rowSpacing={1} columnSpacing={{xs: 1, sm: 2, md: 3}}>
           {movieInfoList.map((value, id) => (
-            <Grid item xs={6} key={id} style={{display: "flex", justifyContent: "space-around"}}>
-              <MovieInfo title={value.title} detail={value.detail} premiere={value.premiere}></MovieInfo>
+            <Grid
+              item
+              xs={6}
+              key={id}
+              style={{
+                display: 'flex',
+                justifyContent: 'space-around',
+                backgroundColor: '#231b5b',
+              }}>
+              <MovieInfo
+                title={value.title}
+                detail={value.detail}
+                premiere={value.premiere}></MovieInfo>
             </Grid>
           ))}
         </Grid>
