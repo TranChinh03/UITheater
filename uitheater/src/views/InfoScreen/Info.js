@@ -99,7 +99,7 @@ function Info() {
         <div className="form-container">
           <div className="top-container">
             <div className="title" style={{marginBottom: '20px'}}>
-              Welcome, Tran Dong Dong!
+              {`Welcome, ${state.name} !`}
             </div>
             <div className="avatar"></div>
             <button
@@ -130,23 +130,53 @@ function Info() {
                 <div className="info-cont">
                   <div className="textC">
                     <div className="text">Name: </div>
-                    <div className="textt">{state.name}</div>
+                    {state.name !== '' ? (
+                        <div className="textt">{(state.name)}</div>
+                    ) : (
+                        <div className="textt">
+                          <text style={{color: '#BEBEBE'}}>Null</text>
+                        </div>
+                    )}
                   </div>
                   <div className="textC">
                     <div className="text">Gender: </div>
-                    <div className="textt">{state.gender}</div>
+                    {state.gender !== '' ? (
+                        <div className="textt">{state.gender}</div>
+                    ) : (
+                        <div className="textt">
+                          <text style={{color: '#BEBEBE'}}>Null</text>
+                        </div>
+                    )}
                   </div>
                   <div className="textC">
                     <div className="text">Date of birth: </div>
-                    <div className="textt">{state.date}</div>
+                    {state.date !== '' ? (
+                        <div className="textt">{state.date}</div>
+                    ) : (
+                        <div className="textt">
+                          <text style={{color: '#BEBEBE'}}>Null</text>
+                        </div>
+                    )}
                   </div>
                   <div className="textC">
                     <div className="text">Email: </div>
-                    <div className="textt">{state.email}</div>
+                    {state.email !== '' ? (
+                        <div className="textt">{state.email}</div>
+                    ) : (
+                        <div className="textt">
+                          <text style={{color: '#BEBEBE'}}>Null</text>
+                        </div>
+                    )}
                   </div>
                   <div className="textC">
-                    <div className="text">Phone: </div>
-                    <div className="textt">{state.phone}</div>
+                  <div className="text">Phone: </div>
+                    {state.phone !== '' ? (
+                        <div className="textt">{state.phone}</div>
+                    ) : (
+                        <div className="textt">
+                          <text style={{color: '#BEBEBE'}}>Null</text>
+                        </div>
+                    )}
                   </div>
                 </div>
               </>
