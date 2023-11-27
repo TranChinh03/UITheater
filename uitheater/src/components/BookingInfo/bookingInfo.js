@@ -18,56 +18,63 @@ function BookingInfo({selectedSeats}) {
             <div className={styles.info1}>
               <div
                 className={styles.infofo}
-                style={{width: '230px', borderRight: 'white solid 1px'}}>
+                style={{width: '18vw', borderRight: 'white solid 1px'}}>
                 <div className={styles.infoTitle}>Showtime:</div>
                 <div className={styles.infoData}>13:00</div>
               </div>
               <div
                 className={styles.infofo}
-                style={{width: '350px', borderRight: 'white solid 1px'}}>
+                style={{width: '22vw', borderRight: 'white solid 1px'}}>
                 <div className={styles.infoTitle}>Date:</div>
                 <div className={styles.infoData}>31 - 02 - 2023</div>
               </div>
               <div
                 className={styles.infofo}
-                style={{width: '260px', borderRight: 'white solid 1px'}}>
+                style={{width: '22vw', borderRight: 'white solid 1px'}}>
                 <div className={styles.infoTitle}>Ticket:</div>
-                <div className={styles.infoData}>{selectedSeats.length} tickets</div>
+                <div className={styles.infoData}>
+                  {selectedSeats.length} tickets
+                </div>
               </div>
-              <div className={styles.infofo} style={{width: '420px'}}>
+              <div className={styles.infofo} style={{width: '20vw'}}>
                 <div className={styles.infoTitle}>Total:</div>
-                <div className={styles.infoData}>{(200000*selectedSeats.length).toLocaleString()} VND</div>
+                <div className={styles.infoData}>
+                  {(200000 * selectedSeats.length).toLocaleString()} VND
+                </div>
               </div>
             </div>
             <div className={styles.info2}>
               <div
                 style={{
-                  display: "inline-flex",
-                  justifyContent: "center",
+                  display: 'inline-flex',
+                  justifyContent: 'center',
                   alignItems: 'center',
-                  width: '20%',
+                  width: '18vw',
                   borderRight: '#0C0326 solid 1px',
-                  height: "100%",
+                  height: '100%',
                   fontFamily: 'Lilita One',
-                  fontSize: "40px",
-                  textAlign: "center",
-                  lineHeight: "100%",
+                  fontSize: '40px',
+                  textAlign: 'center',
+                  lineHeight: '100%',
                 }}>
                 Seat number:
               </div>
               <div
                 style={{
-                  display: "inline-flex",
-                  justifyContent: "center",
+                  display: 'inline-flex',
+                  justifyContent: 'center',
                   alignItems: 'center',
-                  height: "100%",
+                  height: '100%',
                   fontFamily: 'Lilita One',
-                  fontSize: "40px",
-                  textAlign: "center",
-                  lineHeight: "100%",
+                  fontSize: '40px',
+                  textAlign: 'center',
+                  lineHeight: '100%',
                   marginLeft: '10px',
-                }}
-              >{selectedSeats.length === 0 ? "No seats selected!" : selectedSeats.map((seat) => `  ${seat}  `)}</div>
+                }}>
+                {selectedSeats.length === 0
+                  ? 'No seats selected!'
+                  : selectedSeats.map(seat => `  ${seat}  `)}
+              </div>
             </div>
           </div>
         </div>
