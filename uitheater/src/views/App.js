@@ -10,6 +10,8 @@ import NotFoundScreen from './NotFoundScreen/NotFoundScreen';
 import Info from './InfoScreen/Info';
 import ForgotPassword from './PasswordScreen/ForgotPassword';
 import ResetPassword from './PasswordScreen/ResetPassword';
+import Booking from './BookingScreen/Booking';
+import Draft from './draft/draft';
 
 function App() {
   return (
@@ -24,7 +26,10 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/forgotpassword" element={<ForgotPassword />} />
           <Route path="/resetpassword/:id/:token" element={<ResetPassword />} />
+
           <Route path="/me" element={<Info />} />
+          <Route path="/booking" element={<Booking />} />
+          <Route path="/draft" element={<Draft />} />
           <Route path="*" element={<NotFoundScreen />} />
         </Routes>
       </Router>
