@@ -14,8 +14,7 @@ import ResetPassword from './PasswordScreen/ResetPassword';
 function App() {
   return (
     <>
-      <ResetPassword></ResetPassword>
-      {/* <Router>
+      <Router>
         <Header />
         <Routes>
           <Route path="/" exact={true} element={<Home />} />
@@ -23,10 +22,12 @@ function App() {
           <Route path="/schedule" element={<Schedule />} />
           <Route path="/about" element={<About />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/forgotpassword" element={<ForgotPassword />} />
+          <Route path="/resetpassword/:id/:token" element={<ResetPassword />} />
           <Route path="/me" element={<Info />} />
           <Route path="*" element={<NotFoundScreen />} />
         </Routes>
-      </Router> */}
+      </Router>
     </>
   );
 }
