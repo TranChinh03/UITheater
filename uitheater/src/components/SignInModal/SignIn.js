@@ -18,6 +18,10 @@ const SignIn = props => {
   const onLogin = () => {
     cookie.save('UserToken', localStorage.getItem('Token'), {path: '/'});
   };
+  const onForgot = () => {
+      handleOk();
+      navigate('/forgotpassword');
+  };
   async function onClickSignIn(e) {
     e.preventDefault();
     let data = JSON.stringify({
@@ -141,7 +145,8 @@ const SignIn = props => {
                   textShadow: 'none',
                   marginRight: 20,
                   fontStyle: 'italic',
-                }}>
+                }}
+                onClick={onForgot}>
                 Forget password?
               </Button>
               <Button
