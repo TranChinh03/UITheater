@@ -6,6 +6,8 @@ import {SVG_LeftArrow} from '../../assets/icons';
 import {IM_Banner} from '../../assets/imgs';
 import BookingFilter from '../../components/BookingFilter/bookingFilter';
 import styles from './homescreen.module.scss';
+import { Splide, SplideTrack, SplideSlide } from '@splidejs/react-splide';
+import '@splidejs/react-splide/css';
 
 function Home() {
   const [currentTab, setCurrentTab] = useState('NOW SHOWING');
@@ -29,29 +31,41 @@ function Home() {
         </div>
         <div className={styles.movieContent}>
           <div className={styles.movieWrap}>
-            <div className={styles.movieLoad}>
-              <div>
-                <img className="arrow" src={SVG_LeftArrow} alt="arr" />
-              </div>
-              <div>
-                <MovieBlock></MovieBlock>
-              </div>
-              <div>
-                <MovieBlock></MovieBlock>
-              </div>
-              <div>
-                <MovieBlock></MovieBlock>
-              </div>
-              <div>
-                <MovieBlock></MovieBlock>
-              </div>
-              <div>
-                <MovieBlock></MovieBlock>
-              </div>
-              <div>
-                <img className={styles.arrowRight} src={SVG_LeftArrow} />
-              </div>
+            <Splide hasTrack={ false } options={ {
+                  type   : 'loop',
+                  rewind: true,
+                  perPage: 5,
+                  focus: 'center',
+                  
+                }}
+                aria-label="Movies On Show" >
+            <SplideTrack>
+              <SplideSlide>
+                <MovieBlock movieName="Phim 1" />
+              </SplideSlide>
+              <SplideSlide>
+              <MovieBlock movieName="Phim 2" />
+              </SplideSlide>
+              <SplideSlide>
+              <MovieBlock movieName="Phim 3" />
+              </SplideSlide>
+              <SplideSlide>
+              <MovieBlock movieName="Phim 4" />
+              </SplideSlide>
+              <SplideSlide>
+              <MovieBlock movieName="Phim 5" />
+              </SplideSlide>
+            </SplideTrack>
+
+            <div className="splide__arrows splide__arrows--ltr">
+              <button className={`splide__arrow ${styles.splide__prevArrow}`} aria-label="Previous slide" aria-controls="splide01-track">
+                <img className="splide__arrow--prev" src={SVG_LeftArrow}/>
+              </button>
+              <button className={`splide__arrow  ${styles.splide__nextArrow}`} aria-label="Next slide" aria-controls="splide01-track">
+                <img className={`splide__arrow--next ${styles.arrowRight}`} src={SVG_LeftArrow} />
+              </button>
             </div>
+          </Splide>
           </div>
         </div>
       </div>

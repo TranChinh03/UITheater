@@ -34,9 +34,17 @@
 }
 
 .movieWrap {
-  width: 100%;
+  width: 90%;
   display: block;
   margin: 0 auto;
+}
+
+.splide__prevArrow {
+  left: -4em;
+}
+
+.splide__nextArrow {
+  right: -4em;
 }
 
 .movieLoad {

@@ -44,7 +44,9 @@
   height: 30px;
   border-radius: 20px;
   border-width: 0;
+  cursor: pointer;
 }
+
 .buttonChangeInfo {
   @extend .buttonChangeAvt;
   background-color: #231b5b;
@@ -54,16 +56,28 @@
   align-items: center;
 }
 
+.buttonChangeInfo:hover {
+  background-color: #5b5684;
+}
+
 .buttonCancel {
   @extend .buttonChangeAvt;
   background-color: #5b5684;
   margin-left: 20px;
 }
 
+.buttonCancel:hover {
+  background-color: #0c0326;
+}
+
 .buttonSave {
   @extend .buttonChangeAvt;
-  background-color: #d80032;
+  background-color: #f78ca2;
   margin-left: 10px;
+}
+
+.buttonSave:hover {
+  background-color: #d80032;
 }
 
 .infoCont {

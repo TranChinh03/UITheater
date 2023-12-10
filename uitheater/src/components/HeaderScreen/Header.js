@@ -41,7 +41,7 @@ const Header = () => {
   const Logout = () => {
     localStorage.removeItem('Token');
     navigate('/');
-  }
+  };
   useEffect(() => {
     axios
       .request(config)
@@ -84,7 +84,10 @@ const Header = () => {
               </button>
               <div class={styles.dropdownContent}>
                 <a href="\me">Information</a>
-                <a href="#" onClick={Logout}>Log Out</a>
+                <a href="\password">Password</a>
+                <a href="#" onClick={Logout}>
+                  Log Out
+                </a>
               </div>
             </div>
           )}
