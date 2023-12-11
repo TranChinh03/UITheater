@@ -1,5 +1,8 @@
-export const getListMovieFunction = () => {
-  const axios = require('axios');
+import axios from 'axios';
+export const getListMovieFunction = async index => {
+  let data = JSON.stringify({
+    index: index,
+  });
 
   let config = {
     method: 'get',
@@ -8,14 +11,16 @@ export const getListMovieFunction = () => {
     headers: {
       'Content-Type': 'application/json',
     },
+    data: data,
   };
 
-  axios
+  const result = await axios
     .request(config)
     .then(response => {
-      console.log(JSON.stringify(response.data));
+      return response.data;
     })
     .catch(error => {
       console.log(error);
     });
+  return result;
 };

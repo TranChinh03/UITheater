@@ -1,0 +1,70 @@
+.container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.bgContainer {
+  width: 45%;
+  height: 340px;
+  flex-direction: row;
+  display: flex;
+  background-color: #f9dec9;
+  align-items: center;
+}
+
+.infoContainer {
+  background-color: #d80032;
+  width: 350px;
+  height: 300px;
+  margin-right: 5px;
+  border-radius: 25px;
+  box-shadow: #bba797;
+}
+
+.movieTitle {
+  color: #fffaf5;
+  font-family: 'InterBold';
+  font-style: italic;
+  text-wrap: break-word;
+  margin-top: 15px;
+  font-size: 18px;
+  padding: 0 20px;
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.detailContainer {
+  width: 90%;
+  height: 150px;
+  background-color: #f9dec9;
+  align-content: center;
+  margin: 7px auto;
+  overflow: hidden;
+  border-radius: 10px 0 10px 0;
+}
+
+.detailContainer div {
+  padding: 10px;
+  font-size: 0.9rem;
+  height: 70px;
+  font-family: 'Inter';
+  overflow: hidden;
+  text-align: justify;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  line-height: 16px;
+  max-height: 100px;
+  -webkit-line-clamp: 5; /* Write the number of 
+                             lines you want to be 
+                             displayed */
+  -webkit-box-orient: vertical;
+}
+
+.showtimeContainer {
+  width: 60%;
+  height: 150px;
+  background-color: #bba797;
+}

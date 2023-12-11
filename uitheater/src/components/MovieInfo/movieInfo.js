@@ -8,7 +8,7 @@ function MovieInfo(props) {
     <>
       <div className={styles.bgContainer}>
         <img
-          src={src}
+          src={props.src}
           alt="Phim"
           width={'200px'}
           height={'300px'}
