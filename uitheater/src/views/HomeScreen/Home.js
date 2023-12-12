@@ -3,7 +3,7 @@ import '../../assets/fonts/fonts.css';
 import MoviesNavBar from '../../components/moviesNavBar/moviesNavBar';
 import MovieBlock from '../../components/movieBlock/movieBlock';
 import {SVG_LeftArrow} from '../../assets/icons';
-import {IM_Banner} from '../../assets/imgs';
+import {IM_Banner, IM_Banner1, IM_Banner2, IM_Banner3} from '../../assets/imgs';
 import BookingFilter from '../../components/BookingFilter/bookingFilter';
 import styles from './homescreen.module.scss';
 import { Splide, SplideTrack, SplideSlide } from '@splidejs/react-splide';
@@ -43,7 +43,29 @@ function Home() {
 
   return (
     <div className={styles.container}>
-      <img style={{width: '100%', height: '300px'}} src={IM_Banner} alt="" />
+    <Splide
+        options={ {
+          rewind: true,
+          gap   : '1rem',
+          arrows: false,
+          autoplay: true,
+          interval: 1000,
+        } }
+        aria-label="My Favorite Images"
+      >
+        <SplideSlide>
+          <img style={{width: '100%'}} src={IM_Banner} alt="Image 1"/>
+        </SplideSlide>
+        <SplideSlide>
+          <img style={{width: '100%'}} src={IM_Banner1} alt="Image 1"/>
+        </SplideSlide>
+        <SplideSlide>
+          <img style={{width: '100%'}} src={IM_Banner2} alt="Image 1"/>
+        </SplideSlide>
+        <SplideSlide>
+          <img style={{width: '100%'}} src={IM_Banner3} alt="Image 1"/>
+        </SplideSlide>
+      </Splide>
       <div className={styles.bookingContainer}>
         <BookingFilter></BookingFilter>
       </div>
