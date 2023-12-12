@@ -4,8 +4,9 @@ import {Grid, Box, breadcrumbsClasses} from '@mui/material';
 import styles from './moviescreen.module.scss';
 import MoviesNavBar from '../../components/moviesNavBar/moviesNavBar';
 import BookingFilter from '../../components/BookingFilter/bookingFilter';
-import {IM_Banner} from '../../assets/imgs';
+import {IM_Banner, IM_Banner1, IM_Banner2, IM_Banner3} from '../../assets/imgs';
 import {getListMovieFunction} from '../../apis/GetMethod/getListMovie';
+import { Splide, SplideTrack, SplideSlide } from '@splidejs/react-splide';
 import {BreakfastDining} from '@mui/icons-material';
 
 function Movies() {
@@ -42,7 +43,29 @@ function Movies() {
   return (
     <>
       <div style={{backgroundColor: '#231b5b'}}>
-        <img style={{width: '100%', height: '300px'}} src={IM_Banner} alt="" />
+      <Splide
+        options={ {
+          rewind: true,
+          gap   : '1rem',
+          arrows: false,
+          autoplay: true,
+          interval: 1000,
+        } }
+        aria-label="My Favorite Images"
+      >
+        <SplideSlide>
+          <img style={{width: '100%'}} src={IM_Banner} alt="Image 1"/>
+        </SplideSlide>
+        <SplideSlide>
+          <img style={{width: '100%'}} src={IM_Banner1} alt="Image 1"/>
+        </SplideSlide>
+        <SplideSlide>
+          <img style={{width: '100%'}} src={IM_Banner2} alt="Image 1"/>
+        </SplideSlide>
+        <SplideSlide>
+          <img style={{width: '100%'}} src={IM_Banner3} alt="Image 1"/>
+        </SplideSlide>
+      </Splide>
         <div className={styles.bookingContainer}>
           <BookingFilter></BookingFilter>
         </div>
