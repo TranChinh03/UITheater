@@ -1,22 +1,5 @@
 @startuml
 
-entity movies {
-    **id: string**,
-    title: string,
-    genres: string,
-    image: string,
-    description: string,
-    duration: float,
-    start: date,
-}
-
-entity shows {
-    **id: string**,
-    movie_id: string,
-    time: datetime,
-}
-
-
 
 
 @enduml

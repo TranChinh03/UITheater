@@ -8,7 +8,7 @@ function MovieBlock({movieName, movieImg}) {
   return (
     <div className={styles.movieBlockContainer}>
       <div className={styles.imageContainer}>
-        <img src={src} alt="Ảnh phim" />
+        <img src={movieImg} alt="Ảnh phim" />
       </div>
       <div className={styles.movieName}>
         <p>

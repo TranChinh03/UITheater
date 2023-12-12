@@ -7,10 +7,36 @@ import {IM_Banner} from '../../assets/imgs';
 import BookingFilter from '../../components/BookingFilter/bookingFilter';
 import styles from './homescreen.module.scss';
 import { Splide, SplideTrack, SplideSlide } from '@splidejs/react-splide';
+import {getListMovieFunction} from '../../apis/GetMethod/getListMovie';
 import '@splidejs/react-splide/css';
+
 
 function Home() {
   const [currentTab, setCurrentTab] = useState('NOW SHOWING');
+  const [movieList, setMovieList] = useState([]);
+  const [currentStatus, setCurrentStatus] = useState('OnShow');
+
+  useEffect(() => {
+    getListMovieFunction().then(res => {
+      console.log(res);
+      setMovieList(res);
+    });
+    switch (currentTab) {
+      case "NOW SHOWING":
+        setCurrentStatus('OnShow');
+        break;
+      case "COMING SHOW":
+        setCurrentStatus('ComingShow');
+        break;
+      case "SPECIAL SCREENINGS":
+        setCurrentStatus('SpecialShow');
+        break;
+      default:
+        console.log('la co ra gi kh nhi?');
+        break;
+    }
+  }, [currentTab]);
+
   const handleTabChanged = tabName => {
     setCurrentTab(tabName);
   };
@@ -36,25 +62,14 @@ function Home() {
                   rewind: true,
                   perPage: 5,
                   focus: 'center',
-                  
                 }}
                 aria-label="Movies On Show" >
             <SplideTrack>
-              <SplideSlide>
-                <MovieBlock movieName="Phim 1" />
-              </SplideSlide>
-              <SplideSlide>
-              <MovieBlock movieName="Phim 2" />
-              </SplideSlide>
-              <SplideSlide>
-              <MovieBlock movieName="Phim 3" />
-              </SplideSlide>
-              <SplideSlide>
-              <MovieBlock movieName="Phim 4" />
-              </SplideSlide>
-              <SplideSlide>
-              <MovieBlock movieName="Phim 5" />
-              </SplideSlide>
+              {movieList.filter(movie => movie.status === currentStatus).map((value, status) => (
+                  <SplideSlide>
+                    <MovieBlock movieName={value.title} movieImg={value.image}/>
+                  </SplideSlide>
+              ))}
             </SplideTrack>
 
             <div className="splide__arrows splide__arrows--ltr">

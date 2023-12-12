@@ -16,8 +16,6 @@ function Movies() {
   const handleTabChanged = tabName => {
     setCurrentTab(tabName);
     console.log(currentTab)
-
-
   };
 
   useEffect(() => {
