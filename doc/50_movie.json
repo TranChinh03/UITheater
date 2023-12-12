@@ -1,0 +1,402 @@
+[
+  {
+    "movieId": "1",
+    "title": "Creepshow 2 (1987)",
+    "genres": "Horror",
+    "image": "https://m.media-amazon.com/images/M/MV5BN2QwZTMzODktNzRiYS00Y2JiLTk5ZmMtOGIwYTE1YTIyOTQ4XkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg",
+    "description": "This second horror anthology presents more eerie tales based on Stephen King stories. One episode finds a cigar-store Native American statue coming to life to avenge the death of the shop owner (George Kennedy) and his wife (Dorothy Lamour). Another features a group of teens menaced by a blob-like creature.",
+    "showtime": "2023-10-26 14-00-00"
+  },
+  {
+    "movieId": "2",
+    "title": "Taken (2008)",
+    "genres": "Action|Crime|Drama|Thriller",
+    "image": "https://m.media-amazon.com/images/M/MV5BMDU2ZWJlMjktMTRhMy00ZTA5LWEzNDgtYmNmZTEwZTViZWJkXkEyXkFqcGdeQXVyNDQ2OTk4MzI@._V1_SX300.jpg",
+    "description": "A retired CIA agent travels across Europe and relies on his old skills to save his estranged daughter, who has been kidnapped while on a trip to Paris. A retired CIA agent travels across Europe and relies on his old skills to save his estranged daughter, who has been kidnapped while on a trip to Paris.",
+    "showtime": "2023-10-26 14-00-00"
+  },
+  {
+    "movieId": "3",
+    "title": "Laura (1944)",
+    "genres": "Crime|Film-Noir|Mystery",
+    "image": "https://m.media-amazon.com/images/M/MV5BYjkxOGM5OTktNTRmZi00MjhlLWE2MDktNzY3NjY3NmRjNDUyXkEyXkFqcGdeQXVyNDY2MTk1ODk@._V1_SX300.jpg",
+    "description": "Synopsis. New York City police detective Mark McPherson (Dana Andrews) is investigating the murder of beautiful, and highly successful, advertising executive, Laura Hunt (Gene Tierney). Laura has been killed by a shotgun blast to the face, just inside the doorway to her apartment, before the start of the film.",
+    "showtime": "2023-10-26 14-00-00"
+  },
+  {
+    "movieId": "8",
+    "title": "Howards End (1992)",
+    "genres": "Drama",
+    "image": "https://m.media-amazon.com/images/M/MV5BMTk3MDY3NDc2NF5BMl5BanBnXkFtZTgwODcwNjgzOTE@._V1_SX300.jpg",
+    "description": "Encounter of three social classes of England at the beginning of the twentieth century: the Victorian capitalists (the Wilcoxes) considering themselves as aristocrats, whose only god is money; the enlightened bourgeois (the Schlegels), humanistic and philanthropic; and the workers (the Basts), fighting to survive. The Schlegel sisters' humanism will be torn apart as they try both to softly knock down the Wilcox's prejudices and to help the Basts.",
+    "showtime": "2023-10-26 14-00-00"
+  },
+  {
+    "movieId": "11",
+    "title": "For Your Eyes Only (1981)",
+    "genres": "Action|Adventure|Thriller",
+    "image": "https://m.media-amazon.com/images/M/MV5BMzQ4YzUzNGQtMDNkYS00NTk5LTkyMDgtNmVkMjg5MjIzNTdmXkEyXkFqcGdeQXVyNDY2MTk1ODk@._V1_SX300.jpg",
+    "description": "A British spy ship is accidentally sunk by a mine. Its valuable communication equipment is a top prize for the Soviets. Meanwhile, a Greek tycoon is killed for unknown reasons, and Bond is assigned to investigate. He tracks down the assassin, but is killed in revenge by the tycoon's daughter Melina (Carole Bouquet).",
+    "showtime": "2023-10-26 14-00-00"
+  },
+  {
+    "movieId": "13",
+    "title": "Curse of Frankenstein, The (1957)",
+    "genres": "Horror",
+    "image": "https://m.media-amazon.com/images/M/MV5BMmM1M2U2MmMtMDIwMy00ZjYzLWE5NGUtZjI4NTVkMWVmMTcwXkEyXkFqcGdeQXVyMDI2NDg0NQ@@._V1_SX300.jpg",
+    "description": "While awaiting execution for murder, Baron Victor Frankenstein tells the story of a creature he built and brought to life - only for it to behave not as he intended.",
+    "showtime": "2023-10-26 14-00-00"
+  },
+  {
+    "movieId": "15",
+    "title": "Chairman of the Board (1998)",
+    "genres": "Comedy",
+    "image": "https://m.media-amazon.com/images/M/MV5BMDhmYzA3NTctYzZkMS00YmRmLWE1MjQtZGYxNjcwZWZhYWY0XkEyXkFqcGdeQXVyNjMwMjk0MTQ@._V1_SX300.jpg",
+    "description": "Chairman of the Board is a 1998 American comedy film directed by Alex Zamm, and starring Carrot Top in his only lead role in a feature-length film. In the film, a surfer and inventor named Edison inherits and runs a billionaire's company. It was poorly received by both critics and audiences and was a box office bomb.",
+    "showtime": "2023-10-26 14-00-00"
+  },
+  {
+    "movieId": "17",
+    "title": "Space Jam (1996)",
+    "genres": "Adventure|Animation|Children|Comedy|Fantasy|Sci-Fi",
+    "image": "https://m.media-amazon.com/images/M/MV5BMDgyZTI2YmYtZmI4ZC00MzE0LWIxZWYtMWRlZWYxNjliNTJjXkEyXkFqcGdeQXVyNjY5NDU4NzI@._V1_SX300.jpg",
+    "description": "The film follows Jordan as he is brought out of retirement by the Looney Tunes characters to help them win a basketball match against invading aliens intent on enslaving them as amusement park attractions. by Warner Bros. Warner Bros. Space Jam was the first film to be produced by Warner Bros.",
+    "showtime": "2023-10-26 14-00-00"
+  },
+  {
+    "movieId": "18",
+    "title": "Crumb (1994)",
+    "genres": "Documentary",
+    "image": "https://m.media-amazon.com/images/M/MV5BYTViMDM5YjktMDhjNy00MjZjLTg2ODctOGI3MzkzYWNiODA0XkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_SX300.jpg",
+    "description": "Filmmaker Terry Zwigoff creates a complex but affectionate portrait of his longtime friend, underground cartoonist Robert Crumb. A notorious curmudgeon who would prefer to be alone with his fellow cartoonist wife Aline Kominsky-Crumb and his beloved vintage jazz records, Crumb reveals himself to be a complicated personality who suffered a troubled upbringing and harbors a philosophical opposition to the 1960s hippie underground that first celebrated his work.",
+    "showtime": "2023-10-26 14-00-00"
+  },
+  {
+    "movieId": "19",
+    "title": "Planet of the Apes (1968)",
+    "genres": "Action|Drama|Sci-Fi",
+    "image": "https://m.media-amazon.com/images/M/MV5BMTg0NjUwMzg5NF5BMl5BanBnXkFtZTgwNDQ0NjcwMTE@._V1_SX300.jpg",
+    "description": "In the film, an astronaut crew crash-lands on a strange planet in the distant future. Although the planet appears desolate at first, the surviving crew members stumble upon a society in which apes have evolved into creatures with human-like intelligence and speech.",
+    "showtime": "2023-10-26 14-00-00"
+  },
+  {
+    "movieId": "22",
+    "title": "Girl on the Bridge, The (Fille sur le pont, La) (1999)",
+    "genres": "Drama|Romance",
+    "image": "https://m.media-amazon.com/images/M/MV5BMTA4MjI5NzAzOTJeQTJeQWpwZ15BbWU2MDc5NjcwOQ@@._V1_SX300.jpg",
+    "description": "Synopsis. On a Paris bridge at night, a young woman with misty eyes leans over the icy waters of the Seine, strongly tempted to put an end to her misery. Suddenly from behind, out of nowhere, comes a stranger. It is Gabor, a once brilliant but now fading performer, in need of a partner.",
+    "showtime": "2023-10-26 14-00-00"
+  },
+  {
+    "movieId": "26",
+    "title": "Whole Nine Yards, The (2000)",
+    "genres": "Comedy|Crime",
+    "image": "https://m.media-amazon.com/images/M/MV5BMjA4Nzk4NzU4MF5BMl5BanBnXkFtZTYwNzU0MDc3._V1_SX300.jpg",
+    "description": "A struggling dentist's life is turned upside down when a famous gangster moves in next door, and his wife convinces him to inform a notorious mob boss about the gangster's whereabouts.",
+    "showtime": "2023-10-26 14-00-00"
+  },
+  {
+    "movieId": "34",
+    "title": "Kid, The (1921)",
+    "genres": "Comedy|Drama",
+    "image": "https://m.media-amazon.com/images/M/MV5BZjhhMThhNDItNTY2MC00MmU1LTliNDEtNDdhZjdlNTY5ZDQ1XkEyXkFqcGdeQXVyNjc1NTYyMjg@._V1_SX300.jpg",
+    "description": "This movie beautifully articulates the loving bond between a child and their parents, whether biological or not. It focuses on the tramp, Charlie Chaplin, as he takes care of an orphaned child named John who was abandoned by his mother due to her feeling incapable of taking care of him.",
+    "showtime": "2023-10-26 14-00-00"
+  },
+  {
+    "movieId": "38",
+    "title": "Escape from the Planet of the Apes (1971)",
+    "genres": "Action|Sci-Fi",
+    "image": "https://m.media-amazon.com/images/M/MV5BNWE5NTQ4ZDQtNjUyMC00NjA3LTk1NTctNmRkYTUyMTFmYTI1L2ltYWdlL2ltYWdlXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg",
+    "description": "Having narrowly escaped the destruction of Earth in the year 395something A.D., intelligent chimpanzees Zira (Kim Hunter), Cornelius (Roddy McDowall) and Milo (Sal Mineo) are thrown back in time, crash landing off the coast of Southern California in the year 1973.",
+    "showtime": "2023-10-26 14-00-00"
+  },
+  {
+    "movieId": "39",
+    "title": "Lassie (1994)",
+    "genres": "Adventure|Children",
+    "image": "https://m.media-amazon.com/images/M/MV5BMGMyZjAzZGItY2ZkZi00Y2YwLTk4M2QtNTRmNWEzYjU1NDVlXkEyXkFqcGdeQXVyNjg4NzYzMzA@._V1_SX300.jpg",
+    "description": "When a family of 4 moves from Baltimore to a farm in rural Virginia, they adopt an abandoned collie. The dog becomes the son's companion and protector, helping him adapt to rural life.",
+    "showtime": "2023-10-26 14-00-00"
+  },
+  {
+    "movieId": "42",
+    "title": "Long Goodbye, The (1973)",
+    "genres": "Crime|Film-Noir",
+    "image": "https://m.media-amazon.com/images/M/MV5BYzZhODNiOWYtMmNkNS00OTFhLTkzYzktYTQ4ZmNmZWMyN2ZiL2ltYWdlL2ltYWdlXkEyXkFqcGdeQXVyNjc1NTYyMjg@._V1_SX300.jpg",
+    "description": "Set in the 1970s, Raymond Chandler's private detective Philip Marlowe takes on the case of his friend Terry Lennox, who has been accused of killing his wife, a crime that Marlowe does not believe he has committed. Before long, Lennox disappears, and Marlowe is jailed for not cooperating with the police investigation.",
+    "showtime": "2023-10-26 14-00-00"
+  },
+  {
+    "movieId": "43",
+    "title": "What Lies Beneath (2000)",
+    "genres": "Drama|Horror|Mystery",
+    "image": "https://m.media-amazon.com/images/M/MV5BNTY4NjNkMTMtNTEyOC00NDBiLWFkZjMtZDkwYzU3OTFjOTkzXkEyXkFqcGdeQXVyNTUyMzE4Mzg@._V1_SX300.jpg",
+    "description": "The wife of a university research scientist believes that her lakeside Vermont home is haunted by a ghost - or that she is losing her mind. The wife of a university research scientist believes that her lakeside Vermont home is haunted by a ghost - or that she is losing her mind.",
+    "showtime": "2023-10-26 14-00-00"
+  },
+  {
+    "movieId": "50",
+    "title": "Working Girl (1988)",
+    "genres": "Comedy|Drama|Romance",
+    "image": "https://m.media-amazon.com/images/M/MV5BZTIwZGE5OWUtYzMxMi00Njk5LWI5NjAtMWYyMDljZGRjYWRlXkEyXkFqcGdeQXVyNjUwNzk3NDc@._V1_SX300.jpg",
+    "description": "Tess McGill is a frustrated secretary, struggling to forge ahead in the world of big business in New York. She gets her chance when her boss breaks her leg on a skiing holiday. McGill takes advantage of her absence to push ahead with her career. She teams up with investment broker Jack Trainer to work on a big deal. The situation is complicated after the return of her boss.",
+    "showtime": "2023-10-26 14-00-00"
+  },
+  {
+    "movieId": "53",
+    "title": "Raise the Red Lantern (Da hong deng long gao gao gua) (1991)",
+    "genres": "Drama",
+    "image": "https://m.media-amazon.com/images/M/MV5BYjNiMDAyOTUtNTg5Ny00NTE4LThlZmYtYmNlNjUwOTlmNWZhL2ltYWdlL2ltYWdlXkEyXkFqcGdeQXVyNjc1NTYyMjg@._V1_SX300.jpg",
+    "description": "A young woman becomes the fourth wife of a wealthy lord, and must learn to live with the strict rules and tensions within the household.",
+    "showtime": "2023-10-26 14-00-00"
+  },
+  {
+    "movieId": "58",
+    "title": "Paradine Case, The (1947)",
+    "genres": "Drama",
+    "image": "https://m.media-amazon.com/images/M/MV5BMjFlY2ZhNzQtZmY0MC00Y2IwLTg1MTEtZDFhMjgyNmQ1NjQ5XkEyXkFqcGdeQXVyNjc1NTYyMjg@._V1_SX300.jpg",
+    "description": "The Paradine Case is a 1947 courtroom drama with elements of film noir set in England, directed by Alfred Hitchcock and produced by David O. Selznick.",
+    "showtime": "2023-10-26 14-00-00"
+  },
+  {
+    "movieId": "61",
+    "title": "Mirror Has Two Faces, The (1996)",
+    "genres": "Comedy|Drama|Romance",
+    "image": "https://m.media-amazon.com/images/M/MV5BMDFjOWY0YWItZWNhOC00YmQyLWJhNDktMzEzNWZhMTg2YTQ2XkEyXkFqcGdeQXVyNDAxNjkxNjQ@._V1_SX300.jpg",
+    "description": "A shy, middle-aged professor enters into a romantic but non-physical relationship with an unlucky-in-love colleague. A shy, middle-aged professor enters into a romantic but non-physical relationship with an unlucky-in-love colleague.",
+    "showtime": "2023-10-26 14-00-00"
+  },
+  {
+    "movieId": "64",
+    "title": "Foxfire (1996)",
+    "genres": "Drama",
+    "image": "https://m.media-amazon.com/images/M/MV5BMTI1ODEzNjA3MF5BMl5BanBnXkFtZTcwODYxNjYxMQ@@._V1_SX300.jpg",
+    "description": "Foxfire is a 1996 American teen drama film directed by Annette Haywood-Carter. Based on the Joyce Carol Oates novel Foxfire: Confessions of a Girl Gang, it examines the coming of age of four high school girls who meet up with a mysterious and beautiful drifter.",
+    "showtime": "2023-10-26 14-00-00"
+  },
+  {
+    "movieId": "67",
+    "title": "Mother (1996)",
+    "genres": "Comedy",
+    "image": "https://m.media-amazon.com/images/M/MV5BOGQxNjYwYTAtNmQzNi00NzQ4LWFhYzEtNTdjM2U3YjYyZDMzXkEyXkFqcGdeQXVyNzc5MjA3OA@@._V1_SX300.jpg",
+    "description": "After two divorces, sci-fi novelist John Henderson realizes that if he doesn't straighten out his relationship with his mother, Beatrice, he is never going to be able to make it work with other women in his life. To this end, he moves back home and tries to figure out exactly where everything went wrong.",
+    "showtime": "2023-10-26 14-00-00"
+  },
+  {
+    "movieId": "69",
+    "title": "George of the Jungle (1997)",
+    "genres": "Children|Comedy",
+    "image": "https://m.media-amazon.com/images/M/MV5BNTdiM2VjYjYtZjEwNS00ZWU5LWFkZGYtZGYxMDcwMzY1OTEzL2ltYWdlL2ltYWdlXkEyXkFqcGdeQXVyMTczNjQwOTY@._V1_SX300.jpg",
+    "description": "It tells the story of a young man raised by wild animals who falls for an heiress and contends with the heiress' spoiled fianc\u00e9e. The film was produced by Walt Disney Pictures and was released in theatres throughout the United States and Canada on July 16, 1997.",
+    "showtime": "2023-10-26 14-00-00"
+  },
+  {
+    "movieId": "78",
+    "title": "Limey, The (1999)",
+    "genres": "Crime|Drama|Thriller",
+    "image": "https://m.media-amazon.com/images/M/MV5BNzA1MzgyNzMtNWRiOC00MDY3LTlkYjQtZGZjMWU4NWEyZWVmXkEyXkFqcGdeQXVyNTc1NTQxODI@._V1_SX300.jpg",
+    "description": "The Limey follows Wilson (Terence Stamp), a tough English ex-con who travels to Los Angeles to avenge his daughter's death. Upon arrival, Wilson goes to task battling Valentine (Peter Fonda) and an army of L.A.'s toughest criminals, hoping to find clues and piece together what happened.",
+    "showtime": "2023-10-26 14-00-00"
+  },
+  {
+    "movieId": "79",
+    "title": "Basquiat (1996)",
+    "genres": "Drama",
+    "image": "https://m.media-amazon.com/images/M/MV5BMTk3NTk3MzU5N15BMl5BanBnXkFtZTgwNjIwMDcyMTI@._V1_SX300.jpg",
+    "description": "It is the first film about an American painter written and directed by another artist. Jeffrey Wright portrays Basquiat, a Brooklyn-born artist who used his graffiti roots as a foundation to create collage-style paintings on canvas. David Bowie plays Basquiat's friend and mentor, pop artist Andy Warhol.",
+    "showtime": "2023-10-26 14-00-00"
+  },
+  {
+    "movieId": "84",
+    "title": "Mr. Smith Goes to Washington (1939)",
+    "genres": "Drama",
+    "image": "https://m.media-amazon.com/images/M/MV5BZTYwYjYxYzgtMDE1Ni00NzU4LWJlMTEtODQ5YmJmMGJhZjI5L2ltYWdlXkEyXkFqcGdeQXVyMDI2NDg0NQ@@._V1_SX300.jpg",
+    "description": "Smith Goes to Washington. A naive youth leader is appointed to fill a vacancy in the U.S. Senate. His idealistic plans promptly collide with corruption at home and subterfuge from his hero in Washington, but he tries...",
+    "showtime": "2023-10-26 14-00-00"
+  },
+  {
+    "movieId": "85",
+    "title": "Agnes of God (1985)",
+    "genres": "Drama|Mystery",
+    "image": "https://m.media-amazon.com/images/M/MV5BNmU2ZTYxZWUtYTVmMy00MmE0LWJjMmItYzcwNWY0MWZmNTJhXkEyXkFqcGdeQXVyMTA0MjU0Ng@@._V1_SX300.jpg",
+    "description": "A young nun (Meg Tilly, Oscar-nominated) is discovered one night with a dead baby and it appears that it is a new-born. How can this be though as the nun is supposedly a virgin and showed no signs of even being pregnant? Enter psychiatrist Jane Fonda who is sent to examine the highly mysterious and secretive Tilly.",
+    "showtime": "2023-10-26 14-00-00"
+  },
+  {
+    "movieId": "86",
+    "title": "Pillow Book, The (1996)",
+    "genres": "Drama|Romance",
+    "image": "https://m.media-amazon.com/images/M/MV5BY2Y0MjZlZjQtNGUyNS00ODI4LWEyZmUtYTM5MDhkNTM0NGU1L2ltYWdlL2ltYWdlXkEyXkFqcGdeQXVyMjgyNjk3MzE@._V1_UY268_CR1,0,182,268_AL_.jpg",
+    "description": "Nagito has a fetish for calligraphy on the human body and meets her ideal soulmate Jerome, an English translator sent to Japan. However, once Nagiko's father's gay publisher rejoins the scene, the story is overtaken by treachery and bloodlust.",
+    "showtime": "2023-10-26 14-00-00"
+  },
+  {
+    "movieId": "93",
+    "title": "Coma (1978)",
+    "genres": "Thriller",
+    "image": "https://m.media-amazon.com/images/M/MV5BZTAwODJlOGQtYTYxMi00ODI3LTgwZWYtZDViNzlkOWEwZmI5L2ltYWdlL2ltYWdlXkEyXkFqcGdeQXVyMjI4MjA5MzA@._V1_SX300.jpg",
+    "description": "When a young female doctor notices an unnatural amount of comas occurring in her hospital she uncovers a horrible conspiracy. When a young female doctor notices an unnatural amount of comas occurring in her hospital she uncovers a horrible conspiracy.",
+    "showtime": "2023-10-26 14-00-00"
+  },
+  {
+    "movieId": "99",
+    "title": "Trees Lounge (1996)",
+    "genres": "Drama",
+    "image": "https://m.media-amazon.com/images/M/MV5BYmM2OTQwOTktYTQyYi00NTY1LWJmOGUtZWE0N2QwZWQ3YWU5XkEyXkFqcGdeQXVyNTc1NTQxODI@._V1_SX300.jpg",
+    "description": "Tommy is an unemployed mechanic who spends most of his time in a bar (Trees Lounge) in a small blue collar town. He seems to always be thinking, \"If only X then I could stop drinking\". Tommy is an unemployed mechanic who spends most of his time in a bar (Trees Lounge) in a small blue collar town.",
+    "showtime": "2023-10-26 14-00-00"
+  },
+  {
+    "movieId": "100",
+    "title": "Fish Called Wanda, A (1988)",
+    "genres": "Comedy|Crime",
+    "image": "https://m.media-amazon.com/images/M/MV5BNTQ0ODhiNjEtMDFiYi00NmZhLWJkMzQtNTBkOGQwOTliZDAxXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg",
+    "description": "A Fish Called Wanda is a 1988 heist comedy film directed by Charles Crichton and written by Crichton and John Cleese. It stars Cleese, Jamie Lee Curtis, Kevin Kline, and Michael Palin. The film follows a gang of diamond thieves who double-cross one another to recover stolen diamonds hidden by their jailed leader.",
+    "showtime": "2023-10-26 14-00-00"
+  },
+  {
+    "movieId": "101",
+    "title": "Death Wish (1974)",
+    "genres": "Action|Crime|Drama",
+    "image": "https://m.media-amazon.com/images/M/MV5BYWQ2ZjUxNWYtZDU5Ni00Y2MwLTg1YjktMjBhMmEyYjQ1MjUxL2ltYWdlXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg",
+    "description": "A New York City architect becomes a one-man vigilante squad after his wife is murdered by street punks. In self-defense, the vengeful man kills muggers on the mean streets after dark.",
+    "showtime": "2023-10-26 14-00-00"
+  },
+  {
+    "movieId": "102",
+    "title": "Halloween 4: The Return of Michael Myers (1988)",
+    "genres": "Horror",
+    "image": "https://m.media-amazon.com/images/M/MV5BYWNiNjBhZjAtMzVkNi00MTJiLWI0NGQtODE2NmIyNmU2OTQwXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg",
+    "description": "Ten years after his original massacre, the invalid Michael Myers awakens on Halloween Eve and returns to Haddonfield to kill his seven-year-old niece.",
+    "showtime": "2023-10-26 14-00-00"
+  },
+  {
+    "movieId": "107",
+    "title": "Down by Law (1986)",
+    "genres": "Comedy|Drama|Film-Noir",
+    "image": "https://m.media-amazon.com/images/M/MV5BM2ZmNDJiZTUtYjg5Zi00M2I3LTliZjAtNzQ4NTlkYTAzYTAxXkEyXkFqcGdeQXVyNTkyMDc0MjI@._V1_SX300.jpg",
+    "description": "Synopsis. Three men\u2014an unemployed disc jockey, a small-time pimp, and a hapless Italian tourist\u2014find themselves in the same prison cell for crimes they didn't commit. Together, they plan their escape, soon ending up in the Louisiana wilds with no refuge in sight.",
+    "showtime": "2023-10-26 14-00-00"
+  },
+  {
+    "movieId": "112",
+    "title": "Bloodsport 2 (a.k.a. Bloodsport II: The Next Kumite) (1996)",
+    "genres": "Action",
+    "image": "https://m.media-amazon.com/images/M/MV5BMTQ2Mzc4NzQxN15BMl5BanBnXkFtZTcwMDcxNjYyMQ@@._V1_SX300.jpg",
+    "description": "Alex Cardo is imprisoned and disciplined by one of the inmates. His new master also tells him about the brutal yet illegal Kumite tournament - but how will they get there? Alex Cardo is imprisoned and disciplined by one of the inmates.",
+    "showtime": "2023-10-26 14-00-00"
+  },
+  {
+    "movieId": "121",
+    "title": "Eraser (1996)",
+    "genres": "Action|Drama|Thriller",
+    "image": "https://m.media-amazon.com/images/M/MV5BOTczMTNlN2UtMWE2NS00ZTUyLTgzYTQtYTFkNWIzODJkYzIwXkEyXkFqcGdeQXVyNDc2NjEyMw@@._V1_SX300.jpg",
+    "description": "The film tells the story of a U.S. Marshal of WITSEC who protects a senior operative testifying about an illegal arms deal and is forced to fight his former allies when one of the players is revealed to be a mole inside WITSEC.",
+    "showtime": "2023-10-26 14-00-00"
+  },
+  {
+    "movieId": "127",
+    "title": "Sabotage (1936)",
+    "genres": "Thriller",
+    "image": "https://m.media-amazon.com/images/M/MV5BMTE2ZTAxY2QtMDA0Ni00M2Y5LWJjMDQtNTAwNDA5ZmZhNmY4XkEyXkFqcGdeQXVyNjc0MzMzNjA@._V1_SX300.jpg",
+    "description": "A Scotland Yard undercover detective is on the trail of a saboteur who is part of a plot to set off a bomb in London. But when the detective's cover is blown, the plot begins to unravel.",
+    "showtime": "2023-10-26 14-00-00"
+  },
+  {
+    "movieId": "134",
+    "title": "Tora! Tora! Tora! (1970)",
+    "genres": "Action|Drama|War",
+    "image": "https://m.media-amazon.com/images/M/MV5BY2MyZWY2ZDAtOTM5ZC00NTM4LTgxNWYtYjBiMTFkNjFjNTM4XkEyXkFqcGdeQXVyNjQzNDI3NzY@._V1_SX300.jpg",
+    "description": "Tora! The story of the 1941 Japanese air raid on Pearl Harbor, and the series of preceding American blunders that aggravated its effectiveness. The story of the 1941 Japanese air raid on Pearl Harbor, and the series of preceding American blunders that aggravated its effectiveness.",
+    "showtime": "2023-10-26 14-00-00"
+  },
+  {
+    "movieId": "135",
+    "title": "Smoke Signals (1998)",
+    "genres": "Comedy|Drama",
+    "image": "https://m.media-amazon.com/images/M/MV5BMjA4MjU1NTg0NF5BMl5BanBnXkFtZTgwODYwMDQ1MjE@._V1_SX300.jpg",
+    "description": "Synopsis. Smoke Signals is a humorous yet serious story about Victor, a young man who Director Chris Eyre describes as \"trying to forgive his father.\" The movie gives us a glimpse into the contemporary Native American world, and is created by an almost exclusively Native American cast.",
+    "showtime": "2023-10-26 14-00-00"
+  },
+  {
+    "movieId": "140",
+    "title": "Spellbound (1945)",
+    "genres": "Mystery|Romance|Thriller",
+    "image": "https://m.media-amazon.com/images/M/MV5BMTM2NDI5Nzg5Nl5BMl5BanBnXkFtZTcwNDk3NzI0NA@@._V1_SX300.jpg",
+    "description": "It follows a psychoanalyst who falls in love with the new head of the Vermont hospital in which she works, only to find that he is an imposter suffering dissociative amnesia, and potentially, a murderer.",
+    "showtime": "2023-10-26 14-00-00"
+  },
+  {
+    "movieId": "141",
+    "title": "Adventures of Priscilla, Queen of the Desert, The (1994)",
+    "genres": "Comedy|Drama",
+    "image": "https://m.media-amazon.com/images/M/MV5BMTc5MDU1NzcyN15BMl5BanBnXkFtZTcwMDA0ODYyNA@@._V1_UX182_CR0,0,182,268_AL_.jpg",
+    "description": "The plot follows two drag queens, played by Hugo Weaving and Guy Pearce, and a transgender woman, played by Terence Stamp, as they journey across the Australian Outback from Sydney to Alice Springs in a tour bus that they have named \"Priscilla\", along the way encountering various groups and individuals.",
+    "showtime": "2023-10-26 14-00-00"
+  },
+  {
+    "movieId": "143",
+    "title": "Police Academy 5: Assignment: Miami Beach (1988)",
+    "genres": "Comedy|Crime",
+    "image": "https://m.media-amazon.com/images/M/MV5BNmJjN2Y2NDgtMDE5Mi00ZWUwLTkyMmQtZTgzZTdiMTM4OGUwL2ltYWdlL2ltYWdlXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg",
+    "description": "The Police Academy's commandant will be honored at a police convention in Miami Beach. At the airport he picks a wrong bag with stolen diamonds. The \"owners\" want them back.",
+    "showtime": "2023-10-26 14-00-00"
+  },
+  {
+    "movieId": "144",
+    "title": "Empire Records (1995)",
+    "genres": "Comedy|Drama",
+    "image": "https://m.media-amazon.com/images/M/MV5BMjExMmQ1NmItOWEyOC00NzZjLWE0NWItNmE1NmNkY2NmODk5XkEyXkFqcGdeQXVyNDk3NzU2MTQ@._V1_SX300.jpg",
+    "description": "Empire Records is a 1995 American coming-of-age comedy-drama film directed by Allan Moyle, starring Anthony LaPaglia, Maxwell Caulfield, Debi Mazar, Rory Cochrane, Johnny Whitworth, Robin Tunney, Ren\u00e9e Zellweger, and Liv Tyler. The film follows a group of record store employees over the course of one exceptional day.",
+    "showtime": "2023-10-26 14-00-00"
+  },
+  {
+    "movieId": "149",
+    "title": "Wallace & Gromit: The Wrong Trousers (1993)",
+    "genres": "Animation|Children|Comedy|Crime",
+    "image": "https://m.media-amazon.com/images/M/MV5BNDBmNGU4MTEtMmI2Mi00NjU1LTgxNTktMDQ1MDE0Y2MwMjYwXkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_SX300.jpg",
+    "description": "Summaries. Gromit butts heads with a mysterious penguin lodger, who hatches a sinister scheme involving the ex-NASA Techno Trousers that have been modified by Wallace for walkies. Wallace and Gromit's second adventure, sees another at Western Wallaby Street, Wigan, Northern England.",
+    "showtime": "2023-10-26 14-00-00"
+  },
+  {
+    "movieId": "156",
+    "title": "Body Snatchers (1993)",
+    "genres": "Horror|Sci-Fi|Thriller",
+    "image": "https://m.media-amazon.com/images/M/MV5BYmM4NWY1NGEtMjI5ZC00MmRkLWI1Y2QtNDg4NzMzNTI1MDYwXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg",
+    "description": "A teenage girl and her father discover alien clones are replacing humans on a remote U.S. military base in Alabama. A teenage girl and her father discover alien clones are replacing humans on a remote U.S. military base in Alabama.",
+    "showtime": "2023-10-26 14-00-00"
+  },
+  {
+    "movieId": "157",
+    "title": "U.S. Marshals (1998)",
+    "genres": "Action|Crime|Thriller",
+    "image": "https://m.media-amazon.com/images/M/MV5BZTNiYTUwMDgtY2M4My00ZDAwLWIyYWYtYjM0ODBkNGRmMzRkL2ltYWdlXkEyXkFqcGdeQXVyNjQzNDI3NzY@._V1_UY268_CR7,0,182,268_AL_.jpg",
+    "description": "An airplane bearing gruff U.S. Marshal Sam Gerard (Tommy Lee Jones) crashes in the wilderness. On board the same flight is Mark Sheridan (Wesley Snipes), a federal prisoner accused of double murder, who escapes during the ensuing chaos, but not before rescuing several people from the wreckage.",
+    "showtime": "2023-10-26 14-00-00"
+  },
+  {
+    "movieId": "160",
+    "title": "Unforgettable (1996)",
+    "genres": "Mystery|Sci-Fi|Thriller",
+    "image": "https://m.media-amazon.com/images/M/MV5BMjQxODM0MjY2Nl5BMl5BanBnXkFtZTgwOTkwMDcyMTI@._V1_SX300.jpg",
+    "description": "Wrongfully accused of murdering his wife, Dr. David Krane (Ray Liotta) is luckily acquitted through a technicality. As a free man, he begins searching for the real killer, and learns that another physician, Dr. Martha Briggs (Linda Fiorentino), is conducting memory experiments that could help lead him to the culprit.",
+    "showtime": "2023-10-26 14-00-00"
+  },
+  {
+    "movieId": "161",
+    "title": "Predator 2 (1990)",
+    "genres": "Action|Sci-Fi|Thriller",
+    "image": "https://m.media-amazon.com/images/M/MV5BNThjZjI4NTgtZDk4Mi00ZjI1LWExZGUtNTRkOWY1ZTY3M2FlXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg",
+    "description": "Set ten years after the events of the first film, in Los Angeles, the film focuses on a disgruntled police officer and his allies battling a malevolent and technologically advanced extraterrestrial Predator.",
+    "showtime": "2023-10-26 14-00-00"
+  },
+  {
+    "movieId": "162",
+    "title": "Mystery Science Theater 3000: The Movie (1996)",
+    "genres": "Comedy|Sci-Fi",
+    "image": "https://m.media-amazon.com/images/M/MV5BYzNmN2UzNTAtNmZkMS00MmI3LThhNzEtNjI1YjJlN2JiZjU0XkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg",
+    "description": "The film is set in the future and centers on a human, Freeman Lowell (Bruce Dern), who is the last crew member of a spaceship containing Earth's last surviving forests. His remaining companions consist only of three robot drones. MST3K and the Joel Robinson character occasionally reflected Lowell's hippie-like nature.",
+    "showtime": "2023-10-26 14-00-00"
+  }
+]
