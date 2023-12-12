@@ -72,7 +72,7 @@ function Movies() {
                     src={value.image}
                     title={value.title}
                     detail={value.description}
-                    premiere={value.premiere}></MovieInfo>
+                    premiere={value.predate}></MovieInfo>
                 </Grid>
               ))}
           </Grid>
