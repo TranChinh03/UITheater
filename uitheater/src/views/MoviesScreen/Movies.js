@@ -15,21 +15,7 @@ function Movies() {
 
   const handleTabChanged = tabName => {
     setCurrentTab(tabName);
-
-    switch (currentTab) {
-      case 'NOW SHOWING':
-        setCurrentStatus('OnShow');
-        break;
-      case 'COMING SHOW':
-        setCurrentStatus('ComingShow');
-        break;
-      case 'SPECIAL SCREENINGS':
-        setCurrentStatus('SpecialShow');
-        break;
-      default:
-        console.log('la co ra gi kh nhi?');
-        break;
-    }
+    console.log(currentTab)
   };
 
   useEffect(() => {
@@ -37,7 +23,21 @@ function Movies() {
       console.log(res);
       setMovieList(res);
     });
-  }, []);
+    switch (currentTab) {
+      case "NOW SHOWING":
+        setCurrentStatus('OnShow');
+        break;
+      case "COMING SHOW":
+        setCurrentStatus('ComingShow');
+        break;
+      case "SPECIAL SCREENINGS":
+        setCurrentStatus('SpecialShow');
+        break;
+      default:
+        console.log('la co ra gi kh nhi?');
+        break;
+    }
+  }, [currentTab]);
 
   return (
     <>
@@ -72,7 +72,8 @@ function Movies() {
                     src={value.image}
                     title={value.title}
                     detail={value.description}
-                    premiere={value.premiere}></MovieInfo>
+                    premiere={value.premiere}>
+                    </MovieInfo>
                 </Grid>
               ))}
           </Grid>
