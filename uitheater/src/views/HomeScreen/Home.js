@@ -17,10 +17,11 @@ function Home() {
   const [currentStatus, setCurrentStatus] = useState('OnShow');
 
   useEffect(() => {
-    getListMovieFunction().then(res => {
-      console.log(res);
-      setMovieList(res);
-    });
+    // getListMovieFunction().then(res => {
+    //   console.log(res);
+    //   setMovieList(res);
+    // });
+    setMovieList(JSON.parse(localStorage.getItem('movieList')))
     switch (currentTab) {
       case "NOW SHOWING":
         setCurrentStatus('OnShow');
