@@ -15,7 +15,7 @@ function Movies() {
 
   const handleTabChanged = tabName => {
     setCurrentTab(tabName);
-    console.log(currentTab)
+    console.log(currentTab);
   };
 
   useEffect(() => {
@@ -24,13 +24,13 @@ function Movies() {
       setMovieList(res);
     });
     switch (currentTab) {
-      case "NOW SHOWING":
+      case 'NOW SHOWING':
         setCurrentStatus('OnShow');
         break;
-      case "COMING SHOW":
+      case 'COMING SHOW':
         setCurrentStatus('ComingShow');
         break;
-      case "SPECIAL SCREENINGS":
+      case 'SPECIAL SCREENINGS':
         setCurrentStatus('SpecialShow');
         break;
       default:
@@ -72,8 +72,7 @@ function Movies() {
                     src={value.image}
                     title={value.title}
                     detail={value.description}
-                    premiere={value.premiere}>
-                    </MovieInfo>
+                    premiere={value.predate}></MovieInfo>
                 </Grid>
               ))}
           </Grid>
