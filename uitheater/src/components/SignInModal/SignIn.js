@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Button, Modal, ConfigProvider, Space} from 'antd';
+import {Button, Modal, ConfigProvider, Space, message} from 'antd';
 import cookie from 'react-cookies';
 import styles from './signin.module.scss';
 import {Form, Input} from 'antd';
@@ -47,11 +47,13 @@ const SignIn = props => {
         onLogin();
       })
       .then(() => {
+        message.success("Login successful!")
         handleOk();
         navigate('/');
       })
 
       .catch((error) => {
+        message.error("Username or password invalid!")
         console.log("ERR");
 
         console.log(error);
