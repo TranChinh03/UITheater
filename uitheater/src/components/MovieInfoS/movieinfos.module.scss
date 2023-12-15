@@ -49,7 +49,7 @@
 .detailContainer div {
   padding: 10px;
   font-size: 0.9rem;
-  height: 70px;
+  height: 100px;
   font-family: 'Inter';
   overflow: hidden;
   text-align: justify;
@@ -57,14 +57,59 @@
   display: -webkit-box;
   line-height: 16px;
   max-height: 100px;
-  -webkit-line-clamp: 5; /* Write the number of 
+  -webkit-line-clamp: 7; /* Write the number of 
                              lines you want to be 
                              displayed */
   -webkit-box-orient: vertical;
 }
 
 .showtimeContainer {
-  width: 60%;
-  height: 150px;
-  background-color: #bba797;
+  width: 100%;
+  height: 70px;
+  background-color: #f78ca2;
+  flex-direction: row;
+  display: flex;
+  align-items: center;
+}
+
+.date {
+  width: fit-content;
+  display: flex;
+  height: 70px;
+  background-color: #c70039;
+  padding-right: 10px;
+  padding-left: 10px;
+  align-self: center;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  justify-items: center;
+  font-family: 'Lilita One';
+  color: #fffaf5;
+  font-size: 22px;
+}
+
+.time {
+  width: fit-content;
+  height: 50px;
+  border-radius: 30px;
+  background-color: #fffaf5;
+  margin-left: 15px;
+  display: flex;
+  align-self: center;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  justify-items: center;
+  font-family: 'Lilita One';
+  padding-left: 20px;
+  padding-right: 20px;
+  color: #0c0326;
+  font-size: 18px;
+  border: none;
+}
+
+.time:hover {
+  background-color: #f9dec9;
+  cursor: pointer;
 }

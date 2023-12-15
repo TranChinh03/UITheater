@@ -82,6 +82,7 @@ const Header = () => {
                 <img className={styles.human} src={SVG_Human} alt="avt" />
                 <div className={styles.signInText}>{getLastWord(response)}</div>
               </button>
+              <div style={{width: "100%", height: "0.5vw"}} />
               <div class={styles.dropdownContent}>
                 <a href="\me">Information</a>
                 <a href="\password">Password</a>

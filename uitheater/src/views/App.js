@@ -3,7 +3,7 @@ import About from '../views/AboutScreen/About';
 import Home from '../views/HomeScreen/Home';
 import Movies from '../views/MoviesScreen/Movies';
 import Schedule from '../views/ScheduleScreen/Schedule';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import Register from './RegisterScreen/Register';
 import NotFoundScreen from './NotFoundScreen/NotFoundScreen';
@@ -12,8 +12,23 @@ import ForgotPassword from './PasswordScreen/ForgotPassword';
 import ResetPassword from './PasswordScreen/ResetPassword';
 import Booking from './BookingScreen/Booking';
 import Draft from './draft/draft';
+import { getListMovieFunction } from '../apis/GetMethod/getListMovie';
+
+
 
 function App() {
+  useEffect(() => {
+    const fetchMovies = async () => {
+      try {
+          localStorage.setItem('movieList', JSON.stringify(await getListMovieFunction()));
+      }
+      catch (error) {
+        console.log('Error fetching movies!')
+      }
+    }
+    fetchMovies()
+  }, [])
+
   return (
     <>
       <Router>
@@ -26,7 +41,6 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/forgotpassword" element={<ForgotPassword />} />
           <Route path="/resetpassword/:id/:token" element={<ResetPassword />} />
-
           <Route path="/me" element={<Info />} />
           <Route path="/booking" element={<Booking />} />
           <Route path="/draft" element={<Draft />} />
