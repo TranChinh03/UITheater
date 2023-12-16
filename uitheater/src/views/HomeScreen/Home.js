@@ -84,13 +84,12 @@ function Home() {
                   type   : 'loop',
                   rewind: true,
                   perPage: 5,
-                  focus: 'center',
                 }}
                 aria-label="Movies On Show" >
             <SplideTrack>
               {movieList.filter(movie => movie.status === currentStatus).map((value, status) => (
                   <SplideSlide>
-                    <MovieBlock movieName={value.title} movieImg={value.image}/>
+                    <MovieBlock movieName={value.title} movieImg={value.image} movieDes={value.description}/>
                   </SplideSlide>
               ))}
             </SplideTrack>
