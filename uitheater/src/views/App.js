@@ -34,17 +34,17 @@ function App() {
       <Router>
         <Header />
         <Routes>
-          <Route path="/" exact={true} element={<Home />} />
-          <Route path="/movies" element={<Movies />} />
+          {/* <Route path="/" exact={true} element={<Home />} />
+          <Route path="/movies" element={<Movies />} /> */}
           <Route path="/schedule" element={<Booking />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/register" element={<Register />} />
+          {/* <Route path="/about" element={<About />} />
+          <Route path="/register" element={<Register />} /> */}
           <Route path="/forgotpassword" element={<ForgotPassword />} />
-          <Route path="/resetpassword/:id/:token" element={<ResetPassword />} />
+          {/* <Route path="/resetpassword/:id/:token" element={<ResetPassword />} />
           <Route path="/me" element={<Info />} />
           <Route path="/booking" element={<Booking />} />
           <Route path="/draft" element={<Draft />} />
-          <Route path="*" element={<NotFoundScreen />} />
+          <Route path="*" element={<NotFoundScreen />} /> */}
         </Routes>
       </Router>
     </>
