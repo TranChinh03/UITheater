@@ -6,27 +6,66 @@ import {IM_Banner, IM_Banner1, IM_Banner2, IM_Banner3} from '../../assets/imgs';
 import BookingFilter from '../../components/BookingFilter/bookingFilter';
 import {Splide, SplideSlide} from '@splidejs/react-splide';
 import {getListMovieFunction} from '../../apis/GetMethod/getListMovie';
+import {getShowtimesFunction} from '../../apis/GetMethod/getShowtimes';
+import {getTheatersFunction} from '../../apis/GetMethod/getTheaters';
+
 import {SVG_SelectDown} from '../../assets/icons';
 
 function Schedule() {
   const [movieList, setMovieList] = useState([]);
+  const [showtimeList, setShowtimeList] = useState();
+  const [theaterList, setTheaterList] = useState();
+
   const currentStatus = 'OnShow';
+
+  const combinedData = movieList.reduce((acc, movie) => {
+    const movieShowtimes = showtimeList
+      .filter(showtime => showtime.movieId === movie.movieId)
+      .reduce((grouped, showtime) => {
+        const date = showtime.date;
+
+        const theater = theaterList.filter(
+          theater => theater.theaterId === showtime.theaterId,
+        );
+
+        if (!grouped[date]) {
+          grouped[date] = [];
+        }
+
+        if (!grouped[date][theater.theaterId]) {
+          grouped[date][theater.theaterId] = {
+            theater,
+            showtimes: [],
+          };
+        }
+        grouped[date][theater.theaterId].showtimes.push(showtime);
+        return grouped;
+      }, {});
+
+    acc.push({...movie, showtimes: movieShowtimes});
+    return acc;
+  }, []);
+
+  console.log('gi z', combinedData);
 
   useEffect(() => {
     getListMovieFunction().then(res => {
-      console.log(res);
+      console.log('listm: ', res);
       setMovieList(res);
     });
-  });
+    getShowtimesFunction().then(res => {
+      console.log('listst:', res);
+      setShowtimeList(res);
+    });
+    getTheatersFunction().then(res => {
+      console.log('listt:', res);
+      setTheaterList(res);
+    });
+  }, []);
+
   const [isOpen, setIsOpen] = useState(false);
   const [selectedInfo, setSelectedInfo] = useState('Choose Theater');
   const [isRotated, setIsRotated] = useState(false);
-  const theaters = [
-    'UITheater Parkson',
-    'UITheater Vincom',
-    'UITheater Gigamall',
-  ];
-
   const rotation = isRotated => {
     return {
       transform: isRotated ? 'rotate(180deg)' : 'rotate(0deg)',
@@ -83,7 +122,7 @@ function Schedule() {
                 </button>
                 {isOpen && (
                   <div className={styles.dropDownContent}>
-                    {theaters.map(i => (
+                    {theaterList.map(i => (
                       <div
                         onClick={() => {
                           setSelectedInfo(i);
@@ -109,7 +148,7 @@ function Schedule() {
       </div>
       <div className={styles.movieListContainer}>
         <Grid>
-          {movieList
+          {combinedData
             .filter(movie => movie.status === currentStatus)
             .map((value, status) => (
               <Grid

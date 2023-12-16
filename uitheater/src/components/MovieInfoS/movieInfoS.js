@@ -3,20 +3,10 @@ import styles from './movieinfos.module.scss';
 import {Grid} from '@mui/material';
 
 function MovieInfoS(props) {
-  const groups = props.showtimes.reduce((groups, obj) => {
-    const date = obj.date;
-    if (!groups[date]) {
-      groups[date] = [];
-    }
-    groups[date].push(obj);
-    return groups;
-  }, {});
-
-  // Edit: to add it in the array format instead
-  const groupArrays = Object.keys(groups).map(date => {
+  const groupArrays = Object.keys(props.showtimes).map(date => {
     return {
       date,
-      showtime: groups[date],
+      showtime: props.showtimes[date],
     };
   });
 
@@ -37,13 +27,14 @@ function MovieInfoS(props) {
             </div>
           </div>
         </div>
+
         <Grid container>
           {groupArrays.map(e => (
             <Grid item key={e.date} className={styles.showtimeContainer}>
               <div className={styles.date}>{e.date}</div>
               {e.showtime.map(x => (
                 <button key={x.showtime} className={styles.time}>
-                  {x.showtime}
+                  {x.time}
                 </button>
               ))}
             </Grid>
