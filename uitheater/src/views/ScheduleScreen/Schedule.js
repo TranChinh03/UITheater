@@ -7,55 +7,38 @@ import BookingFilter from '../../components/BookingFilter/bookingFilter';
 import {Splide, SplideSlide} from '@splidejs/react-splide';
 import {getListMovieFunction} from '../../apis/GetMethod/getListMovie';
 import {getShowtimesFunction} from '../../apis/GetMethod/getShowtimes';
+import {getTheatersFunction} from '../../apis/GetMethod/getTheaters';
+
 import {SVG_SelectDown} from '../../assets/icons';
 
 function Schedule() {
   const [movieList, setMovieList] = useState([]);
   const [showtimeList, setShowtimeList] = useState();
+  const [theaterList, setTheaterList] = useState();
+
   const currentStatus = 'OnShow';
-
-  // const combineData = (movies, showtimes) => {
-  //   return movies.map(movie => {
-  //     const movieShowtimes = showtimes.find(
-  //       showtime => showtime.movieId === movie.movieId,
-  //     );
-  //     return {...movie, showtimes: movieShowtimes};
-  //   });
-  // };
-
-  // const groups = movieList.reduce((groups, obj) => {
-  //   const movieId = obj.movieId;
-
-  //   const movieShowtimes = showtimeList.filter(
-  //     showtime => showtime.movieId === movieId,
-  //   );
-
-  //   if (!groups[movieShowtimes]) {
-  //     groups[movieShowtimes] = [];
-  //   }
-  //   groups[movieShowtimes].push(obj);
-  //   return groups;
-  // }, {});
-
-  // console.log('okela: ', groups);
-
-  // // Edit: to add it in the array format instead
-  // const groupArrays = Object.keys(groups).map(date => {
-  //   return {
-  //     date,
-  //     showtime: groups[date],
-  //   };
-  // });
 
   const combinedData = movieList.reduce((acc, movie) => {
     const movieShowtimes = showtimeList
       .filter(showtime => showtime.movieId === movie.movieId)
       .reduce((grouped, showtime) => {
         const date = showtime.date;
+
+        const theater = theaterList.filter(
+          theater => theater.theaterId === showtime.theaterId,
+        );
+
         if (!grouped[date]) {
           grouped[date] = [];
         }
-        grouped[date].push(showtime);
+
+        if (!grouped[date][theater.theaterId]) {
+          grouped[date][theater.theaterId] = {
+            theater,
+            showtimes: [],
+          };
+        }
+        grouped[date][theater.theaterId].showtimes.push(showtime);
         return grouped;
       }, {});
 
@@ -74,17 +57,15 @@ function Schedule() {
       console.log('listst:', res);
       setShowtimeList(res);
     });
+    getTheatersFunction().then(res => {
+      console.log('listt:', res);
+      setTheaterList(res);
+    });
   }, []);
 
   const [isOpen, setIsOpen] = useState(false);
   const [selectedInfo, setSelectedInfo] = useState('Choose Theater');
   const [isRotated, setIsRotated] = useState(false);
-  const theaters = [
-    'UITheater Parkson',
-    'UITheater Vincom',
-    'UITheater Gigamall',
-  ];
-
   const rotation = isRotated => {
     return {
       transform: isRotated ? 'rotate(180deg)' : 'rotate(0deg)',
@@ -141,7 +122,7 @@ function Schedule() {
                 </button>
                 {isOpen && (
                   <div className={styles.dropDownContent}>
-                    {theaters.map(i => (
+                    {theaterList.map(i => (
                       <div
                         onClick={() => {
                           setSelectedInfo(i);
