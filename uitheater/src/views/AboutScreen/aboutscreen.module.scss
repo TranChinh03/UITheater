@@ -1,5 +1,58 @@
-.Container{
-    background-color: azure;
-    width: 1000px;
-    height: 100px;
+.container {
+    width: 100%;
+    background-color: #231b5b;
+    height: max-content;
+    min-height: 1200px;
+}
+
+.aboutSection {
+    margin: 50px 100px;
+    background-color: #231b5b;
+}
+
+.aboutButton {
+    background-color: #C70039;
+    width: 100%;
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 20px;
+    border-color: #F9C9CF;
+    border-radius: 50px 0px;
+    margin: 30px 0;
+}
+
+.aboutButton p {
+    color: white;
+    font-size: 40px;
+    margin: 0;
+    line-height: 80px;
+}
+
+.dropIcon {
+    width: 40px;
+    height: 80px;
+    color: #fffaf5;
+}
+
+.rotate {
+    animation: rotate 0.3s linear;
+  }
+  
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(180deg);
+    }
+}
+
+.answerContainer {
+    background-color: #FFFAF5;
+    border-radius: 30px;
+    border-color: #F9C9CF;
+    margin-top: -20px;
+    font-size: 20px;
+    padding: 10px;
 }
