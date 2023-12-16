@@ -6,18 +6,76 @@ import {IM_Banner, IM_Banner1, IM_Banner2, IM_Banner3} from '../../assets/imgs';
 import BookingFilter from '../../components/BookingFilter/bookingFilter';
 import {Splide, SplideSlide} from '@splidejs/react-splide';
 import {getListMovieFunction} from '../../apis/GetMethod/getListMovie';
+import {getShowtimesFunction} from '../../apis/GetMethod/getShowtimes';
 import {SVG_SelectDown} from '../../assets/icons';
 
 function Schedule() {
   const [movieList, setMovieList] = useState([]);
+  const [showtimeList, setShowtimeList] = useState();
   const currentStatus = 'OnShow';
+
+  // const combineData = (movies, showtimes) => {
+  //   return movies.map(movie => {
+  //     const movieShowtimes = showtimes.find(
+  //       showtime => showtime.movieId === movie.movieId,
+  //     );
+  //     return {...movie, showtimes: movieShowtimes};
+  //   });
+  // };
+
+  // const groups = movieList.reduce((groups, obj) => {
+  //   const movieId = obj.movieId;
+
+  //   const movieShowtimes = showtimeList.filter(
+  //     showtime => showtime.movieId === movieId,
+  //   );
+
+  //   if (!groups[movieShowtimes]) {
+  //     groups[movieShowtimes] = [];
+  //   }
+  //   groups[movieShowtimes].push(obj);
+  //   return groups;
+  // }, {});
+
+  // console.log('okela: ', groups);
+
+  // // Edit: to add it in the array format instead
+  // const groupArrays = Object.keys(groups).map(date => {
+  //   return {
+  //     date,
+  //     showtime: groups[date],
+  //   };
+  // });
+
+  const combinedData = movieList.reduce((acc, movie) => {
+    const movieShowtimes = showtimeList
+      .filter(showtime => showtime.movieId === movie.movieId)
+      .reduce((grouped, showtime) => {
+        const date = showtime.date;
+        if (!grouped[date]) {
+          grouped[date] = [];
+        }
+        grouped[date].push(showtime);
+        return grouped;
+      }, {});
+
+    acc.push({...movie, showtimes: movieShowtimes});
+    return acc;
+  }, []);
+
+  console.log('gi z', combinedData);
 
   useEffect(() => {
     getListMovieFunction().then(res => {
-      console.log(res);
+      console.log('listm: ', res);
       setMovieList(res);
     });
-  });
+    getShowtimesFunction().then(res => {
+      console.log('listst:', res);
+      setShowtimeList(res);
+    });
+  }, []);
+
   const [isOpen, setIsOpen] = useState(false);
   const [selectedInfo, setSelectedInfo] = useState('Choose Theater');
   const [isRotated, setIsRotated] = useState(false);
@@ -109,7 +167,7 @@ function Schedule() {
       </div>
       <div className={styles.movieListContainer}>
         <Grid>
-          {movieList
+          {combinedData
             .filter(movie => movie.status === currentStatus)
             .map((value, status) => (
               <Grid

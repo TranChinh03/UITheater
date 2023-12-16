@@ -12,22 +12,22 @@ import ForgotPassword from './PasswordScreen/ForgotPassword';
 import ResetPassword from './PasswordScreen/ResetPassword';
 import Booking from './BookingScreen/Booking';
 import Draft from './draft/draft';
-import { getListMovieFunction } from '../apis/GetMethod/getListMovie';
-
-
+import {getListMovieFunction} from '../apis/GetMethod/getListMovie';
 
 function App() {
   useEffect(() => {
     const fetchMovies = async () => {
       try {
-          localStorage.setItem('movieList', JSON.stringify(await getListMovieFunction()));
+        localStorage.setItem(
+          'movieList',
+          JSON.stringify(await getListMovieFunction()),
+        );
+      } catch (error) {
+        console.log('Error fetching movies!');
       }
-      catch (error) {
-        console.log('Error fetching movies!')
-      }
-    }
-    fetchMovies()
-  }, [])
+    };
+    fetchMovies();
+  }, []);
 
   return (
     <>
@@ -36,7 +36,7 @@ function App() {
         <Routes>
           <Route path="/" exact={true} element={<Home />} />
           <Route path="/movies" element={<Movies />} />
-          <Route path="/schedule" element={<Booking />} />
+          <Route path="/schedule" element={<Schedule />} />
           <Route path="/about" element={<About />} />
           <Route path="/register" element={<Register />} />
           <Route path="/forgotpassword" element={<ForgotPassword />} />
