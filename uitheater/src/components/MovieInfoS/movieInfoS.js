@@ -5,12 +5,12 @@ import {Grid} from '@mui/material';
 function MovieInfoS(props) {
   const groupArrays = props.showtimes.map(date => {
     return {
-      date: Object.keys(date)[0],
-      showtime: date[Object.keys(date)[0]],
+      date,
+      showtime: props.showtimes[date],
     };
   });
 
-  console.log('?', groupArrays);
+  console.log('aaaa', groupArrays);
 
   return (
     <>

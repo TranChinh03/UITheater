@@ -5,62 +5,49 @@ import {Grid} from '@mui/material';
 import {IM_Banner, IM_Banner1, IM_Banner2, IM_Banner3} from '../../assets/imgs';
 import BookingFilter from '../../components/BookingFilter/bookingFilter';
 import {Splide, SplideSlide} from '@splidejs/react-splide';
-import {getListMovieFunction} from '../../apis/GetMethod/getListMovie';
-import {getShowtimesFunction} from '../../apis/GetMethod/getShowtimes';
+import {getScheduleFunction} from '../../apis/GetMethod/getSchedule';
 import {getTheatersFunction} from '../../apis/GetMethod/getTheaters';
 
 import {SVG_SelectDown} from '../../assets/icons';
 
 function Schedule() {
-  const [movieList, setMovieList] = useState([]);
-  const [showtimeList, setShowtimeList] = useState([]);
+  const [schedule, setSchedule] = useState([]);
   const [theaterList, setTheaterList] = useState([]);
-  const [combinedData, setCombinedData] = useState([]);
+
   const currentStatus = 'OnShow';
 
+  const combinedData = schedule.reduce((grouped, obj) => {
+    const movieId = obj.movieId;
+    if (!grouped[movieId]) {
+      grouped[movieId] = [];
+    }
+    grouped[movieId].push(obj);
+    return grouped;
+  }, []);
+  console.log('com', combinedData);
+
+  const combinedDate = combinedData.map(obb =>
+    obb.reduce((grouped, obj) => {
+      const date = obj.date;
+      if (!grouped[date]) {
+        grouped[date] = [];
+      }
+      grouped[date].push(obj);
+      return grouped;
+    }, []),
+  );
+  console.log('commm', combinedDate);
+
   useEffect(() => {
-    getListMovieFunction().then(res => {
-      setMovieList(res);
-    });
-    getShowtimesFunction().then(res => {
-      setShowtimeList(res);
+    getScheduleFunction().then(res => {
+      setSchedule(res);
+      console.log('st', res);
     });
     getTheatersFunction().then(res => {
       setTheaterList(res);
+      console.log('theater', res);
     });
   }, []);
-
-  useEffect(() => {
-    const result = movieList.reduce((acc, movie) => {
-      const movieShowtimes = showtimeList
-        .filter(showtime => showtime.movieId === movie.movieId)
-        .map((value, index) => {
-          const result = {};
-          const date = value.date;
-
-          const theater = theaterList.filter(
-            theater => theater.theaterId == value.theaterId,
-          );
-
-          if (date in result) {
-            result[date].push({
-              showtime: value.time,
-              theater: theater[0],
-            });
-          } else {
-            result[date] = [];
-            result[date].push({
-              showtime: value.time,
-              theater: theater[0],
-            });
-          }
-          return result;
-        });
-      acc.push({...movie, showtimes: movieShowtimes});
-      return acc;
-    }, []);
-    setCombinedData(result);
-  }, [movieList, showtimeList, theaterList]);
 
   const [isOpen, setIsOpen] = useState(false);
   const [selectedInfo, setSelectedInfo] = useState('Choose Theater');
@@ -147,13 +134,17 @@ function Schedule() {
       </div>
       <div className={styles.movieListContainer}>
         <Grid>
-          {combinedData
-            .filter(movie => movie.status === currentStatus)
-            .map((value, status) => (
+          {schedule
+            .filter(
+              obj =>
+                obj.movie.status === currentStatus &&
+                obj.theaterId === selectedInfo,
+            )
+            .map(obj => (
               <Grid
                 item
                 xs={6}
-                key={status}
+                key={obj.movie.status}
                 style={{
                   display: 'flex',
                   justifyContent: 'space-around',
@@ -161,10 +152,10 @@ function Schedule() {
                   marginTop: '20px',
                 }}>
                 <MovieInfoS
-                  src={value.image}
-                  title={value.title}
-                  detail={value.description}
-                  showtimes={value.showtimes}></MovieInfoS>
+                  src={obj.movie.image}
+                  title={obj.movie.title}
+                  detail={obj.movie.description}
+                  showtimes={obj}></MovieInfoS>
               </Grid>
             ))}
         </Grid>
