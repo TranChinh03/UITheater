@@ -9,13 +9,12 @@ function MovieInfoS(props) {
       showtime: props.showtimes[date],
     };
   });
-
   return (
     <>
       <div className={styles.container}>
         <div className={styles.bgContainer}>
           <img
-            src={props.image}
+            src={props.src}
             alt="Phim"
             width={'200px'}
             height={'300px'}
@@ -29,16 +28,18 @@ function MovieInfoS(props) {
         </div>
 
         <Grid container>
-          {groupArrays.map(e => (
-            <Grid item key={e.date} className={styles.showtimeContainer}>
-              <div className={styles.date}>{e.date}</div>
-              {e.showtime.map(x => (
-                <button key={x.showtime} className={styles.time}>
-                  {x.time}
-                </button>
-              ))}
-            </Grid>
-          ))}
+          {groupArrays.map(e => {
+            return (
+              <Grid item key={e.index} className={styles.showtimeContainer}>
+                <div className={styles.date}>{e.date}</div>
+                {e.showtime.map(x => (
+                  <button key={x.showtime} className={styles.time}>
+                    {x.time}
+                  </button>
+                ))}
+              </Grid>
+            );
+          })}
         </Grid>
       </div>
     </>

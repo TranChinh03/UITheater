@@ -5,24 +5,23 @@ export const getScheduleFunction = async index => {
     index: index,
   });
 
-let config = {
-  method: 'get',
-  maxBodyLength: Infinity,
-  url: 'https://uitlogachcu.onrender.com/getSchedule',
-  headers: { 
-    'Content-Type': 'application/json', 
-  },
-  data: data,
-};
+  let config = {
+    method: 'get',
+    maxBodyLength: Infinity,
+    url: 'https://uitlogachcu.onrender.com/getSchedule',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    data: data,
+  };
 
-
-
-const result = await axios.request(config)
-  .then((response) => {
-    return response.data
-  })
-  .catch((error) => {
-    console.log(error);
-  });
+  const result = await axios
+    .request(config)
+    .then(response => {
+      return response.data;
+    })
+    .catch(error => {
+      console.log(error);
+    });
   return result;
 };

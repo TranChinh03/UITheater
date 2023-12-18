@@ -14,6 +14,7 @@ import Booking from './BookingScreen/Booking';
 import MovieDetail from './MovieDetailScreen/MovieDetail';
 import Draft from './draft/draft';
 import {getListMovieFunction} from '../apis/GetMethod/getListMovie';
+import Payment from './PaymentScreen/Payment';
 
 function App() {
   useEffect(() => {
@@ -37,14 +38,17 @@ function App() {
         <Routes>
           <Route path="/" exact={true} element={<Home />} />
           <Route path="/movies" element={<Movies />} />
-          <Route path="/schedule" element={<Booking />} />
+          <Route path="/schedule" element={<Schedule />} />
           <Route path="/about" element={<About />} />
           <Route path="/register" element={<Register />} />
           <Route path="/forgotpassword" element={<ForgotPassword />} />
           <Route path="/resetpassword/:id/:token" element={<ResetPassword />} />
           <Route path="/me" element={<Info />} />
           <Route path="/booking" element={<Booking />} />
+          <Route path="/payment" element={<Payment />} />
+
           <Route path="/moviedetail" element={<MovieDetail />} />
+
           <Route path="/draft" element={<Draft />} />
           <Route path="*" element={<NotFoundScreen />} />
         </Routes>

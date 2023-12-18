@@ -5,66 +5,61 @@ import {Grid} from '@mui/material';
 import {IM_Banner, IM_Banner1, IM_Banner2, IM_Banner3} from '../../assets/imgs';
 import BookingFilter from '../../components/BookingFilter/bookingFilter';
 import {Splide, SplideSlide} from '@splidejs/react-splide';
-import {getListMovieFunction} from '../../apis/GetMethod/getListMovie';
-import {getShowtimesFunction} from '../../apis/GetMethod/getShowtimes';
+import {getScheduleFunction} from '../../apis/GetMethod/getSchedule';
 import {getTheatersFunction} from '../../apis/GetMethod/getTheaters';
 
 import {SVG_SelectDown} from '../../assets/icons';
 
 function Schedule() {
-  const [movieList, setMovieList] = useState([]);
-  const [showtimeList, setShowtimeList] = useState();
-  const [theaterList, setTheaterList] = useState();
-
-  const currentStatus = 'OnShow';
-
-  const combinedData = movieList.reduce((acc, movie) => {
-    const movieShowtimes = showtimeList
-      .filter(showtime => showtime.movieId === movie.movieId)
-      .reduce((grouped, showtime) => {
-        const date = showtime.date;
-
-        const theater = theaterList.filter(
-          theater => theater.theaterId === showtime.theaterId,
-        );
-
-        if (!grouped[date]) {
-          grouped[date] = [];
-        }
-
-        if (!grouped[date][theater.theaterId]) {
-          grouped[date][theater.theaterId] = {
-            theater,
-            showtimes: [],
-          };
-        }
-        grouped[date][theater.theaterId].showtimes.push(showtime);
-        return grouped;
-      }, {});
-
-    acc.push({...movie, showtimes: movieShowtimes});
-    return acc;
-  }, []);
-
-  console.log('gi z', combinedData);
-
+  const [schedule, setSchedule] = useState([]);
+  const [theaterList, setTheaterList] = useState([]);
+  const [selectedInfo, setSelectedInfo] = useState(-1);
+  const [combinedDate, setCombinedDate] = useState([]);
   useEffect(() => {
-    getListMovieFunction().then(res => {
-      console.log('listm: ', res);
-      setMovieList(res);
+    const result = [];
+    schedule.forEach((value, _) => {
+      if (selectedInfo == -1 || value.theaterId == selectedInfo) {
+        if (
+          result.filter((movie, index) => movie.movieId == value.movieId)
+            .length == 0
+        )
+          result.push({
+            movieId: value.movieId,
+            showTime: {},
+            ...value.movie[0],
+          });
+
+        if (
+          !(
+            value.date in
+            result.find((movie, index) => movie.movieId == value.movieId)
+              .showTime
+          )
+        )
+          if (selectedInfo == -1 || value.theaterId == selectedInfo)
+            result.find(
+              (movie, index) => movie.movieId == value.movieId,
+            ).showTime[value.date] = [];
+        result
+          .find((movie, index) => movie.movieId == value.movieId)
+          .showTime[value.date].push({
+            time: value.time,
+            theaterId: value.theaterId,
+          });
+      }
     });
-    getShowtimesFunction().then(res => {
-      console.log('listst:', res);
-      setShowtimeList(res);
+    setCombinedDate(result);
+  }, [selectedInfo, schedule, theaterList]);
+  useEffect(() => {
+    getScheduleFunction().then(res => {
+      setSchedule(res);
     });
     getTheatersFunction().then(res => {
-      console.log('listt:', res);
       setTheaterList(res);
     });
   }, []);
 
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedInfo, setSelectedInfo] = useState('Choose Theater');
   const [isRotated, setIsRotated] = useState(false);
   const rotation = isRotated => {
     return {
@@ -112,7 +107,11 @@ function Schedule() {
                 }}
                 className={styles.dropDown}>
                 <button className={styles.dropBtn}>
-                  <div className={styles.dropText}>{selectedInfo}</div>
+                  <div className={styles.dropText}>
+                    {selectedInfo == -1
+                      ? 'Choose Theater'
+                      : theaterList[selectedInfo].name}
+                  </div>
                   <img
                     className={styles.dropIcon}
                     src={SVG_SelectDown}
@@ -125,12 +124,12 @@ function Schedule() {
                     {theaterList.map(i => (
                       <div
                         onClick={() => {
-                          setSelectedInfo(i);
+                          setSelectedInfo(i.theaterId);
                           setIsOpen(false);
                           setIsRotated(false);
                         }}
                         className={styles.dropDownItem}>
-                        {i}
+                        {i.name}
                       </div>
                     ))}
                   </div>
@@ -140,35 +139,41 @@ function Schedule() {
           </div>
         </div>
         <div className={styles.theaterDisplay}>
-          <div className={styles.text1}>UITheater Parkson</div>
-          <div>
-            63 Truong Dinh Street, Ben Thanh Ward, District 1, Ho Chi Minh
+          <div className={styles.theaterName}>
+            {selectedInfo == -1 ? '' : theaterList[selectedInfo].name}
+          </div>
+          <div className={styles.theaterAddress}>
+            {selectedInfo == -1 ? '' : theaterList[selectedInfo].address}
           </div>
         </div>
       </div>
       <div className={styles.movieListContainer}>
-        <Grid>
-          {combinedData
-            .filter(movie => movie.status === currentStatus)
-            .map((value, status) => (
-              <Grid
-                item
-                xs={6}
-                key={status}
-                style={{
-                  display: 'flex',
-                  justifyContent: 'space-around',
-                  backgroundColor: '#231b5b',
-                  marginTop: '20px',
-                }}>
-                <MovieInfoS
-                  src={value.image}
-                  title={value.title}
-                  detail={value.description}
-                  showtimes={value.showtimes}></MovieInfoS>
-              </Grid>
-            ))}
-        </Grid>
+        {selectedInfo == -1 ? (
+          ''
+        ) : (
+          <Grid>
+            {combinedDate.map(obj => {
+              return (
+                <Grid
+                  item
+                  xs={6}
+                  key={`${obj.movieId}`}
+                  style={{
+                    display: 'flex',
+                    justifyContent: 'space-around',
+                    backgroundColor: '#231b5b',
+                    marginTop: '20px',
+                  }}>
+                  <MovieInfoS
+                    src={obj.image}
+                    title={obj.title}
+                    detail={obj.description}
+                    showtimes={obj.showTime}></MovieInfoS>
+                </Grid>
+              );
+            })}
+          </Grid>
+        )}
       </div>
     </div>
   );
