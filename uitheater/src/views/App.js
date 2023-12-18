@@ -11,6 +11,7 @@ import Info from './InfoScreen/Info';
 import ForgotPassword from './PasswordScreen/ForgotPassword';
 import ResetPassword from './PasswordScreen/ResetPassword';
 import Booking from './BookingScreen/Booking';
+import MovieDetail from './MovieDetailScreen/MovieDetail';
 import Draft from './draft/draft';
 import {getListMovieFunction} from '../apis/GetMethod/getListMovie';
 
@@ -43,6 +44,7 @@ function App() {
           <Route path="/resetpassword/:id/:token" element={<ResetPassword />} />
           <Route path="/me" element={<Info />} />
           <Route path="/booking" element={<Booking />} />
+          <Route path="/moviedetail" element={<MovieDetail />} />
           <Route path="/draft" element={<Draft />} />
           <Route path="*" element={<NotFoundScreen />} />
         </Routes>
