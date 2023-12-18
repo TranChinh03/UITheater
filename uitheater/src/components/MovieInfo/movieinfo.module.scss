@@ -7,12 +7,31 @@
   align-items: center;
 }
 
+.bgContainer2 {
+  height: 680px;
+  flex-direction: row;
+  display: flex;
+  background-color: #f9dec9;
+  align-items: center;
+  margin: auto;
+  width: fit-content;
+}
+
 .infoContainer {
   background-color: #d80032;
   width: 350px;
   height: 300px;
   margin-right: 5px;
   border-radius: 25px;
+  box-shadow: #bba797;
+}
+
+.infoContainer2 {
+  background-color: #d80032;
+  width: 700px;
+  height: 600px;
+  margin-left: 10px;
+  border-radius: 50px;
   box-shadow: #bba797;
 }
 
@@ -27,6 +46,17 @@
   text-align: left;
 }
 
+.movieTitle2 {
+  color: #fffaf5;
+  font-family: 'InterBold';
+  font-style: italic;
+  text-wrap: break-word;
+  margin-top: 30px;
+  font-size: 36px;
+  padding: 0 40px;
+  text-align: left;
+}
+
 .detailContainer {
   width: 315px;
   height: 100px;
@@ -35,6 +65,16 @@
   margin: 7px auto;
   overflow: hidden;
   border-radius: 10px 0 10px 0;
+}
+
+.detailContainer2 {
+  width: 630px;
+  height: 200px;
+  background-color: #f9dec9;
+  align-content: center;
+  margin: 14px auto;
+  overflow: hidden;
+  border-radius: 20px 0 20px 0;
 }
 
 .detailContainer div {
@@ -54,10 +94,34 @@
   -webkit-box-orient: vertical;
 }
 
+.detailContainer2 div {
+  padding: 20px;
+  font-size: 1.8rem;
+  height: 140px;
+  font-family: 'Inter';
+  overflow: hidden;
+  text-align: justify;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  line-height: 32px;
+  max-height: 200px;
+  -webkit-line-clamp: 5; /* Write the number of 
+                           lines you want to be 
+                           displayed */
+  -webkit-box-orient: vertical;
+}
+
 .preDate {
   display: flex;
   flex-direction: row;
   margin: 20px;
+  justify-content: flex-start;
+}
+
+.preDate2 {
+  display: flex;
+  flex-direction: row;
+  margin: 40px;
   justify-content: flex-start;
 }
 
@@ -70,9 +134,26 @@
   padding: 0px 10px;
 }
 
+.preDateContainer2 {
+  background-color: #f9dec9;
+  width: fit-content;
+  margin-left: 60px;
+  overflow: hidden;
+  border-radius: 40px 0 40px 0;
+  padding: 0px 20px;
+}
+
 .date {
   padding: 3px;
   font-size: 0.9rem;
+  font-family: 'Inter';
+  font-weight: bold;
+  color: #1a1444;
+}
+
+.date2 {
+  padding: 6px;
+  font-size: 1.8rem;
   font-family: 'Inter';
   font-weight: bold;
   color: #1a1444;
@@ -85,6 +166,15 @@
   padding-left: 5px;
   padding-right: 5px;
 }
+
+.buttons2 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
 
 .trailerBtn {
   background-color: #f9dec9;
@@ -102,6 +192,22 @@
   cursor: pointer;
 }
 
+.trailerBtn2 {
+  background-color: #f9dec9;
+  display: flex;
+  height: 80px;
+  width: 220px;
+  border-radius: 60px;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  color: #1a1444;
+  font-family: 'InterBold';
+  font-size: 30px;
+  border-style: none;
+  cursor: pointer;
+}
+
 .bookingBtn {
   background-color: #1a1444;
   height: 40px;
@@ -113,5 +219,19 @@
   color: #fffaf5;
   font-family: 'InterBold';
   font-size: 15px;
+  cursor: pointer;
+}
+
+.bookingBtn2 {
+  background-color: #1a1444;
+  height: 80px;
+  width: 300px;
+  border-radius: 60px 0 0px 0;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  color: #fffaf5;
+  font-family: 'InterBold';
+  font-size: 30px;
   cursor: pointer;
 }

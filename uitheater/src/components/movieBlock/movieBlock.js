@@ -4,8 +4,10 @@ import styles from './movieblock.module.scss';
 import '../../assets/fonts/fonts.css';
 import src from '../../assets/imgs/shin-cau-be-but-chi.jpg';
 import { useState } from 'react';
+import {useNavigate} from 'react-router-dom';
 
-function MovieBlock({movieName, movieImg, movieDes}) {
+function MovieBlock({movie, isHome=true}) {
+  const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false)
   const handleMouseEnter = () => {
     setIsOpen(true);
@@ -19,18 +21,25 @@ function MovieBlock({movieName, movieImg, movieDes}) {
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}>
       <div className={styles.imageContainer}>
-        <img src={movieImg} alt="Ảnh phim" />
+        <img src={movie.image} alt="Ảnh phim" />
       </div>
       <div className={styles.movieName}>
         <p>
-          {movieName}
+          {movie.title}
         </p>
       </div>
 
       {isOpen && <div className={`${styles.descriptionContainer} ${isOpen && styles.scale}`}>
-        <p>{movieDes}</p>
+        <p>{movie.description}</p>
         <p style={{flex: 0.1, margin: 0, color: '#D80032'}}>. . .</p>
-        <button className={styles.detail}>Details</button>
+        <button className={styles.detail} onClick={() => {
+          if (isHome) {
+            navigate('moviedetail', {state: movie})
+          } else {
+            navigate('../moviedetail', {state: movie})
+
+          }}}>
+            Details</button>
         <div style={{flex:0.1}}/>
         <button className={styles.booking}>Book Now</button>
       </div>}
