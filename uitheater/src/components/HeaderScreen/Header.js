@@ -68,7 +68,7 @@ const Header = () => {
             <img className={styles.searchLogo} src={SVG_Search} alt="Search" />
           </div>
           {!isLogin() ? (
-            <div className={styles.signIn} onClick={showModal}>
+            <div className={styles.signIn} onClick={showModal} isDefault={true}>
               <div className={styles.signInText}>Sign In</div>
             </div>
           ) : (

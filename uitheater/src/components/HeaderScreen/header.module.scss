@@ -1,3 +1,5 @@
+
+
 .headerContainer {
   height: 150px;
   width: 100%;
@@ -93,6 +95,7 @@
       display: flex;
       flex-direction: row;
       justify-content: center;
+      text-decoration: none;
       .NavBarText {
         color: white;
         font-family: 'Lilita One';
@@ -105,10 +108,12 @@
       width: 27%;
       display: flex;
       align-items: center;
+      background-color: #5B5684;
       justify-content: center;
       border: white solid 1px;
       border-top-left-radius: 45px;
       border-bottom-left-radius: 45px;
+      text-decoration: none;
     }
 
     /* Change the color of links on hover */
@@ -117,12 +122,13 @@
       color: white;
       text-decoration: none;
     }
-
-    /* Add a color to the active/current link */
-    .NavBar a.active {
+    .NavBar :global(.active) {
       background-color: #1a1444;
-      color: white;
       text-decoration: none;
+    }
+    /* Add a color to the active/current link */
+    .NavBar a:active {
+      background-color: #2b2167;
     }
     .NavBar a.BetweenNav {
       width: 23%;
@@ -150,13 +156,14 @@
   right: 0;
   width: 14vw;
   border-radius: 20px;
-  background-color: #1a1444;
+  background-color: rgb(26, 20, 68);
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   border-color: white;
   border-style: dotted;
   border-width: 1px;
   position: absolute;
   z-index: 3;
+  overflow: hidden;
 }
 
 .dropdownContent a {
@@ -166,10 +173,12 @@
   padding: 12px 20px;
   text-decoration: none;
   display: block;
+  opacity: 0.7;
 }
 
 .dropdownContent a:hover {
-  font-size: 100;
+  background-color: rgba(174, 178, 190, 0.3);
+  opacity: 1;
 }
 
 .dropdown:hover .dropdownContent {

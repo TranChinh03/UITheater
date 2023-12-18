@@ -73,7 +73,7 @@ function BookingInfo({selectedSeats}) {
                 }}>
                 {selectedSeats.length === 0
                   ? 'No seats selected!'
-                  : selectedSeats.map(seat => `  ${seat}  `)}
+                  : selectedSeats.length <= 10 ? selectedSeats.slice(0, 10).map(seat => ` ${seat}`) + `` : selectedSeats.slice(0, 9).map(seat => ` ${seat}`) + `  +${selectedSeats.length-9} more` }
               </div>
             </div>
           </div>

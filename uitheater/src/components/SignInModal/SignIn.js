@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useRef } from 'react';
 import {Button, Modal, ConfigProvider, Space, message} from 'antd';
 import cookie from 'react-cookies';
 import styles from './signin.module.scss';
@@ -11,6 +11,7 @@ const SignIn = props => {
   const navigate = useNavigate();
   const [form] = Form.useForm();
   const [clientReady, setClientReady] = useState(false);
+  const buttonRef = useRef(null);
 
   // To disable submit button at the beginning.
   const [email, setEmail] = useState('');
@@ -18,12 +19,23 @@ const SignIn = props => {
   const onLogin = () => {
     cookie.save('UserToken', localStorage.getItem('Token'), {path: '/'});
   };
+
+  const handleKeyPress = (event) => {
+    if (event.key === 'Enter') {
+      buttonRef.current.click();
+    }
+  };
+
   const onForgot = () => {
       handleOk();
       navigate('/forgotpassword');
   };
   async function onClickSignIn(e) {
     e.preventDefault();
+    if (email === '' || password === '') {
+      message.warning("Please fill full information!")
+      return;
+    }
     let data = JSON.stringify({
       email: email,
       password: password,
@@ -101,6 +113,7 @@ const SignIn = props => {
             <Input
               style={{borderRadius: 35, fontSize: 14, height: '30px'}}
               className={styles.input}
+              onKeyPress={handleKeyPress}
               placeholder="Please enter your email"
               onChange={e => {
                 setEmail(e.target.value);
@@ -109,6 +122,7 @@ const SignIn = props => {
           </Form.Item>
           <Form.Item label="Password: " style={{height: 'fit-content'}}>
             <Input.Password
+            onKeyPress={handleKeyPress}
               style={{
                 paddingLeft: 10,
                 borderRadius: 35,
@@ -124,6 +138,7 @@ const SignIn = props => {
           <Space>
             <Button
               onClick={onClickSignIn}
+              ref={buttonRef}
               style={{
                 width: 'fit-content',
                 height: 'fit-content',
