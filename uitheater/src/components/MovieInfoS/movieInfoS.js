@@ -33,7 +33,10 @@ function MovieInfoS(props) {
               <Grid item key={e.index} className={styles.showtimeContainer}>
                 <div className={styles.date}>{e.date}</div>
                 {e.showtime.map(x => (
-                  <button key={x.showtime} className={styles.time}>
+                  <button
+                    key={x.showtime}
+                    className={styles.time}
+                    onClick={() => {}}>
                     {x.time}
                   </button>
                 ))}
