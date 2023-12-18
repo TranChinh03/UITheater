@@ -50,11 +50,13 @@ function Schedule() {
     });
     setCombinedDate(result);
   }, [selectedInfo, schedule, theaterList]);
+
   useEffect(() => {
     getScheduleFunction().then(res => {
       setSchedule(res);
     });
     getTheatersFunction().then(res => {
+      console.log('theater', res);
       setTheaterList(res);
     });
   }, []);
@@ -110,7 +112,7 @@ function Schedule() {
                   <div className={styles.dropText}>
                     {selectedInfo == -1
                       ? 'Choose Theater'
-                      : theaterList[selectedInfo].name}
+                      : theaterList[selectedInfo - 1].name}
                   </div>
                   <img
                     className={styles.dropIcon}
@@ -140,10 +142,10 @@ function Schedule() {
         </div>
         <div className={styles.theaterDisplay}>
           <div className={styles.theaterName}>
-            {selectedInfo == -1 ? '' : theaterList[selectedInfo].name}
+            {selectedInfo == -1 ? '' : theaterList[selectedInfo - 1].name}
           </div>
           <div className={styles.theaterAddress}>
-            {selectedInfo == -1 ? '' : theaterList[selectedInfo].address}
+            {selectedInfo == -1 ? '' : theaterList[selectedInfo - 1].address}
           </div>
         </div>
       </div>
