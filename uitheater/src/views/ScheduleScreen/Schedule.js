@@ -13,55 +13,54 @@ import {SVG_SelectDown} from '../../assets/icons';
 
 function Schedule() {
   const [movieList, setMovieList] = useState([]);
-  const [showtimeList, setShowtimeList] = useState();
-  const [theaterList, setTheaterList] = useState();
-
+  const [showtimeList, setShowtimeList] = useState([]);
+  const [theaterList, setTheaterList] = useState([]);
+  const [combinedData, setCombinedData] = useState([]);
   const currentStatus = 'OnShow';
-
-  const combinedData = movieList.reduce((acc, movie) => {
-    const movieShowtimes = showtimeList
-      .filter(showtime => showtime.movieId === movie.movieId)
-      .reduce((grouped, showtime) => {
-        const date = showtime.date;
-
-        const theater = theaterList.filter(
-          theater => theater.theaterId === showtime.theaterId,
-        );
-
-        if (!grouped[date]) {
-          grouped[date] = [];
-        }
-
-        if (!grouped[date][theater.theaterId]) {
-          grouped[date][theater.theaterId] = {
-            theater,
-            showtimes: [],
-          };
-        }
-        grouped[date][theater.theaterId].showtimes.push(showtime);
-        return grouped;
-      }, {});
-
-    acc.push({...movie, showtimes: movieShowtimes});
-    return acc;
-  }, []);
-
-  console.log('gi z', combinedData);
 
   useEffect(() => {
     getListMovieFunction().then(res => {
-      console.log('listm: ', res);
       setMovieList(res);
     });
     getShowtimesFunction().then(res => {
-      console.log('listst:', res);
       setShowtimeList(res);
     });
     getTheatersFunction().then(res => {
-      console.log('listt:', res);
       setTheaterList(res);
     });
   }, []);
+
+  useEffect(() => {
+    const result = movieList.reduce((acc, movie) => {
+      const movieShowtimes = showtimeList
+        .filter(showtime => showtime.movieId === movie.movieId)
+        .map((value, index) => {
+          const result = {};
+          const date = value.date;
+
+          const theater = theaterList.filter(
+            theater => theater.theaterId == value.theaterId,
+          );
+
+          if (date in result) {
+            result[date].push({
+              showtime: value.time,
+              theater: theater[0],
+            });
+          } else {
+            result[date] = [];
+            result[date].push({
+              showtime: value.time,
+              theater: theater[0],
+            });
+          }
+          return result;
+        });
+      acc.push({...movie, showtimes: movieShowtimes});
+      return acc;
+    }, []);
+    setCombinedData(result);
+  }, [movieList, showtimeList, theaterList]);
 
   const [isOpen, setIsOpen] = useState(false);
   const [selectedInfo, setSelectedInfo] = useState('Choose Theater');
@@ -125,12 +124,12 @@ function Schedule() {
                     {theaterList.map(i => (
                       <div
                         onClick={() => {
-                          setSelectedInfo(i);
+                          setSelectedInfo(i.name);
                           setIsOpen(false);
                           setIsRotated(false);
                         }}
                         className={styles.dropDownItem}>
-                        {i}
+                        {i.name}
                       </div>
                     ))}
                   </div>
