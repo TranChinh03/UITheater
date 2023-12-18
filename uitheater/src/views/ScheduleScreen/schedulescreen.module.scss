@@ -20,7 +20,6 @@
 }
 
 .theaterFilter {
-  background-color: aqua;
   margin-left: 30px;
 }
 
@@ -29,24 +28,15 @@
   font-family: 'InterRegular';
   font-size: 35px;
   font-style: italic;
-  font-weight: 800;
+  font-weight: bolder;
   line-height: normal;
+  margin-left: 35px;
 }
 
-.text2 {
-  color: #fffaf5;
-  font-family: 'InterExtraBoldItalic';
-  font-size: 4vw;
-  font-style: italic;
-  font-weight: bold;
-  align-self: center;
-}
-//
 .boxGridContainer {
   display: grid;
   grid-template-columns: auto auto;
   grid-gap: 10px;
-  margin-left: 40px;
   padding: 10px;
 }
 
@@ -148,7 +138,23 @@
 //
 
 .theaterDisplay {
-  background-color: chartreuse;
+  margin-left: 100px;
+}
+
+.theaterName {
+  color: #fffaf5;
+  font-family: 'InterExtraBoldItalic';
+  font-size: 4vw;
+  font-style: italic;
+  font-weight: bold;
+  align-self: center;
+}
+
+.theaterAddress {
+  color: #fffaf5;
+  font-family: 'InterRegular';
+  font-size: 1.5vw;
+  align-self: center;
 }
 
 .movieListContainer {

@@ -13,44 +13,53 @@ import {SVG_SelectDown} from '../../assets/icons';
 function Schedule() {
   const [schedule, setSchedule] = useState([]);
   const [theaterList, setTheaterList] = useState([]);
+  const [selectedInfo, setSelectedInfo] = useState(-1);
+  const [combinedDate, setCombinedDate] = useState([]);
+  useEffect(() => {
+    const result = [];
+    schedule.forEach((value, _) => {
+      if (selectedInfo == -1 || value.theaterId == selectedInfo) {
+        if (
+          result.filter((movie, index) => movie.movieId == value.movieId)
+            .length == 0
+        )
+          result.push({
+            movieId: value.movieId,
+            showTime: {},
+            ...value.movie[0],
+          });
 
-  const currentStatus = 'OnShow';
-
-  const combinedData = schedule.reduce((grouped, obj) => {
-    const movieId = obj.movieId;
-    if (!grouped[movieId]) {
-      grouped[movieId] = [];
-    }
-    grouped[movieId].push(obj);
-    return grouped;
-  }, []);
-  console.log('com', combinedData);
-
-  const combinedDate = combinedData.map(obb =>
-    obb.reduce((grouped, obj) => {
-      const date = obj.date;
-      if (!grouped[date]) {
-        grouped[date] = [];
+        if (
+          !(
+            value.date in
+            result.find((movie, index) => movie.movieId == value.movieId)
+              .showTime
+          )
+        )
+          if (selectedInfo == -1 || value.theaterId == selectedInfo)
+            result.find(
+              (movie, index) => movie.movieId == value.movieId,
+            ).showTime[value.date] = [];
+        result
+          .find((movie, index) => movie.movieId == value.movieId)
+          .showTime[value.date].push({
+            time: value.time,
+            theaterId: value.theaterId,
+          });
       }
-      grouped[date].push(obj);
-      return grouped;
-    }, []),
-  );
-  console.log('commm', combinedDate);
-
+    });
+    setCombinedDate(result);
+  }, [selectedInfo, schedule, theaterList]);
   useEffect(() => {
     getScheduleFunction().then(res => {
       setSchedule(res);
-      console.log('st', res);
     });
     getTheatersFunction().then(res => {
       setTheaterList(res);
-      console.log('theater', res);
     });
   }, []);
 
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedInfo, setSelectedInfo] = useState('Choose Theater');
   const [isRotated, setIsRotated] = useState(false);
   const rotation = isRotated => {
     return {
@@ -98,7 +107,11 @@ function Schedule() {
                 }}
                 className={styles.dropDown}>
                 <button className={styles.dropBtn}>
-                  <div className={styles.dropText}>{selectedInfo}</div>
+                  <div className={styles.dropText}>
+                    {selectedInfo == -1
+                      ? 'Choose Theater'
+                      : theaterList[selectedInfo].name}
+                  </div>
                   <img
                     className={styles.dropIcon}
                     src={SVG_SelectDown}
@@ -111,7 +124,7 @@ function Schedule() {
                     {theaterList.map(i => (
                       <div
                         onClick={() => {
-                          setSelectedInfo(i.name);
+                          setSelectedInfo(i.theaterId);
                           setIsOpen(false);
                           setIsRotated(false);
                         }}
@@ -126,39 +139,41 @@ function Schedule() {
           </div>
         </div>
         <div className={styles.theaterDisplay}>
-          <div className={styles.text1}>UITheater Parkson</div>
-          <div>
-            63 Truong Dinh Street, Ben Thanh Ward, District 1, Ho Chi Minh
+          <div className={styles.theaterName}>
+            {selectedInfo == -1 ? '' : theaterList[selectedInfo].name}
+          </div>
+          <div className={styles.theaterAddress}>
+            {selectedInfo == -1 ? '' : theaterList[selectedInfo].address}
           </div>
         </div>
       </div>
       <div className={styles.movieListContainer}>
-        <Grid>
-          {schedule
-            .filter(
-              obj =>
-                obj.movie.status === currentStatus &&
-                obj.theaterId === selectedInfo,
-            )
-            .map(obj => (
-              <Grid
-                item
-                xs={6}
-                key={obj.movie.status}
-                style={{
-                  display: 'flex',
-                  justifyContent: 'space-around',
-                  backgroundColor: '#231b5b',
-                  marginTop: '20px',
-                }}>
-                <MovieInfoS
-                  src={obj.movie.image}
-                  title={obj.movie.title}
-                  detail={obj.movie.description}
-                  showtimes={obj}></MovieInfoS>
-              </Grid>
-            ))}
-        </Grid>
+        {selectedInfo == -1 ? (
+          ''
+        ) : (
+          <Grid>
+            {combinedDate.map(obj => {
+              return (
+                <Grid
+                  item
+                  xs={6}
+                  key={`${obj.movieId}`}
+                  style={{
+                    display: 'flex',
+                    justifyContent: 'space-around',
+                    backgroundColor: '#231b5b',
+                    marginTop: '20px',
+                  }}>
+                  <MovieInfoS
+                    src={obj.image}
+                    title={obj.title}
+                    detail={obj.description}
+                    showtimes={obj.showTime}></MovieInfoS>
+                </Grid>
+              );
+            })}
+          </Grid>
+        )}
       </div>
     </div>
   );

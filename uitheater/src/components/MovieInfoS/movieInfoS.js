@@ -3,21 +3,18 @@ import styles from './movieinfos.module.scss';
 import {Grid} from '@mui/material';
 
 function MovieInfoS(props) {
-  const groupArrays = props.showtimes.map(date => {
+  const groupArrays = Object.keys(props.showtimes).map(date => {
     return {
       date,
       showtime: props.showtimes[date],
     };
   });
-
-  console.log('aaaa', groupArrays);
-
   return (
     <>
       <div className={styles.container}>
         <div className={styles.bgContainer}>
           <img
-            src={props.image}
+            src={props.src}
             alt="Phim"
             width={'200px'}
             height={'300px'}
@@ -32,13 +29,12 @@ function MovieInfoS(props) {
 
         <Grid container>
           {groupArrays.map(e => {
-            console.log('111', e);
             return (
               <Grid item key={e.index} className={styles.showtimeContainer}>
                 <div className={styles.date}>{e.date}</div>
                 {e.showtime.map(x => (
                   <button key={x.showtime} className={styles.time}>
-                    {x.showtime}
+                    {x.time}
                   </button>
                 ))}
               </Grid>

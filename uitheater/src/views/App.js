@@ -13,6 +13,7 @@ import ResetPassword from './PasswordScreen/ResetPassword';
 import Booking from './BookingScreen/Booking';
 import Draft from './draft/draft';
 import {getListMovieFunction} from '../apis/GetMethod/getListMovie';
+import Payment from './PaymentScreen/Payment';
 
 function App() {
   useEffect(() => {
@@ -43,6 +44,7 @@ function App() {
           <Route path="/resetpassword/:id/:token" element={<ResetPassword />} />
           <Route path="/me" element={<Info />} />
           <Route path="/booking" element={<Booking />} />
+          <Route path="/payment" element={<Payment />} />
           <Route path="/draft" element={<Draft />} />
           <Route path="*" element={<NotFoundScreen />} />
         </Routes>
