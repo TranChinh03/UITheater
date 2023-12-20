@@ -13,7 +13,7 @@ import '@splidejs/react-splide/css';
 
 function Home() {
   const [currentTab, setCurrentTab] = useState('NOW SHOWING');
-  const [movieList, setMovieList] = useState([]);
+  const [movieList, setMovieList] = useState(JSON.parse(localStorage.getItem('movieList')));
   const [currentStatus, setCurrentStatus] = useState('OnShow');
 
   useEffect(() => {
@@ -21,7 +21,6 @@ function Home() {
     //   console.log(res);
     //   setMovieList(res);
     // });
-    setMovieList(JSON.parse(localStorage.getItem('movieList')))
     switch (currentTab) {
       case "NOW SHOWING":
         setCurrentStatus('OnShow');
@@ -89,7 +88,7 @@ function Home() {
             <SplideTrack>
               {movieList.filter(movie => movie.status === currentStatus).map((value, status) => (
                   <SplideSlide>
-                    <MovieBlock movieName={value.title} movieImg={value.image} movieDes={value.description}/>
+                    <MovieBlock movie={value}/>
                   </SplideSlide>
               ))}
             </SplideTrack>
