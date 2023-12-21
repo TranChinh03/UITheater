@@ -1,16 +1,18 @@
 .container {
   width: 100%;
-  height: 500px;
+  height: max-content;
   background-color: #f9dec9;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .tableContainer {
   width: 80%;
   height: 60%;
   background-color: #ffffff;
-  margin-top: -90px;
+  margin: 20px;
 }
 
 .boxTitle {
@@ -85,4 +87,72 @@
     animation-duration: 10ms;
     padding: 16.5px 14px;
   }
+}
+
+.totalContainer {
+  flex-direction: column;
+  display: flex;
+  background-color: #f9dec9;
+  width: 100%;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+}
+
+.total {
+  flex-direction: row;
+  display: flex;
+  margin-left: 20vw;
+}
+
+.totalTitle {
+  color: #0c0326;
+  font-family: 'Lilita One';
+  font-size: 2.5vw;
+  margin-right: 20px;
+}
+
+.totalC {
+  color: #c70039;
+  font-family: 'Lilita One';
+  font-size: 2.5vw;
+  margin-right: 10px;
+}
+
+.btnContainer {
+  flex-direction: row;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.btnNext {
+  background-color: #c70039;
+  height: 60px;
+  width: 250px;
+  border: none;
+  border-radius: 60px 60px 60px 0px;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  color: #fffaf5;
+  font-family: 'InterBold';
+  font-size: 30px;
+  cursor: pointer;
+  margin-left: 20px;
+}
+
+.btnReturn {
+  background-color: #f78ca2;
+  height: 60px;
+  width: 250px;
+  border: none;
+  border-radius: 60px 60px 0px 60px;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  color: #fffaf5;
+  font-family: 'InterBold';
+  font-size: 30px;
+  cursor: pointer;
+  margin-right: 20px;
 }
