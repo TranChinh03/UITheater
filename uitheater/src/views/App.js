@@ -1,9 +1,9 @@
+import React, {useEffect, useState} from 'react';
 import Header from '../components/HeaderScreen/Header';
 import About from '../views/AboutScreen/About';
 import Home from '../views/HomeScreen/Home';
 import Movies from '../views/MoviesScreen/Movies';
 import Schedule from '../views/ScheduleScreen/Schedule';
-import React, {useEffect, useState} from 'react';
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import Register from './RegisterScreen/Register';
 import NotFoundScreen from './NotFoundScreen/NotFoundScreen';
@@ -46,9 +46,7 @@ function App() {
           <Route path="/me" element={<Info />} />
           <Route path="/booking" element={<Booking />} />
           <Route path="/payment" element={<Payment />} />
-
           <Route path="/moviedetail" element={<MovieDetail />} />
-
           <Route path="/draft" element={<Draft />} />
           <Route path="*" element={<NotFoundScreen />} />
         </Routes>

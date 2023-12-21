@@ -1,8 +1,19 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {SVG_Close} from '../../assets/icons';
 import styles from './bookinginfo.module.scss';
+import {getScheduleFunction} from '../../apis/GetMethod/getSchedule';
 
-function BookingInfo({selectedSeats}) {
+function BookingInfo({selectedSeats, showTime, ticket, price}) {
+  const [schedule, setSchedule] = useState([]);
+  const [result, setResult] = useState();
+  useEffect(() => {
+    getScheduleFunction().then(res => {
+      console.log(res);
+      setSchedule(res);
+      setResult(res.find(schedule => schedule.id == showTime));
+    });
+  }, []);
+
   return (
     <>
       <div className={styles.container}>
@@ -10,8 +21,7 @@ function BookingInfo({selectedSeats}) {
         <div className={styles.infoContainer}>
           <div className={styles.titleContainer}>
             <div className={styles.movieTitle}>
-              3DCG! SHIN CẬU BÉ BÚT CHÌ 2D LT (P): <br />
-              ĐẠI CHIẾN SIÊU NĂNG LỰC SUSHI BAY
+              {result && result.movie[0].title}
             </div>
           </div>
           <div className={styles.info}>
@@ -20,26 +30,28 @@ function BookingInfo({selectedSeats}) {
                 className={styles.infofo}
                 style={{width: '18vw', borderRight: 'white solid 1px'}}>
                 <div className={styles.infoTitle}>Showtime:</div>
-                <div className={styles.infoData}>13:00</div>
+                <div className={styles.infoData}>{result && result.time}</div>
               </div>
               <div
                 className={styles.infofo}
                 style={{width: '22vw', borderRight: 'white solid 1px'}}>
                 <div className={styles.infoTitle}>Date:</div>
-                <div className={styles.infoData}>31 - 02 - 2023</div>
+                <div className={styles.infoData}>{result && result.date}</div>
               </div>
               <div
                 className={styles.infofo}
                 style={{width: '22vw', borderRight: 'white solid 1px'}}>
                 <div className={styles.infoTitle}>Ticket:</div>
                 <div className={styles.infoData}>
-                  {selectedSeats.length} tickets
+                  {/* {selectedSeats.length} tickets */}
+                  {ticket} tickets
                 </div>
               </div>
               <div className={styles.infofo} style={{width: '20vw'}}>
                 <div className={styles.infoTitle}>Total:</div>
                 <div className={styles.infoData}>
-                  {(200000 * selectedSeats.length).toLocaleString()} VND
+                  {/* {(200000 * selectedSeats.length).toLocaleString()} VND */}
+                  {price} VND
                 </div>
               </div>
             </div>
@@ -73,7 +85,10 @@ function BookingInfo({selectedSeats}) {
                 }}>
                 {selectedSeats.length === 0
                   ? 'No seats selected!'
-                  : selectedSeats.length <= 10 ? selectedSeats.slice(0, 10).map(seat => ` ${seat}`) + `` : selectedSeats.slice(0, 9).map(seat => ` ${seat}`) + `  +${selectedSeats.length-9} more` }
+                  : selectedSeats.length <= 10
+                  ? selectedSeats.slice(0, 10).map(seat => ` ${seat}`) + ``
+                  : selectedSeats.slice(0, 9).map(seat => ` ${seat}`) +
+                    `  +${selectedSeats.length - 9} more`}
               </div>
             </div>
           </div>

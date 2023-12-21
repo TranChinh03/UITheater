@@ -43,6 +43,7 @@ function Schedule() {
         result
           .find((movie, index) => movie.movieId == value.movieId)
           .showTime[value.date].push({
+            showTimeId: value.id,
             time: value.time,
             theaterId: value.theaterId,
           });
@@ -69,7 +70,6 @@ function Schedule() {
       transition: 'transform 0.25s ease-in-out', // Adjust transition duration as needed
     };
   };
-
   return (
     <div style={{backgroundColor: '#231b5b'}}>
       <Splide

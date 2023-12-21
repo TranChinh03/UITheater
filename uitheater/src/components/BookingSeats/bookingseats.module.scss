@@ -1,0 +1,32 @@
+.container {
+    background-color: #231b5b;
+}
+
+.diagramContainer {
+    padding: 20px;
+    width: 60%;
+    margin: auto;
+}
+
+.screen {
+    background-color: gray;
+    text-align: center;
+    color: #000;
+    margin: 25px auto 50px;
+}
+
+.seatMap {
+    display: grid;
+    grid-template-columns: auto auto auto auto auto auto auto auto auto auto auto auto auto;
+    grid-row-gap: 15px;
+    width: 85%;
+    margin: 15px auto;
+}
+
+.seatCoupleMap {
+    display: grid;
+    grid-template-columns: auto auto auto auto auto auto auto auto;
+    grid-row-gap: 15px;
+    width: 85%;
+    margin: 25px auto;
+}

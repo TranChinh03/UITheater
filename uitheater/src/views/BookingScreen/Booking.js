@@ -1,78 +1,50 @@
+import React, {useEffect, useState} from 'react';
 import BookingInfo from '../../components/BookingInfo/bookingInfo';
 import Header from '../../components/HeaderScreen/Header';
 import Seat from '../../components/Seats/Seat';
 import styles from './bookingscreen.module.scss';
-import { useState } from 'react';
+import DetailSelect from '../../components/detailSelect/detailSelect';
+import {useSearchParams} from 'react-router-dom';
+import {Button} from '@mui/material';
+import BookingSeats from '../../components/BookingSeats/BookingSeats';
 
 function Booking() {
-    const rows = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N"]
-    const totalRows = 13;
-    const seatsPerRow = 13;
-    const coupleSeats = 8;
+  const [tickets, setTickets] = useState(0);
+  const [price, setPrice] = useState(0);
+  const [seats, setSeats] = useState([]);
+  const [search, setSearchParams] = useSearchParams();
 
-    const [seats, setSeats] = useState(generateInitialSeats());
-
-    const [selectedSeats, setSelectedSeats] = useState([]);
-
-    function generateInitialSeats() {
-        const generatedSeats = [];
-        var row = 0;
-        for (row; row < totalRows; row++) {
-          // Regular Seats
-          for (let i = 1; i <= seatsPerRow; i++) {
-            generatedSeats.push({ id: i.toString().length === 1 ? rows[row] + "0" + i : rows[row]  + i, booked: false, selected: false, isCouple: false});
-          }
-        }
-
-        for (let i = 1; i <= coupleSeats; i++) {
-            generatedSeats.push({ id: i.toString().length === 1 ? rows[row] + "0" + i : rows[row]  + i, booked: false, selected: false, isCouple: true});
-        }
-    
-        return generatedSeats;
-      }
-
-      const toggleSeat = (seatId) => {
-        const updatedSeats = seats.map((seat) =>
-          seat.id === seatId ? { ...seat, selected: !seat.selected } : seat
-        );
-        setSeats(updatedSeats);
-        updateSelectedSeats(seatId);
-      };
-
-      const updateSelectedSeats = (seatId) => {
-        setSelectedSeats((prevSeats) =>
-          prevSeats.includes(seatId)
-            ? prevSeats.filter((id) => id !== seatId)
-            : [...prevSeats, seatId]
-        );
-      };
+  console.log(search.get('showTime'));
 
   return (
     <div className={styles.container}>
-      <div>
-        <BookingInfo selectedSeats={selectedSeats}/>
-      </div>
-
-        <div className={styles.diagramContainer}>
-            <div className={styles.screen}>Screen</div>
-            <div className={styles.seatMap}>
-                {seats.filter((seat) => (seat.isCouple === false)).map((seat) => (
-                    <Seat seat={seat} onSeatClick={toggleSeat}/>
-                ))}
-            </div>
-            <div className={styles.seatCoupleMap}>
-                {seats.filter((seat) => (seat.isCouple === true)).map((seat) => (
-                    <Seat seat={seat} onSeatClick={toggleSeat}/>
-                ))}
-            </div>
-            
+      <BookingInfo
+        selectedSeats={seats}
+        showTime={search.get('showTime')}
+        ticket={tickets ?? undefined}
+        price={price ?? undefined}
+      />
+      {tickets ? (
+        <div style={{backgroundColor: '#231B5B'}}>
+          <BookingSeats
+            ticketNum={tickets}
+            onChange={selectedSeats => setSeats(selectedSeats)}></BookingSeats>
+          <div className={styles.btnContainer}>
+            <button className={styles.btnReturn} onClick={() => {}}>
+              Return
+            </button>
+            <button className={styles.btnNext} onClick={() => {}}>
+              Pay
+            </button>
+          </div>
         </div>
-
-        <button onClick={() => {
-            console.log(selectedSeats)
-        }}></button>
-
-
+      ) : (
+        <DetailSelect
+          onChange={(ticket, price) => {
+            setTickets(ticket);
+            setPrice(price);
+          }}></DetailSelect>
+      )}
     </div>
   );
 }
