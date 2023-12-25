@@ -4,7 +4,6 @@ import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import TextField from '@mui/material/TextField';
 import styles from './detailselect.module.scss';
-import {useNavigation} from 'react-router-dom';
 
 function DetailSelect(props) {
   const [countS, setCountS] = useState(0);
