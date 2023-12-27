@@ -57,7 +57,6 @@ function Schedule() {
       setSchedule(res);
     });
     getTheatersFunction().then(res => {
-      console.log('theater', res);
       setTheaterList(res);
     });
   }, []);

@@ -1,8 +1,71 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import styles from './infoscreen.module.scss';
+import {getTicketsFunction} from '../../apis/GetMethod/getTickets';
+import {getScheduleFunction} from '../../apis/GetMethod/getSchedule';
 
 function Info() {
+  const [ticketList, setTicketList] = useState([]);
+  const [scheduleList, setSchedule] = useState([]);
+  const [user, setUser] = useState('');
+  const [combinedData, setCombinedData] = useState([]);
+
+  useEffect(() => {
+    const result = ticketList
+      .map(ticket => {
+        const correspondingSchedule = scheduleList.find(
+          schedule => schedule.id === ticket.showtimeId,
+        );
+
+        if (correspondingSchedule) {
+          return {
+            ticketId: ticket.id,
+            showtimeId: ticket.showtimeId,
+            userId: ticket.userId,
+            seatId: ticket.seatId,
+            schedule: {
+              movieId: correspondingSchedule.movieId,
+              movie: correspondingSchedule.movie[0],
+              date: correspondingSchedule.date,
+              time: correspondingSchedule.time,
+            },
+          };
+        }
+        return null;
+      })
+      .filter(Boolean); // Remove null values
+    console.log('rerere', result);
+    setCombinedData(result);
+  }, [ticketList, scheduleList]);
+
+  const Token = localStorage.getItem('Token');
+  useEffect(() => {
+    getTicketsFunction().then(res => {
+      setTicketList(res);
+    });
+
+    getScheduleFunction().then(res => {
+      setSchedule(res);
+    });
+
+    let config = {
+      method: 'get',
+      maxBodyLength: Infinity,
+      url: 'https://uitlogachcu.onrender.com/me',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: 'Bearer ' + Token,
+      },
+    };
+    axios
+      .request(config)
+      .then(res => {
+        setState({...res.data});
+        setUser(res.data);
+      })
+      .catch(e => console.log(e));
+  });
+
   const [action, setAction] = useState(true);
   const [state, setState] = useState({
     name: '',
@@ -75,24 +138,7 @@ function Info() {
   function handleCancel() {
     handleAction();
   }
-  const Token = localStorage.getItem('Token');
-  useEffect(() => {
-    let config = {
-      method: 'get',
-      maxBodyLength: Infinity,
-      url: 'https://uitlogachcu.onrender.com/me',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: 'Bearer ' + Token,
-      },
-    };
-    axios
-      .request(config)
-      .then(res => {
-        setState({...res.data});
-      })
-      .catch(e => console.log(e));
-  }, []);
+
   return (
     <>
       <div className={styles.container}>
@@ -131,51 +177,51 @@ function Info() {
                   <div className={styles.textC}>
                     <div className={styles.text}>Name: </div>
                     {state.name !== '' ? (
-                        <div className={styles.textt}>{(state.name)}</div>
+                      <div className={styles.textt}>{state.name}</div>
                     ) : (
-                        <div className={styles.textt}>
-                          <text style={{color: '#BEBEBE'}}>Null</text>
-                        </div>
+                      <div className={styles.textt}>
+                        <text style={{color: '#BEBEBE'}}>Null</text>
+                      </div>
                     )}
                   </div>
                   <div className={styles.textC}>
                     <div className={styles.text}>Gender: </div>
                     {state.gender !== '' ? (
-                        <div className={styles.textt}>{state.gender}</div>
+                      <div className={styles.textt}>{state.gender}</div>
                     ) : (
-                        <div className={styles.textt}>
-                          <text style={{color: '#BEBEBE'}}>Null</text>
-                        </div>
+                      <div className={styles.textt}>
+                        <text style={{color: '#BEBEBE'}}>Null</text>
+                      </div>
                     )}
                   </div>
                   <div className={styles.textC}>
                     <div className={styles.text}>Date of birth: </div>
                     {state.date !== '' ? (
-                        <div className={styles.textt}>{state.date}</div>
+                      <div className={styles.textt}>{state.date}</div>
                     ) : (
-                        <div className={styles.textt}>
-                          <text style={{color: '#BEBEBE'}}>Null</text>
-                        </div>
+                      <div className={styles.textt}>
+                        <text style={{color: '#BEBEBE'}}>Null</text>
+                      </div>
                     )}
                   </div>
                   <div className={styles.textC}>
                     <div className={styles.text}>Email: </div>
                     {state.email !== '' ? (
-                        <div className={styles.textt}>{state.email}</div>
+                      <div className={styles.textt}>{state.email}</div>
                     ) : (
-                        <div className={styles.textt}>
-                          <text style={{color: '#BEBEBE'}}>Null</text>
-                        </div>
+                      <div className={styles.textt}>
+                        <text style={{color: '#BEBEBE'}}>Null</text>
+                      </div>
                     )}
                   </div>
                   <div className={styles.textC}>
-                  <div className={styles.text}>Phone: </div>
+                    <div className={styles.text}>Phone: </div>
                     {state.phone !== '' ? (
-                        <div className={styles.textt}>{state.phone}</div>
+                      <div className={styles.textt}>{state.phone}</div>
                     ) : (
-                        <div className={styles.textt}>
-                          <text style={{color: '#BEBEBE'}}>Null</text>
-                        </div>
+                      <div className={styles.textt}>
+                        <text style={{color: '#BEBEBE'}}>Null</text>
+                      </div>
                     )}
                   </div>
                 </div>
@@ -301,20 +347,29 @@ function Info() {
                   Showtime
                 </td>
                 <td className={styles.headerTitle} style={{width: '7%'}}>
-                  Ticket
+                  Seat
                 </td>
                 <td className={styles.headerTitle} style={{width: '20%'}}>
-                  Total
+                  Price
                 </td>
               </thead>
               <tbody
                 style={{
-                  overflowY: 'scroll',
                   width: '80%',
                   height: '50px',
                   maxHeight: '500px',
                   display: 'block',
-                }}></tbody>
+                }}>
+                {combinedData
+                  .filter(ticket => ticket.userId === user._id)
+                  .map(ticket => {
+                    return (
+                      <tr>
+                        <td>{ticket.ticketId}</td>
+                      </tr>
+                    );
+                  })}
+              </tbody>
             </table>
           </div>
         </div>
