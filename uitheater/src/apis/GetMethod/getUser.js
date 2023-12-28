@@ -1,16 +1,18 @@
 import axios from 'axios';
 
-export const getTicketsFunction = async index => {
+export const getUserInfomationFunction = async index => {
   let data = JSON.stringify({
     index: index,
   });
+  const Token = localStorage.getItem('Token');
 
   let config = {
     method: 'get',
     maxBodyLength: Infinity,
-    url: 'https://uitlogachcu.onrender.com/tickets',
+    url: 'https://uitlogachcu.onrender.com/me',
     headers: {
       'Content-Type': 'application/json',
+      Authorization: 'Bearer ' + Token,
     },
     data: data,
   };
@@ -18,6 +20,7 @@ export const getTicketsFunction = async index => {
   const result = await axios
     .request(config)
     .then(response => {
+      console.log('222', response.data);
       return response.data;
     })
     .catch(error => {
