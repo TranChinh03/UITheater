@@ -3,6 +3,7 @@ import axios from 'axios';
 import styles from './infoscreen.module.scss';
 import {getTicketsFunction} from '../../apis/GetMethod/getTickets';
 import {getScheduleFunction} from '../../apis/GetMethod/getSchedule';
+import {getUserInfomationFunction} from '../../apis/GetMethod/getUser';
 
 function Info() {
   const [ticketList, setTicketList] = useState([]);
@@ -34,7 +35,6 @@ function Info() {
         return null;
       })
       .filter(Boolean); // Remove null values
-    console.log('rerere', result);
     setCombinedData(result);
   }, [ticketList, scheduleList]);
 
@@ -48,22 +48,10 @@ function Info() {
       setSchedule(res);
     });
 
-    let config = {
-      method: 'get',
-      maxBodyLength: Infinity,
-      url: 'https://uitlogachcu.onrender.com/me',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: 'Bearer ' + Token,
-      },
-    };
-    axios
-      .request(config)
-      .then(res => {
-        setState({...res.data});
-        setUser(res.data);
-      })
-      .catch(e => console.log(e));
+    getUserInfomationFunction().then(res => {
+      setState({...res});
+      setUser(res);
+    });
   });
 
   const [action, setAction] = useState(true);
@@ -334,41 +322,59 @@ function Info() {
           <div className={styles.historyContainer}>
             <table className={styles.historyTable}>
               <thead style={{backgroundColor: '#0c0326'}}>
-                <td className={styles.headerTitle} style={{width: '6%'}}>
-                  No.
-                </td>
-                <td className={styles.headerTitle} style={{width: 'auto'}}>
-                  Movie Title
-                </td>
-                <td className={styles.headerTitle} style={{width: '13%'}}>
-                  Date
-                </td>
-                <td className={styles.headerTitle} style={{width: '10%'}}>
-                  Showtime
-                </td>
-                <td className={styles.headerTitle} style={{width: '7%'}}>
-                  Seat
-                </td>
-                <td className={styles.headerTitle} style={{width: '20%'}}>
-                  Price
-                </td>
+                <td className={styles.headerTitle}>No.</td>
+                <td className={styles.headerTitle}>Movie Title</td>
+                <td className={styles.headerTitle}>Date</td>
+                <td className={styles.headerTitle}>Showtime</td>
+                <td className={styles.headerTitle}>Seat</td>
+                <td className={styles.headerTitle}>Price</td>
               </thead>
               <tbody
                 style={{
                   width: '80%',
-                  height: '50px',
+                  height: '200px',
                   maxHeight: '500px',
                   display: 'block',
                 }}>
-                {combinedData
-                  .filter(ticket => ticket.userId === user._id)
-                  .map(ticket => {
-                    return (
-                      <tr>
-                        <td>{ticket.ticketId}</td>
-                      </tr>
-                    );
-                  })}
+                {combinedData &&
+                  combinedData
+                    .filter(ticket => ticket.userId === user._id)
+                    .map(ticket => {
+                      return (
+                        <tr>
+                          <td
+                            className={styles.headerTitle}
+                            style={{width: '2%'}}>
+                            1
+                          </td>
+                          <td
+                            className={styles.headerTitle}
+                            style={{width: 'auto'}}>
+                            {ticket.schedule.movie.title}
+                          </td>
+                          <td
+                            className={styles.headerTitle}
+                            style={{width: '13%'}}>
+                            {ticket.schedule.date}
+                          </td>
+                          <td
+                            className={styles.headerTitle}
+                            style={{width: '10%'}}>
+                            {ticket.schedule.time}
+                          </td>
+                          <td
+                            className={styles.headerTitle}
+                            style={{width: '7%'}}>
+                            {ticket.seatId}
+                          </td>
+                          <td
+                            className={styles.headerTitle}
+                            style={{width: '20%'}}>
+                            1.000.000
+                          </td>
+                        </tr>
+                      );
+                    })}
               </tbody>
             </table>
           </div>

@@ -153,37 +153,3 @@
   padding: 15px;
   text-align-last: center;
 }
-
-//////
-.maincontainer {
-  @apply m-5 mt-0;
-}
-.con1 {
-  @apply flex w-full items-end justify-between px-5;
-}
-.con2 {
-  @apply py-3 flex w-full items-end justify-between bg-white rounded-3xl shadow-md;
-}
-.tbHeading {
-  @apply text-mainColor text-sm font-medium;
-}
-.data {
-  @apply text-mainColor text-sm font-normal;
-}
-.col {
-  @apply text-center px-5 items-center text-mainColor text-sm font-normal py-3 justify-center;
-}
-.colDetail {
-  @apply px-5 items-center text-mainColor text-sm font-normal py-2 flex justify-center;
-}
-.tableData {
-  @apply table-auto w-full;
-}
-.btnnav {
-  @apply bg-mainColor h-7 w-7 rounded-lg items-center flex justify-center;
-}
-.rowTbl {
-  @apply border-t-[0.75px] border-t-secondColor border-opacity-20;
-}
-
-///
