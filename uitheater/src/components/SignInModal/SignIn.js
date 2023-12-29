@@ -54,6 +54,8 @@ const SignIn = props => {
       .request(config)
       .then(response => {
         localStorage.setItem('Token', response.data);
+        localStorage.setItem('Uid', response.data._id);
+        console.log('Uid', localStorage.getItem('Uid'));
       })
       .then(() => {
         onLogin();
