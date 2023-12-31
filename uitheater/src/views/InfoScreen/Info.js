@@ -52,7 +52,7 @@ function Info() {
       setState({...res});
       setUser(res);
     });
-  });
+  }, []);
 
   const [action, setAction] = useState(true);
   const [state, setState] = useState({

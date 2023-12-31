@@ -15,6 +15,7 @@ import MovieDetail from './MovieDetailScreen/MovieDetail';
 import Draft from './draft/draft';
 import {getListMovieFunction} from '../apis/GetMethod/getListMovie';
 import Payment from './PaymentScreen/Payment';
+import ChangePassword from './PasswordScreen/ChangePassword';
 
 function App() {
   useEffect(() => {
@@ -42,6 +43,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/register" element={<Register />} />
           <Route path="/forgotpassword" element={<ForgotPassword />} />
+          <Route path="/changepassword" element={<ChangePassword />} />
           <Route path="/resetpassword/:id/:token" element={<ResetPassword />} />
           <Route path="/me" element={<Info />} />
           <Route path="/booking" element={<Booking />} />
