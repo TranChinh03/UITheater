@@ -4,50 +4,78 @@ import styles from './infoscreen.module.scss';
 import {getTicketsFunction} from '../../apis/GetMethod/getTickets';
 import {getScheduleFunction} from '../../apis/GetMethod/getSchedule';
 import {getUserInfomationFunction} from '../../apis/GetMethod/getUser';
+import {getHistoryFunction} from '../../apis/GetMethod/getHistory';
+import {Table} from 'antd';
+const onChange = (pagination, filters, sorter, extra) => {
+  console.log('params', pagination, filters, sorter, extra);
+};
+const columns = [
+  {
+    title: 'No.',
+    dataIndex: 'key',
+  },
+  {
+    width: 300,
+    title: 'Movie Title',
+    dataIndex: 'movieName',
+    sorter: {
+      compare: (a, b) => a.movieTitle - b.movieTitle,
+      multiple: 2,
+    },
+  },
+  {
+    width: 200,
+    title: 'Date',
+    dataIndex: 'date',
+  },
+  {
+    width: 200,
+    title: 'Showtime',
+    dataIndex: 'time',
+  },
+  {
+    width: 150,
+    title: 'Seat',
+    dataIndex: 'seatId',
+    sorter: {
+      compare: (a, b) => a.seatId - b.seatId,
+      multiple: 2,
+    },
+  },
+  {
+    width: 150,
+    title: 'Price',
+    dataIndex: 'price',
+    sorter: {
+      compare: (a, b) => a.price - b.price,
+      multiple: 1,
+    },
+  },
+];
 
 function Info() {
-  const [ticketList, setTicketList] = useState([]);
-  const [scheduleList, setSchedule] = useState([]);
   const [user, setUser] = useState('');
   const [combinedData, setCombinedData] = useState([]);
 
   useEffect(() => {
-    const result = ticketList
-      .map(ticket => {
-        const correspondingSchedule = scheduleList.find(
-          schedule => schedule.id === ticket.showtimeId,
-        );
-
-        if (correspondingSchedule) {
-          return {
-            ticketId: ticket.id,
-            showtimeId: ticket.showtimeId,
-            userId: ticket.userId,
-            seatId: ticket.seatId,
-            schedule: {
-              movieId: correspondingSchedule.movieId,
-              movie: correspondingSchedule.movie[0],
-              date: correspondingSchedule.date,
-              time: correspondingSchedule.time,
-            },
-          };
-        }
-        return null;
-      })
-      .filter(Boolean); // Remove null values
-    setCombinedData(result);
-  }, [ticketList, scheduleList]);
-
+    getHistoryFunction().then(res => {
+      setCombinedData(res);
+      console.log('combie', combinedData);
+    });
+  }, []);
+  const HistoryData = combinedData.map((item, index) => {
+    return {
+      key: index + 1,
+      movieName: item.movieName,
+      date: item.date,
+      time: item.time,
+      seatId: item.seatId,
+      price: item.price,
+    };
+  });
+  console.log(combinedData);
   const Token = localStorage.getItem('Token');
   useEffect(() => {
-    getTicketsFunction().then(res => {
-      setTicketList(res);
-    });
-
-    getScheduleFunction().then(res => {
-      setSchedule(res);
-    });
-
     getUserInfomationFunction().then(res => {
       setState({...res});
       setUser(res);
@@ -320,63 +348,12 @@ function Info() {
             <div className={styles.title}>History:</div>
           </div>
           <div className={styles.historyContainer}>
-            <table className={styles.historyTable}>
-              <thead style={{backgroundColor: '#0c0326'}}>
-                <td className={styles.headerTitle}>No.</td>
-                <td className={styles.headerTitle}>Movie Title</td>
-                <td className={styles.headerTitle}>Date</td>
-                <td className={styles.headerTitle}>Showtime</td>
-                <td className={styles.headerTitle}>Seat</td>
-                <td className={styles.headerTitle}>Price</td>
-              </thead>
-              <tbody
-                style={{
-                  width: '80%',
-                  height: '200px',
-                  maxHeight: '500px',
-                  display: 'block',
-                }}>
-                {combinedData &&
-                  combinedData
-                    .filter(ticket => ticket.userId === user._id)
-                    .map(ticket => {
-                      return (
-                        <tr>
-                          <td
-                            className={styles.headerTitle}
-                            style={{width: '2%'}}>
-                            1
-                          </td>
-                          <td
-                            className={styles.headerTitle}
-                            style={{width: 'auto'}}>
-                            {ticket.schedule.movie.title}
-                          </td>
-                          <td
-                            className={styles.headerTitle}
-                            style={{width: '13%'}}>
-                            {ticket.schedule.date}
-                          </td>
-                          <td
-                            className={styles.headerTitle}
-                            style={{width: '10%'}}>
-                            {ticket.schedule.time}
-                          </td>
-                          <td
-                            className={styles.headerTitle}
-                            style={{width: '7%'}}>
-                            {ticket.seatId}
-                          </td>
-                          <td
-                            className={styles.headerTitle}
-                            style={{width: '20%'}}>
-                            1.000.000
-                          </td>
-                        </tr>
-                      );
-                    })}
-              </tbody>
-            </table>
+            <Table
+              columns={columns}
+              dataSource={HistoryData}
+              onChange={onChange}
+            />
+            ;
           </div>
         </div>
       </div>
