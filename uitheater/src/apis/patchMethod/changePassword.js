@@ -13,7 +13,6 @@ export const ChangePasswordFunction = async (email,password,newPassword) => {
       url: 'https://uitlogachcu.onrender.com/me/password',
       headers: {
         'Content-Type': 'application/json',
-
       },
       data: data,
     };

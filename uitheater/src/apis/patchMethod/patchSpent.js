@@ -1,8 +1,6 @@
-export const patchSpentFunction = async (amount) => {
+export const patchSpentFunction = async () => {
     const axios = require('axios');
-    let data = JSON.stringify({
-      amount: amount,
-    });
+
     const Token = localStorage.getItem('Token');
     let config = {
       method: 'patch',
@@ -12,7 +10,6 @@ export const patchSpentFunction = async (amount) => {
         'Content-Type': 'application/json',
         Authorization: 'Bearer ' + Token,
       },
-      data:data,
     };
   
     const result = await axios
