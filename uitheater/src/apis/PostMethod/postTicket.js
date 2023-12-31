@@ -1,17 +1,16 @@
-export const postHistoryFunction = async (UserId, ticketId) => {
+export const postTicketFunction = async (UserId, ticketId) => {
     const axios = require('axios');
     let data = JSON.stringify({
-      id: UserId,
       ticketId: ticketId,
-
     });
-  
+    const Token = localStorage.getItem('Token');
     let config = {
       method: 'post',
       maxBodyLength: Infinity,
-      url: 'https://uitlogachcu.onrender.com/history',
+      url: 'https://uitlogachcu.onrender.com/postTicket',
       headers: {
         'Content-Type': 'application/json',
+        Authorization: 'Bearer ' + Token,
       },
       data: data,
     };

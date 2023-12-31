@@ -1,18 +1,20 @@
-export const patchSpentFunction = async (amount) => {
+export const postProcessFunction = async (ticketId,showtimeId,seatId) => {
     const axios = require('axios');
     let data = JSON.stringify({
-      amount: amount,
+      "ticketId": ticketId,
+      "showtimeId": showtimeId,
+      "seatId":seatId
     });
     const Token = localStorage.getItem('Token');
     let config = {
-      method: 'patch',
+      method: 'post',
       maxBodyLength: Infinity,
-      url: 'https://uitlogachcu.onrender.com/me/spent',
+      url: 'https://uitlogachcu.onrender.com/postProcess',
       headers: {
         'Content-Type': 'application/json',
         Authorization: 'Bearer ' + Token,
       },
-      data:data,
+      data: data,
     };
   
     const result = await axios
