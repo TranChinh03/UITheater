@@ -1,10 +1,21 @@
-export const postProcessFunction = async (ticketId,showtimeId,seatId) => {
-    const axios = require('axios');
-    let data = JSON.stringify({
-      "ticketId": ticketId,
-      "showtimeId": showtimeId,
-      "seatId":seatId
-    });
+import axios from 'axios';
+export const postProcessFunction = async (ticketArray) => {
+  // mau
+  // "ticketArray": [
+  //   {
+  //     "ticketId": 1234,
+  //     "showtimeId": 456,
+  //     "seatId": 789,
+  //   },
+  //   {
+  //     "ticketId": 4567,
+  //     "showtimeId": 789,
+  //     "seatId": 101,
+  //   }
+  // ]
+  let data = JSON.stringify({
+    "ticketArray": ticketArray,
+  });
     const Token = localStorage.getItem('Token');
     let config = {
       method: 'post',
@@ -27,4 +38,3 @@ export const postProcessFunction = async (ticketId,showtimeId,seatId) => {
       });
     return result;
   };
-  
