@@ -54,7 +54,7 @@ function BookingSeats(props) {
     }
 
     bookedSeats.forEach(x => {
-      const index = Number(x%177-1)
+      const index = Number(x%177-1) >= 0 ? Number(x%177-1) : 177-1;
       generatedSeats[index].booked = true;
     })
 

@@ -5,13 +5,12 @@ import '../../assets/fonts/fonts.css';
 import src from '../../assets/imgs/shin-cau-be-but-chi.jpg';
 import {useState} from 'react';
 import {useNavigate} from 'react-router-dom';
-import { Modal } from 'antd';
+import { Modal, message } from 'antd';
 import BookingFilter from '../BookingFilter/bookingFilter'
-
 function MovieBlock({movie, isHome = true}) {
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
-  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const handleMouseEnter = () => {
     setIsOpen(true);
   };
@@ -50,16 +49,23 @@ function MovieBlock({movie, isHome = true}) {
             Details
           </button>
           <div style={{flex: 0.1}} />
-          <button onClick={() => setIsModalOpen(true)} className={styles.booking}>Book Now</button>
+          <button onClick={() => {
+            if (localStorage.getItem('Token')) {
+              setIsModalOpen(true)
+            }
+            else {
+              message.warning("Please sign in!")
+            }
+            }} className={styles.booking}>Book Now</button>
         </div>
       )}
 
       <Modal
-                open={isModalOpen}
-                onCancel={() => setIsModalOpen(false)}
-                footer={false}
-                width={"80%"}>
-        <BookingFilter movieName={movie.title}/>
+        open={isModalOpen}
+        onCancel={() => setIsModalOpen(false)}
+        footer={false}
+        width={'80%'}>
+        <BookingFilter movieName={movie.title} />
       </Modal>
     </div>
   );

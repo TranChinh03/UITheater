@@ -6,19 +6,18 @@ import SignIn from '../SignInModal/SignIn';
 import axios from 'axios';
 import {useEffect, useState} from 'react';
 import getLastWord from '../../store/getLastWord';
-import { Select } from "antd";
-import {IM_EN_Flag, IM_VN_Flag} from "../../assets/imgs"
-import { useTranslation } from 'react-i18next';
-
-
+import {Select} from 'antd';
+import {IM_EN_Flag, IM_VN_Flag} from '../../assets/imgs';
+import {useTranslation} from 'react-i18next';
 
 const Header = () => {
-  const { t, i18n } = useTranslation();
+  const {t, i18n} = useTranslation();
   const options = [
-    { image: IM_VN_Flag, title: "VI" },
-    { image: IM_EN_Flag, title: "EN" }]
+    {image: IM_VN_Flag, title: 'VI'},
+    {image: IM_EN_Flag, title: 'EN'},
+  ];
 
-  const { Option } = Select;
+  const {Option} = Select;
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [language, setLanguage] = useState(localStorage.language);
   const navigate = useNavigate();
@@ -73,38 +72,33 @@ const Header = () => {
       <div className={styles.headerOthers}>
         <div className={styles.searchAndSignInContainer}>
           <Select
-                style={{ width: 200, marginRight: 20 }}
-                placeholder="Choose Language"
-                value={language}
-                onChange={
-                  (e) =>
-                  {
-                    setLanguage(e);
-                    i18n.changeLanguage(e);
-                    localStorage.setItem('language', e);
-                  } 
-                }
-              >
-                {options.map((option, index) => (
-                  <Option key={index} value={option.title}>
-                    <div
-                      style={{
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "space-between",
-                        width: "100%",
-                      }}
-                    >
-                      <div>{option.title}</div>
-                      <img
-                        src={option.image}
-                        alt="Flag"
-                        style={{ width: "30px", height: "20px" }}
-                      />
-                    </div>
-                  </Option>
-                ))}
-              </Select>
+            style={{width: '150px', marginRight: '100px'}}
+            placeholder="Choose Language"
+            value={language}
+            onChange={e => {
+              setLanguage(e);
+              i18n.changeLanguage(e);
+              localStorage.setItem('language', e);
+            }}>
+            {options.map((option, index) => (
+              <Option key={index} value={option.title}>
+                <div
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    width: '100%',
+                  }}>
+                  <div>{option.title}</div>
+                  <img
+                    src={option.image}
+                    alt="Flag"
+                    style={{width: '30px', height: '20px'}}
+                  />
+                </div>
+              </Option>
+            ))}
+          </Select>
 
           {!isLogin() ? (
             <div className={styles.signIn} onClick={showModal} isDefault={true}>
@@ -135,16 +129,16 @@ const Header = () => {
         </div>
         <div className={styles.NavBar}>
           <NavLink to="/" exact={true}>
-            <div className={styles.NavBarText}>Home</div>
+            <div className={styles.NavBarText}>{t('home')}</div>
           </NavLink>
           <NavLink to="/movies" className={styles.BetweenNav}>
-            <div className={styles.NavBarText}>Movies</div>
+            <div className={styles.NavBarText}>{t('movies')}</div>
           </NavLink>
           <NavLink to="/schedule" className={styles.BetweenNav}>
-            <div className={styles.NavBarText}>Schedule</div>
+            <div className={styles.NavBarText}>{t('schedule')}</div>
           </NavLink>
           <NavLink to="/about" className={styles.EndNav}>
-            <div className={styles.NavBarText}>About</div>
+            <div className={styles.NavBarText}>{t('about')}</div>
           </NavLink>
         </div>
       </div>

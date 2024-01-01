@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const getUserInfomationFunction = async() => {
+export const getProcess = async() => {
 
   const Token = localStorage.getItem('Token');
 

@@ -5,6 +5,8 @@ import {getScheduleFunction} from '../../apis/GetMethod/getSchedule';
 import {getTheatersFunction} from '../../apis/GetMethod/getTheaters';
 import { message } from 'antd';
 import {useNavigate} from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+
 
 const rotation = isRotated => {
   return {
@@ -22,16 +24,18 @@ function BookingFilter({movieName=null}) {
       setSchedule(res);
     });
   }, []);
+
+  const { t, i18n } = useTranslation();
   
   const [showtimeId, setShowtimeId] = useState();
 
   const [isRotated, setIsRotated] = useState([false, false, false, false]);
   const catagories = ['movies', 'theaters', 'dates', 'showTime'];
   const [selectedFilterInfo, setSelectedFilterInfo] = useState({
-    movies: movieName ? movieName : 'Choose Movie',
-    theaters: 'Choose Theater',
-    dates: 'Choose Date',
-    showTime: 'Choose Showtime',
+    movies: movieName ? movieName : t('chooseMovie'),
+    theaters: t('chooseTheater'),
+    dates: t('chooseDate'),
+    showTime: t('chooseShowtime'),
   });
 
   const Info = {
@@ -84,9 +88,9 @@ function BookingFilter({movieName=null}) {
           height: '160px',
         }}>
         <div className={styles.bannerContent}>
-          BOOK THE
+          {t('bookThe')}
           <br />
-          TICKET NOW!
+          {t('ticketNow')}
         </div>
         <div className={styles.boxGridContainer}>
           {isRotated.map((value, index) => (

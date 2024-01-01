@@ -67,9 +67,9 @@ function Movies() {
           <img style={{width: '100%'}} src={IM_Banner3} alt="Image 1"/>
         </SplideSlide>
       </Splide>
-        <div className={styles.bookingContainer}>
+        {/* <div className={styles.bookingContainer}>
           <BookingFilter></BookingFilter>
-        </div>
+        </div> */}
         <div className={styles.movieNavContainer}>
           <MoviesNavBar
             onChangeTab={handleTabChanged}
