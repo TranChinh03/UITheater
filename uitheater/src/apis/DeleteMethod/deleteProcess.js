@@ -1,19 +1,16 @@
 import axios from 'axios';
 
-export const patchAvatarFunction = async avtId => {
+export const deleteProcessFunction = async ticketId => {
   let data = JSON.stringify({
-    avtId: avtId,
+    ticketId: ticketId,
   });
 
-  const Token = localStorage.getItem('Token');
-
   let config = {
-    method: 'patch',
+    method: 'delete',
     maxBodyLength: Infinity,
-    url: 'https://uitlogachcu.onrender.com/me/avatar',
+    url: 'https://uitlogachcu.onrender.com/getSchedule',
     headers: {
       'Content-Type': 'application/json',
-      Authorization: 'Bearer ' + Token,
     },
     data: data,
   };

@@ -4,7 +4,7 @@ const axios = require('axios');
 let config = {
   method: 'get',
   maxBodyLength: Infinity,
-  url: 'https://uitlogachcu.onrender.com/theaters',
+  url: 'https://uitlogachcu.onrender.com/Seats',
   headers: { 
     'Content-Type': 'application/json', 
   },
