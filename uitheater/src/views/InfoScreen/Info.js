@@ -66,7 +66,6 @@ function Info() {
   useEffect(() => {
     getHistoryFunction().then(res => {
       setCombinedData(res);
-      console.log('combie', combinedData);
     });
   }, []);
   const HistoryData = combinedData.map((item, index) => {
@@ -85,31 +84,25 @@ function Info() {
     getUserInfomationFunction().then(res => {
       setState({...res});
       setUser(res);
-      loadAvatar(res._id);
+      setAvatarUrl(res.avatar);
     });
   }, []);
 
-  const loadAvatar = async userId => {
-    const avatarData = await getOneAvatarFunction(userId);
-    console.log('gzzgz', avatarData);
-    setAvatarUrl(avatarData.avatarUrl);
-  };
-
   const handleAvatarChange = async event => {
-    const file = event.target.files[0];
+    const file = event.target.files[0].name;
+    console.log('file', file);
 
-    try {
-      // Upload the avatar file to the server and get the new avatar URL
-      const formData = new FormData();
-      formData.append('avatar', file);
+    const formData = new FormData();
+    formData.append('file', file);
+    console.log('hm', formData.append('avatar', file));
 
-      const response = await patchAvatarFunction(user._id, avatarUrl, formData);
+    // Using process.env.PUBLIC_URL
+    const serPath = process.env.PUBLIC_URL + file;
+    console.log('sss', serPath);
 
-      // Update the avatar URL in the state
-      setAvatarUrl(response.avatarUrl);
-    } catch (error) {
-      console.error('Error uploading avatar:', error);
-    }
+    const response = await patchAvatarFunction(user._id, serPath);
+    console.log('res', response);
+    setAvatarUrl(serPath);
   };
 
   const [action, setAction] = useState(true);
@@ -198,7 +191,7 @@ function Info() {
                 <img
                   src={avatarUrl}
                   alt="User Avatar"
-                  className={styles.avatarImage}
+                  className={styles.avatar}
                 />
               ) : (
                 <div className={styles.defaultAvatar}>Default Avatar</div>
@@ -206,7 +199,7 @@ function Info() {
             </div>
             <input
               type="file"
-              accept="image/*"
+              accept="/*"
               onChange={handleAvatarChange}
               style={{display: 'none'}}
               ref={avatarInputRef}
@@ -217,7 +210,6 @@ function Info() {
               style={{backgroundColor: '#BEBEBE'}}>
               <div style={{color: '#FFFFFF'}}>Change</div>
             </button>
-            <div className={styles.avatar}></div>
           </div>
           <div className={styles.statusContainer}></div>
           <div style={{marginTop: '50px'}}>

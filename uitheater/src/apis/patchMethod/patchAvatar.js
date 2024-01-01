@@ -1,10 +1,7 @@
-import axios from 'axios';
+export const patchAvatarFunction = async index => {
+  const axios = require('axios');
+  let data = JSON.stringify({});
 
-export const patchAvatarFunction = async (UserId, avtId) => {
-  let data = JSON.stringify({
-    _id: UserId,
-    avtId: avtId,
-  });
   let config = {
     method: 'patch',
     maxBodyLength: Infinity,
