@@ -12,8 +12,8 @@ function DetailSelect(props) {
   const [totalPrice, setTotalPrice] = useState(0);
 
   const max = 10;
-  const maxS = 100000;
-  const maxD = 200000;
+  const maxS = 75000;
+  const maxD = 120000;
   function changeF(id, step = 1) {
     if (id == 'single')
       if (!(countS + step > max || countS + step < 0)) setCountS(countS + step);
@@ -23,7 +23,7 @@ function DetailSelect(props) {
   }
   useEffect(() => {
     setTotalAmount(countS + countD);
-    setTotalPrice(countS * 100000 + countD * 200000);
+    setTotalPrice(countS * 75000 + countD * 120000);
   }, [countS, countD]);
   return (
     <>
@@ -165,7 +165,7 @@ function DetailSelect(props) {
             className={styles.btnNext}
             onClick={() => {
               console.log(props.onChange);
-              props.onChange(totalAmount, totalPrice);
+              props.onChange(countS, countD, totalPrice);
             }}>
             Pick seats
           </button>

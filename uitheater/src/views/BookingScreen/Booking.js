@@ -33,7 +33,8 @@ function Booking() {
 
   }, [search])
 
-  const [tickets, setTickets] = useState(0);
+  const [ticketS, setTicketS] = useState(0);
+  const [ticketD, setTicketD] = useState(0);
   const [price, setPrice] = useState(0);
   const [seats, setSeats] = useState([]);
 
@@ -46,13 +47,14 @@ function Booking() {
       <BookingInfo
         selectedSeats={seats}
         showTime={search.get('showTime')}
-        ticket={tickets ?? undefined}
+        ticket={ticketS + ticketD ?? undefined}
         price={price ?? undefined}
       />
-      {tickets ? (
+      {ticketS || ticketD ? (
         <div style={{backgroundColor: '#231B5B'}}>
           <BookingSeats
-            ticketNum={tickets}
+            ticketSNum={ticketS}
+            ticketDNum={ticketD}
             bookedSeats={SEAT}
             onChange={selectedSeats => setSeats(selectedSeats)}>
           </BookingSeats>
@@ -67,8 +69,9 @@ function Booking() {
         </div>
       ) : (
         <DetailSelect
-          onChange={(ticket, price) => {
-            setTickets(ticket);
+          onChange={(ticketS, ticketD, price) => {
+            setTicketS(ticketS);
+            setTicketD(ticketD);
             setPrice(price);
           }}></DetailSelect>
       )}
