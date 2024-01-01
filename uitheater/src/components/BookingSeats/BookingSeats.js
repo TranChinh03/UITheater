@@ -25,6 +25,8 @@ function BookingSeats(props) {
   const seatsPerRow = 13;
   const coupleSeats = 8;
 
+
+  const [bookedSeats, setBookedSeats] = useState(props.bookedSeats)
   const [seats, setSeats] = useState(generateInitialSeats());
 
   function generateInitialSeats() {
@@ -51,6 +53,11 @@ function BookingSeats(props) {
       });
     }
 
+    bookedSeats.forEach(x => {
+      const index = Number(x%177-1)
+      generatedSeats[index].booked = true;
+    })
+
     return generatedSeats;
   }
 
@@ -58,17 +65,25 @@ function BookingSeats(props) {
     const updatedSeats = seats.map(seat =>
       seat.id === seatId ? {...seat, selected: !seat.selected} : seat,
     );
-    if (props.ticketNum >= updatedSeats.filter(seat => seat.selected).length) {
+    const type = seats.find(seat => seat.id === seatId).isCouple
+    if (props.ticketDNum >= updatedSeats.filter(seat => seat.selected && seat.isCouple === true).length && type) {
       setSeats(updatedSeats);
       updateSelectedSeats(seatId);
     }
+    else {
+      if (props.ticketSNum >= updatedSeats.filter(seat => seat.selected && seat.isCouple !== true).length && !type)
+      {
+        setSeats(updatedSeats);
+        updateSelectedSeats(seatId);
+      }
   };
+}
 
   const updateSelectedSeats = seatId => {
     props.onChange(prevSeats =>
-      prevSeats.includes(seatId)
-        ? prevSeats.filter(id => id !== seatId)
-        : [...prevSeats, seatId],
+      prevSeats.includes(seats.findIndex(seat => seat.id === seatId) + 1)
+        ? prevSeats.filter(i => i !== seats.findIndex(seat => seat.id === seatId) + 1)
+        : [...prevSeats, seats.findIndex(seat => seat.id === seatId) + 1],
     );
   };
 

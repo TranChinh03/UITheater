@@ -9,6 +9,7 @@ import styles from './homescreen.module.scss';
 import {Splide, SplideTrack, SplideSlide} from '@splidejs/react-splide';
 import {getListMovieFunction} from '../../apis/GetMethod/getListMovie';
 import '@splidejs/react-splide/css';
+import { Modal } from 'antd';
 
 function Home() {
   const [currentTab, setCurrentTab] = useState('NOW SHOWING');
@@ -17,7 +18,6 @@ function Home() {
   // );
   const [movieList, setMovieList] = useState([]);
   const [currentStatus, setCurrentStatus] = useState('OnShow');
-
   useEffect(() => {
     getListMovieFunction().then(res => {
       setMovieList(res);
@@ -79,23 +79,20 @@ function Home() {
         </div>
         <div className={styles.movieContent}>
           <div className={styles.movieWrap}>
-            <Splide
-              hasTrack={false}
-              options={{
-                type: 'loop',
-                rewind: true,
-                perPage: 5,
-              }}
-              aria-label="Movies On Show">
-              <SplideTrack>
-                {movieList
-                  .filter(movie => movie.status === currentStatus)
-                  .map((value, status) => (
-                    <SplideSlide>
-                      <MovieBlock movie={value} />
-                    </SplideSlide>
-                  ))}
-              </SplideTrack>
+
+            <Splide hasTrack={ false } options={ {
+                  type   : 'loop',
+                  rewind: true,
+                  perPage: 5,
+                }}
+                aria-label="Movies On Show" >
+            <SplideTrack>
+              {movieList.filter(movie => movie.status === currentStatus).map((value, status) => (
+                  <SplideSlide>
+                    <MovieBlock movie={value} />
+                  </SplideSlide>
+              ))}
+            </SplideTrack>
 
               <div className="splide__arrows splide__arrows--ltr">
                 <button
@@ -118,6 +115,7 @@ function Home() {
           </div>
         </div>
       </div>
+    
     </div>
   );
 }

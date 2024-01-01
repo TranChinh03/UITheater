@@ -5,3 +5,5 @@ export {default as IM_Banner3} from './banner3.png';
 export {default as IM_404} from './404.jpg';
 export {default as IM_Momo} from './momo.png';
 export {default as IM_VNPay} from './vnpay.png';
+export {default as IM_EN_Flag} from './en_flag.png';
+export {default as IM_VN_Flag} from './vn_flag.png';

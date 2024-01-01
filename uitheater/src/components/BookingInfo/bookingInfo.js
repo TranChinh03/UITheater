@@ -8,7 +8,6 @@ function BookingInfo({selectedSeats, showTime, ticket, price}) {
   const [result, setResult] = useState();
   useEffect(() => {
     getScheduleFunction().then(res => {
-      console.log(res);
       setSchedule(res);
       setResult(res.find(schedule => schedule.id == showTime));
     });

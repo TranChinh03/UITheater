@@ -2,6 +2,7 @@ import React, {useState, useEffect, useRef} from 'react';
 import axios from 'axios';
 import styles from './infoscreen.module.scss';
 
+
 import {patchAvatarFunction} from '../../apis/patchMethod/patchAvatar';
 import {getAvatarsFunction} from '../../apis/GetMethod/getAvatars';
 
