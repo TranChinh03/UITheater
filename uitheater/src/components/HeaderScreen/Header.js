@@ -53,7 +53,6 @@ const Header = () => {
   const Logout = () => {
     localStorage.removeItem('Token');
     navigate('/');
-    console.log('?????');
   };
   useEffect(() => {
     axios
@@ -73,7 +72,7 @@ const Header = () => {
       <div className={styles.headerOthers}>
         <div className={styles.searchAndSignInContainer}>
           <Select
-            style={{width: 200, marginRight: 20}}
+            style={{width: '150px', marginRight: '50px'}}
             placeholder="Choose Language"
             value={language}
             onChange={e => {
@@ -118,9 +117,9 @@ const Header = () => {
               </button>
               <div style={{width: '100%', height: '0.5vw'}} />
               <div class={styles.dropdownContent}>
-                <a href="/me">Information</a>
-                <a href="/changepassword">Password</a>
-                <a href="/#" onClick={Logout}>
+                <a href="\me">Information</a>
+                <a href="\changepassword">Password</a>
+                <a href="#" onClick={Logout}>
                   Log Out
                 </a>
               </div>
