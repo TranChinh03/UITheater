@@ -14,7 +14,7 @@ import Booking from './BookingScreen/Booking';
 import MovieDetail from './MovieDetailScreen/MovieDetail';
 import Draft from './draft/draft';
 import {getListMovieFunction} from '../apis/GetMethod/getListMovie';
-import { getScheduleFunction } from '../apis/GetMethod/getSchedule';
+import {getScheduleFunction} from '../apis/GetMethod/getSchedule';
 import Payment from './PaymentScreen/Payment';
 import ChangePassword from './PasswordScreen/ChangePassword';
 
@@ -43,9 +43,7 @@ function App() {
       }
     };
     fetchMovies();
-    localStorage.setItem(
-      'language', 'EN' 
-    );
+    localStorage.setItem('language', 'EN');
   });
 
   return (

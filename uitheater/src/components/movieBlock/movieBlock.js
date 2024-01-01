@@ -7,11 +7,10 @@ import {useState} from 'react';
 import {useNavigate} from 'react-router-dom';
 import { Modal, message } from 'antd';
 import BookingFilter from '../BookingFilter/bookingFilter'
-
 function MovieBlock({movie, isHome = true}) {
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
-  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const handleMouseEnter = () => {
     setIsOpen(true);
   };
@@ -62,11 +61,11 @@ function MovieBlock({movie, isHome = true}) {
       )}
 
       <Modal
-                open={isModalOpen}
-                onCancel={() => setIsModalOpen(false)}
-                footer={false}
-                width={"80%"}>
-        <BookingFilter movieName={movie.title}/>
+        open={isModalOpen}
+        onCancel={() => setIsModalOpen(false)}
+        footer={false}
+        width={'80%'}>
+        <BookingFilter movieName={movie.title} />
       </Modal>
     </div>
   );
