@@ -49,6 +49,7 @@ function Schedule() {
           });
       }
     });
+    console.log("re:", result);
     setCombinedDate(result);
   }, [selectedInfo, schedule, theaterList]);
 
@@ -93,9 +94,6 @@ function Schedule() {
           <img style={{width: '100%'}} src={IM_Banner3} alt="Image 1" />
         </SplideSlide>
       </Splide>
-      <div className={styles.bookingContainer}>
-        <BookingFilter></BookingFilter>
-      </div>
       <div className={styles.theaterContainer}>
         <div className={styles.theaterFilter}>
           <div className={styles.text1}>Theater System</div>
@@ -169,7 +167,8 @@ function Schedule() {
                     src={obj.image}
                     title={obj.title}
                     detail={obj.description}
-                    showtimes={obj.showTime}></MovieInfoS>
+                    showtimes={obj.showTime}>
+                  </MovieInfoS>
                 </Grid>
               );
             })}

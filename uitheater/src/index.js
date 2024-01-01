@@ -4,6 +4,7 @@ import App from './views/App';
 import reportWebVitals from './reportWebVitals';
 import './styles/global.scss';
 import { CookiesProvider } from 'react-cookie';
+import "./i18n";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

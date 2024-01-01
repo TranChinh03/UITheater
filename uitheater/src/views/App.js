@@ -14,10 +14,12 @@ import Booking from './BookingScreen/Booking';
 import MovieDetail from './MovieDetailScreen/MovieDetail';
 import Draft from './draft/draft';
 import {getListMovieFunction} from '../apis/GetMethod/getListMovie';
+import { getScheduleFunction } from '../apis/GetMethod/getSchedule';
 import Payment from './PaymentScreen/Payment';
 
 function App() {
   useEffect(() => {
+    localStorage.clear()
     const fetchMovies = async () => {
       try {
         localStorage.setItem(
@@ -29,7 +31,22 @@ function App() {
       }
     };
     fetchMovies();
-  }, []);
+
+    const fetchSchedule = async () => {
+      try {
+        localStorage.setItem(
+          'schedule',
+          JSON.stringify(await getScheduleFunction()),
+        );
+      } catch (error) {
+        console.log('Error fetching movies!');
+      }
+    };
+    fetchMovies();
+    localStorage.setItem(
+      'language', 'EN' 
+    );
+  });
 
   return (
     <>
