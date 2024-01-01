@@ -25,9 +25,12 @@ function BookingSeats(props) {
   const seatsPerRow = 13;
   const coupleSeats = 8;
 
+
+  const [bookedSeats, setBookedSeats] = useState(props.bookedSeats)
   const [seats, setSeats] = useState(generateInitialSeats());
 
   function generateInitialSeats() {
+
     const generatedSeats = [];
     var row = 0;
     for (row; row < totalRows; row++) {
@@ -50,6 +53,12 @@ function BookingSeats(props) {
         isCouple: true,
       });
     }
+
+    bookedSeats.forEach(x => {
+      const index = Number(x%177-1)
+      generatedSeats[index].booked = true;
+      generatedSeats[index].selected = true;
+    })
 
     return generatedSeats;
   }

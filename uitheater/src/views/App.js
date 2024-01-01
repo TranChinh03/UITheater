@@ -18,6 +18,7 @@ import Payment from './PaymentScreen/Payment';
 
 function App() {
   useEffect(() => {
+    localStorage.clear()
     const fetchMovies = async () => {
       try {
         localStorage.setItem(
@@ -29,7 +30,10 @@ function App() {
       }
     };
     fetchMovies();
-  }, []);
+    localStorage.setItem(
+      'language', 'EN' 
+    );
+  });
 
   return (
     <>
