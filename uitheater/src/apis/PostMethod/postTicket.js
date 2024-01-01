@@ -1,7 +1,9 @@
-export const postTicketFunction = async (UserId, ticketId) => {
+export const postTicketFunction = async (ticketId,showtimeId,seatId) => {
     const axios = require('axios');
     let data = JSON.stringify({
-      ticketId: ticketId,
+      "ticketId": ticketId,
+      "showtimeId": showtimeId,
+      "seatId":seatId
     });
     const Token = localStorage.getItem('Token');
     let config = {
