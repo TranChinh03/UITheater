@@ -14,6 +14,7 @@ import { postProcessFunction } from '../../apis/PostMethod/postProcess';
 import {useNavigate} from 'react-router-dom';
 import { message } from 'antd';
 import { postPaymentFunction } from '../../apis/PostMethod/postTicket';
+import { getProcess } from '../../apis/GetMethod/getProcess';
 
 function Booking() {
   const navigate = useNavigate();
@@ -28,11 +29,19 @@ function Booking() {
       setSHOWTIMES(temp);
     });
 
-    getTicketsFunction().then(res => {
-      const seatBooked = res.filter(value => value.showtimeId === Number(search.get('showTime'))).map(value => value.seatId)
-      console.log("Seats booked:", seatBooked)
-      setSEAT(seatBooked)
-    })
+    Promise.all([getTicketsFunction(), getProcess()]).then(([ticketsRes, processRes]) => {
+      const seatBooked = ticketsRes.filter(value => value.showtimeId === Number(search.get('showTime'))).map(value => value.seatId);
+      console.log("Seats booked:", seatBooked);
+      setSEAT(seatBooked);
+  
+      const seatProcessing = processRes.filter(value => value.showtimeId === Number(search.get('showTime'))).map(value => value.seatId);
+      console.log("Processing seats:", seatProcessing);
+  
+      
+      const allSeats = [...seatBooked, ...seatProcessing]; // Gộp hai mảng lại với nhau
+      setSEAT([...new Set(allSeats)])
+      // Sử dụng allSeats ở đây hoặc lưu vào state nếu cần
+    });
 
   }, [search])
 
