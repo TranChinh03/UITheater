@@ -20,7 +20,6 @@ import ChangePassword from './PasswordScreen/ChangePassword';
 
 function App() {
   useEffect(() => {
-    localStorage.clear()
     const fetchMovies = async () => {
       try {
         localStorage.setItem(
