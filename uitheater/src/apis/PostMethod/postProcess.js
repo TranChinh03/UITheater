@@ -1,5 +1,5 @@
-import axios from 'axios';
 export const postProcessFunction = async (ticketArray) => {
+    const axios = require('axios');
   // mau
   // "ticketArray": [
   //   {
@@ -38,3 +38,4 @@ export const postProcessFunction = async (ticketArray) => {
       });
     return result;
   };
+  

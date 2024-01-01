@@ -1,10 +1,7 @@
-export const postPaymentFunction = async (ticketId,showtimeId,seatId,price) => {
+export const postPaymentFunction = async (ticketArray) => {
     const axios = require('axios');
     let data = JSON.stringify({
-      "ticketId": ticketId,
-      "showtimeId": showtimeId,
-      "seatId":seatId,
-      "price": price
+      "json": ticketArray,
     });
     const Token = localStorage.getItem('Token');
     let config = {
