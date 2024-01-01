@@ -9,13 +9,13 @@ import styles from './homescreen.module.scss';
 import { Splide, SplideTrack, SplideSlide } from '@splidejs/react-splide';
 import {getListMovieFunction} from '../../apis/GetMethod/getListMovie';
 import '@splidejs/react-splide/css';
+import { Modal } from 'antd';
 
 
 function Home() {
   const [currentTab, setCurrentTab] = useState('NOW SHOWING');
   const [movieList, setMovieList] = useState(JSON.parse(localStorage.getItem('movieList')));
   const [currentStatus, setCurrentStatus] = useState('OnShow');
-
   useEffect(() => {
     // getListMovieFunction().then(res => {
     //   console.log(res);
@@ -66,9 +66,9 @@ function Home() {
           <img style={{width: '100%'}} src={IM_Banner3} alt="Image 1"/>
         </SplideSlide>
       </Splide>
-      <div className={styles.bookingContainer}>
+      {/* <div className={styles.bookingContainer}>
         <BookingFilter></BookingFilter>
-      </div>
+      </div> */}
       <div className={styles.movieContainer}>
         <div className={styles.movieNavContainer}>
           <MoviesNavBar
@@ -88,7 +88,7 @@ function Home() {
             <SplideTrack>
               {movieList.filter(movie => movie.status === currentStatus).map((value, status) => (
                   <SplideSlide>
-                    <MovieBlock movie={value}/>
+                    <MovieBlock movie={value} />
                   </SplideSlide>
               ))}
             </SplideTrack>
@@ -105,6 +105,7 @@ function Home() {
           </div>
         </div>
       </div>
+    
     </div>
   );
 }

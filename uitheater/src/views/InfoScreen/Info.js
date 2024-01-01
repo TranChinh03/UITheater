@@ -1,8 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import styles from './infoscreen.module.scss';
-import {getTicketsFunction} from '../../apis/GetMethod/getTickets';
-import {getScheduleFunction} from '../../apis/GetMethod/getSchedule';
 import {getUserInfomationFunction} from '../../apis/GetMethod/getUser';
 import { getHistoryFunction } from '../../apis/GetMethod/getHistory';
 import { Table } from 'antd';
