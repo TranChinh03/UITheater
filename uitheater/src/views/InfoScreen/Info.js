@@ -1,11 +1,15 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import axios from 'axios';
 import styles from './infoscreen.module.scss';
-import {getTicketsFunction} from '../../apis/GetMethod/getTickets';
-import {getScheduleFunction} from '../../apis/GetMethod/getSchedule';
+
+import {patchAvatarFunction} from '../../apis/patchMethod/patchAvatar';
+import {getAvatarsFunction} from '../../apis/GetMethod/getAvatars';
+import {getOneAvatarFunction} from '../../apis/GetMethod/getOneAvatar';
+
 import {getUserInfomationFunction} from '../../apis/GetMethod/getUser';
 import {getHistoryFunction} from '../../apis/GetMethod/getHistory';
 import {Table} from 'antd';
+import {ConstantColorFactor} from 'three';
 const onChange = (pagination, filters, sorter, extra) => {
   console.log('params', pagination, filters, sorter, extra);
 };
@@ -56,6 +60,8 @@ const columns = [
 function Info() {
   const [user, setUser] = useState('');
   const [combinedData, setCombinedData] = useState([]);
+  const [avatarUrl, setAvatarUrl] = useState('');
+  const avatarInputRef = useRef(null);
 
   useEffect(() => {
     getHistoryFunction().then(res => {
@@ -79,8 +85,32 @@ function Info() {
     getUserInfomationFunction().then(res => {
       setState({...res});
       setUser(res);
+      loadAvatar(res._id);
     });
   }, []);
+
+  const loadAvatar = async userId => {
+    const avatarData = await getOneAvatarFunction(userId);
+    console.log('gzzgz', avatarData);
+    setAvatarUrl(avatarData.avatarUrl);
+  };
+
+  const handleAvatarChange = async event => {
+    const file = event.target.files[0];
+
+    try {
+      // Upload the avatar file to the server and get the new avatar URL
+      const formData = new FormData();
+      formData.append('avatar', file);
+
+      const response = await patchAvatarFunction(user._id, avatarUrl, formData);
+
+      // Update the avatar URL in the state
+      setAvatarUrl(response.avatarUrl);
+    } catch (error) {
+      console.error('Error uploading avatar:', error);
+    }
+  };
 
   const [action, setAction] = useState(true);
   const [state, setState] = useState({
@@ -163,13 +193,31 @@ function Info() {
             <div className={styles.title} style={{marginBottom: '20px'}}>
               {`Welcome, ${state.name}!`}
             </div>
-            <div className={styles.avatar}></div>
+            <div className={styles.avatar}>
+              {avatarUrl ? (
+                <img
+                  src={avatarUrl}
+                  alt="User Avatar"
+                  className={styles.avatarImage}
+                />
+              ) : (
+                <div className={styles.defaultAvatar}>Default Avatar</div>
+              )}
+            </div>
+            <input
+              type="file"
+              accept="image/*"
+              onChange={handleAvatarChange}
+              style={{display: 'none'}}
+              ref={avatarInputRef}
+            />
             <button
-              onClick={() => {}}
+              onClick={() => avatarInputRef.current.click()}
               className={styles.buttonChangeAvt}
               style={{backgroundColor: '#BEBEBE'}}>
               <div style={{color: '#FFFFFF'}}>Change</div>
             </button>
+            <div className={styles.avatar}></div>
           </div>
           <div className={styles.statusContainer}></div>
           <div style={{marginTop: '50px'}}>
