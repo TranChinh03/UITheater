@@ -16,6 +16,13 @@ const rotation = isRotated => {
 function BookingFilter({movieName=null}) {
   const navigate = useNavigate();
   const [schedule, setSchedule] = useState([]);
+  useEffect(() => {
+    getScheduleFunction().then(res => {
+      console.log("schedule", res);
+      setSchedule(res);
+    });
+  }, []);
+  
   const [showtimeId, setShowtimeId] = useState();
 
   const [isRotated, setIsRotated] = useState([false, false, false, false]);
@@ -41,19 +48,6 @@ function BookingFilter({movieName=null}) {
 
 
 
-  // useEffect(() => {
-  //     if (!disabledButtons[1]) {
-  //       Info['theaters'] = [... new Set(schedule.filter(x=>x.movie[0].title === selectedFilterInfo['movies']).map(x=>x.theater[0].name))];
-  //       console.log(Info)
-  //       console.log("theater:", schedule.filter(x=>x.movie[0].title === selectedFilterInfo['movies']).map(x=>x.theater[0].name))
-  //     }
-  // }, [selectedFilterInfo])
-
-  useEffect(() => {
-    getScheduleFunction().then(res => {
-      setSchedule(res);
-    });
-  }, []);
 
 
   const [isOpen, setIsOpen] = useState([false, false, false, false]);
