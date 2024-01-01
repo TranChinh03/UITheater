@@ -10,7 +10,7 @@ export const patchAvatarFunction = async ( avtId) => {
     let config = {
       method: 'patch',
       maxBodyLength: Infinity,
-      url: 'https://uitlogachcu.onrender.com/me/avatar',
+      url: 'https://uitlogachcu.onrender.com/me/avt',
       headers: {
         'Content-Type': 'application/json',
         Authorization: 'Bearer ' + Token,
