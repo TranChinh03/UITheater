@@ -12,6 +12,7 @@ import { getShowtimesFunction } from '../../apis/GetMethod/getShowtimes';
 import {getTicketsFunction} from '../../apis/GetMethod/getTickets';
 import { postProcessFunction } from '../../apis/PostMethod/postProcess';
 import {useNavigate} from 'react-router-dom';
+import { message } from 'antd';
 
 function Booking() {
   const navigate = useNavigate();
@@ -21,7 +22,7 @@ function Booking() {
 
   useEffect(() => {
     getShowtimesFunction().then(res => {
-      const temp = res.filter(value => value.id === Number(search.get('showTime')))
+      const temp = res.filter(value => value.id === Number(search.get('showTime')))[0]
       console.log("Temp", temp);
       setSHOWTIMES(temp);
     });
@@ -40,19 +41,19 @@ function Booking() {
   const [seats, setSeats] = useState([]);
 
   const paymentsFunction = () => {
-    console.log(seats)
-    console.log(search.get('showTime'));
+    if (seats.length == 0) {
+      message.error("Please choose your seats!")
+      return
+    }
 
-    const json = seats.map((seatId, index) => ({
-      ticketId: Math.floor(Math.random() * 9000) + 1000, // Example ticketId logic
-      showtimeId: search.get('showTime').id, // Example showtimeId logic
-      seatId: seatId,
-      price: seatId%177 <= 169 ? 75000 : 120000, // Example price value
+    const data = seats.map((seatId, index) => ({
+      ticketId: Math.floor(Math.random() * 9000) + 1000, 
+      showtimeId: Number(search.get('showTime')), 
+      seatId: seatId*SHOWTIMES.hallId, 
     }));
 
-    // Creating the final data object with the json array
-    const data = JSON.stringify({ json });
-    console.log(data);
+  
+    postProcessFunction(data)
   }
 
 
