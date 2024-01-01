@@ -123,3 +123,14 @@
     font-size: 6vw;
   }
 }
+
+.disabled {
+  opacity: 0.6; /* Reduce opacity for a disabled look */
+  cursor: not-allowed; /* Change cursor to not-allowed when disabled */
+  /* Add any other styles to visually represent a disabled state */
+  /* For example: */
+  /* pointer-events: none; */ /* Disable pointer events if needed */
+  /* background-color: #ccc; */ /* Change background color */
+  /* color: #666; */ /* Change text color */
+}
+

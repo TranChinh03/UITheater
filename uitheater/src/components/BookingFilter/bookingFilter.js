@@ -1,6 +1,10 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import styles from './bookingfilter.module.scss';
 import {SVG_SelectDown} from '../../assets/icons';
+import {getScheduleFunction} from '../../apis/GetMethod/getSchedule';
+import {getTheatersFunction} from '../../apis/GetMethod/getTheaters';
+import { message } from 'antd';
+import {useNavigate} from 'react-router-dom';
 
 const rotation = isRotated => {
   return {
@@ -9,21 +13,72 @@ const rotation = isRotated => {
   };
 };
 
-function BookingFilter() {
-  const [isOpen, setIsOpen] = useState([false, false, false, false]);
-  const [selectedInfo, setSelectedInfo] = useState({
-    movies: 'Choose Movie',
+function BookingFilter({movieName=null}) {
+  const navigate = useNavigate();
+  const [schedule, setSchedule] = useState([]);
+  const [showtimeId, setShowtimeId] = useState();
+
+  const [isRotated, setIsRotated] = useState([false, false, false, false]);
+  const catagories = ['movies', 'theaters', 'dates', 'showTime'];
+  const [selectedFilterInfo, setSelectedFilterInfo] = useState({
+    movies: movieName ? movieName : 'Choose Movie',
     theaters: 'Choose Theater',
     dates: 'Choose Date',
     showTime: 'Choose Showtime',
   });
-  const [isRotated, setIsRotated] = useState([false, false, false, false]);
-  const catagories = ['movies', 'theaters', 'dates', 'showTime'];
+
   const Info = {
-    movies: ['Meo Di Hia', 'Cu Shin', 'Doraemon', 'Tham tu lung danh Conan'],
-    theaters: ['CGV', 'BHD', 'Cinestar'],
-    dates: ['31/02', '01/04', '24/12'],
-    showTime: ['12:00', '18:00', '23:00'],
+    movies: [...new Set(schedule.map(x=>x.movie[0].title))],
+    theaters: [...new Set(schedule.filter(x=>x.movie[0].title === selectedFilterInfo['movies']).map(x=>x.theater[0].name))],
+    dates: [...new Set(schedule.filter(x=>x.movie[0].title === selectedFilterInfo['movies'] && x.theater[0].name === selectedFilterInfo['theaters']).map(x=>x.date))],
+    showTime: [...new Set(schedule.filter(x=>x.movie[0].title === selectedFilterInfo['movies'] && x.theater[0].name === selectedFilterInfo['theaters'] && x.date === selectedFilterInfo['dates']).map(x=>x.time))],
+  };
+
+  
+  const handleBookingNow = () => {
+    navigate('/booking?showTime=' + schedule.filter(x=>x.movie[0].title === selectedFilterInfo['movies'] && x.theater[0].name === selectedFilterInfo['theaters'] && x.date === selectedFilterInfo['dates'])[0].id);
+  }
+
+
+
+  // useEffect(() => {
+  //     if (!disabledButtons[1]) {
+  //       Info['theaters'] = [... new Set(schedule.filter(x=>x.movie[0].title === selectedFilterInfo['movies']).map(x=>x.theater[0].name))];
+  //       console.log(Info)
+  //       console.log("theater:", schedule.filter(x=>x.movie[0].title === selectedFilterInfo['movies']).map(x=>x.theater[0].name))
+  //     }
+  // }, [selectedFilterInfo])
+
+  useEffect(() => {
+    getScheduleFunction().then(res => {
+      setSchedule(res);
+    });
+  }, []);
+
+
+  const [isOpen, setIsOpen] = useState([false, false, false, false]);
+
+
+  const [disabledButtons, setDisabledButtons] = useState([false, false, true, true, true]);
+
+  const handleSelection = (index, value) => {
+    if (disabledButtons[index]) {
+      console.log("can not choose")
+      return
+    }
+    const updatedFilterInfo = { ...selectedFilterInfo };
+    updatedFilterInfo[catagories[index]] = value;
+    setSelectedFilterInfo(updatedFilterInfo);
+
+    const updatedDisabledButtons = [...disabledButtons];
+    updatedDisabledButtons[index] = false;
+    if (index < catagories.length - 1) {
+      updatedDisabledButtons[index + 1] = false;
+    }
+    else {
+      handleBookingNow()
+    }
+    setDisabledButtons(updatedDisabledButtons);
   };
   return (
     <>
@@ -45,16 +100,18 @@ function BookingFilter() {
               <div
                 onClick={() => {
                   isRotated.forEach((value, idx) => {
+                    if (disabledButtons[idx]) {
+                      return}
                     isRotated[idx] = index !== idx ? false : !value;
                     isOpen[idx] = index !== idx ? false : !value;
                   });
                   setIsRotated(isOpen);
                   setIsOpen(isRotated);
                 }}
-                className={styles.dropDown}>
+                className={`${styles.dropDown} ${disabledButtons[index] ? styles.disabled : ''}`}>
                 <button className={styles.dropBtn}>
                   <div className={styles.dropText}>
-                    {selectedInfo[catagories[index]]}
+                    {selectedFilterInfo[catagories[index]]}
                   </div>
                   <img
                     className={styles.dropIcon}
@@ -67,11 +124,9 @@ function BookingFilter() {
                   <div className={styles.dropDownContent}>
                     {Info[catagories[index]].map(option => (
                       <div
-                        onClick={e => {
-                          selectedInfo[catagories[index]] = option;
-                          setSelectedInfo(selectedInfo);
-                        }}
-                        className={styles.dropDownItem}>
+                        onClick={() => handleSelection(index, option)}
+                        className={`${styles.dropDownItem} ${disabledButtons[index] ? styles.disabled : ''}`}
+                        key={option}>
                         {option}
                       </div>
                     ))}

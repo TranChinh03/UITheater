@@ -1,5 +1,6 @@
+import axios from 'axios';
+
 export const getOneAvatarFunction = async index => {
-  const axios = require('axios');
   let data = JSON.stringify({
     index: index,
   });

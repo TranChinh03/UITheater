@@ -1,11 +1,18 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import axios from 'axios';
 import styles from './infoscreen.module.scss';
-import {getTicketsFunction} from '../../apis/GetMethod/getTickets';
-import {getScheduleFunction} from '../../apis/GetMethod/getSchedule';
+
+
+import {patchAvatarFunction} from '../../apis/patchMethod/patchAvatar';
+import {getAvatarsFunction} from '../../apis/GetMethod/getAvatars';
+
 import {getUserInfomationFunction} from '../../apis/GetMethod/getUser';
-import { getHistoryFunction } from '../../apis/GetMethod/getHistory';
-import { Table } from 'antd';
+import {getHistoryFunction} from '../../apis/GetMethod/getHistory';
+import {Table} from 'antd';
+import Box from '@mui/material/Box';
+import Modal from '@mui/material/Modal';
+import Grid from '@mui/material/Grid';
+
 const onChange = (pagination, filters, sorter, extra) => {
   console.log('params', pagination, filters, sorter, extra);
 };
@@ -56,11 +63,14 @@ const columns = [
 function Info() {
   const [user, setUser] = useState('');
   const [combinedData, setCombinedData] = useState([]);
+  const [currentAva, setCurrentAva] = useState('');
+  const [avaList, setAvaList] = useState([]);
+  const [isOpen, setIsOpen] = useState(false);
+  const [currentAvaId, setCurrentAvaId] = useState();
 
   useEffect(() => {
     getHistoryFunction().then(res => {
       setCombinedData(res);
-      console.log("combie", combinedData);
     });
   }, []);
   const HistoryData = combinedData.map((item, index) => {
@@ -79,8 +89,12 @@ function Info() {
     getUserInfomationFunction().then(res => {
       setState({...res});
       setUser(res);
+      setCurrentAva(res.avatar);
     });
-  },[]);
+    getAvatarsFunction().then(res => {
+      setAvaList(res);
+    });
+  }, []);
 
   const [action, setAction] = useState(true);
   const [state, setState] = useState({
@@ -155,6 +169,13 @@ function Info() {
     handleAction();
   }
 
+  function handleChangeAvatar(avatar) {
+    setCurrentAva(avatar.image);
+    setIsOpen(false);
+
+    patchAvatarFunction(avatar.index).then(res => console.log('ok'));
+  }
+
   return (
     <>
       <div className={styles.container}>
@@ -163,13 +184,62 @@ function Info() {
             <div className={styles.title} style={{marginBottom: '20px'}}>
               {`Welcome, ${state.name}!`}
             </div>
-            <div className={styles.avatar}></div>
+            <div className={styles.avatar}>
+              {currentAva ? (
+                <img
+                  src={currentAva}
+                  alt="User Avatar"
+                  className={styles.avatar}
+                />
+              ) : (
+                <div className={styles.defaultAvatar}></div>
+              )}
+            </div>
             <button
-              onClick={() => {}}
+              onClick={() => setIsOpen(true)}
               className={styles.buttonChangeAvt}
               style={{backgroundColor: '#BEBEBE'}}>
               <div style={{color: '#FFFFFF'}}>Change</div>
             </button>
+            <Modal
+              open={isOpen}
+              onClose={() => setIsOpen(false)}
+              aria-labelledby="parent-modal-title"
+              aria-describedby="parent-modal-description">
+              <Box
+                sx={{
+                  flexGrow: 1,
+                  width: '300px',
+                  height: '300px',
+                  backgroundColor: 'white',
+                  margin: 'auto',
+                  marginTop: '100px',
+                }}>
+                <Grid container rowSpacing={3} columnSpacing={{xs: 2, md: 3}}>
+                  {avaList.map(ava => {
+                    return (
+                      <Grid
+                        item
+                        xs={2}
+                        md={4}
+                        key={ava.index}
+                        style={{justifyItems: 'center'}}>
+                        <img
+                          onClick={() => handleChangeAvatar(ava)}
+                          src={ava.image}
+                          alt="User Avatar"
+                          style={{
+                            width: '60px',
+                            height: '60px',
+                            borderRadius: '90%',
+                          }}
+                        />
+                      </Grid>
+                    );
+                  })}
+                </Grid>
+              </Box>
+            </Modal>
           </div>
           <div className={styles.statusContainer}></div>
           <div style={{marginTop: '50px'}}>
@@ -348,7 +418,12 @@ function Info() {
             <div className={styles.title}>History:</div>
           </div>
           <div className={styles.historyContainer}>
-            <Table columns={columns} dataSource={HistoryData} onChange={onChange} />;
+            <Table
+              columns={columns}
+              dataSource={HistoryData}
+              onChange={onChange}
+            />
+            ;
           </div>
         </div>
       </div>
