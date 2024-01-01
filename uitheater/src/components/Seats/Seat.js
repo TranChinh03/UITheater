@@ -9,8 +9,8 @@ export default function Seat({seat, onSeatClick}) {
                     onSeatClick(seat.id);
                 }
             }}>
-                {!seat.isCouple && <SingleSeat color={seat.booked ? 'gray' : seat.selected ? '#38FE17' : '#FFFAF5'}/>}
-                {seat.isCouple && <DoubleSeat color={seat.booked ? 'gray' : seat.selected ? '#38FE17' : '#FFFAF5'}/>}
+                {!seat.isCouple && <SingleSeat color={seat.booked ? '#808080' : seat.selected ? '#38FE17' : '#FFFAF5'}/>}
+                {seat.isCouple && <DoubleSeat color={seat.booked ? '#808080' : seat.selected ? '#38FE17' : '#FFFAF5'}/>}
             <div
                 style={{
                 position: 'absolute',

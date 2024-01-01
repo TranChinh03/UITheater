@@ -1,9 +1,12 @@
-import React from 'react';
+import React, {useState} from 'react';
+import BookingFilter from '../BookingFilter/bookingFilter';
 import src from '../../assets/imgs/shin-cau-be-but-chi.jpg';
 import {SVG_Youtube} from '../../assets/icons';
 import styles from './movieinfo.module.scss';
+import { Modal } from 'antd';
 
 function MovieInfo(props) {
+  const [isModalOpen, setIsModalOpen] = useState(false)
   if (!props.big)
   return (
     <>
@@ -30,10 +33,17 @@ function MovieInfo(props) {
               <img className={styles.ytbLogo} src={SVG_Youtube} alt="Youtube" />
               Trailer
             </button>
-            <button className={styles.bookingBtn}>BOOKING NOW</button>
+            <button onClick={() => {setIsModalOpen(true); console.log("Clicked")}} className={styles.bookingBtn}>BOOKING NOW</button>
           </div>
         </div>
       </div>
+      <Modal
+                open={isModalOpen}
+                onCancel={() => setIsModalOpen(false)}
+                footer={false}
+                width={"80%"}>
+        <BookingFilter movieName={props.title}/>
+      </Modal>
     </>)
 
     else return (
@@ -65,6 +75,13 @@ function MovieInfo(props) {
           </div>
         </div>
       </div>
+      <Modal
+                open={isModalOpen}
+                onCancel={() => setIsModalOpen(false)}
+                footer={false}
+                width={"80%"}>
+        <BookingFilter movieName={props.title}/>
+      </Modal>
     </>
   );
 }

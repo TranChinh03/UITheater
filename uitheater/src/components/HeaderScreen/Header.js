@@ -6,8 +6,21 @@ import SignIn from '../SignInModal/SignIn';
 import axios from 'axios';
 import {useEffect, useState} from 'react';
 import getLastWord from '../../store/getLastWord';
+import { Select } from "antd";
+import {IM_EN_Flag, IM_VN_Flag} from "../../assets/imgs"
+import { useTranslation } from 'react-i18next';
+
+
+
 const Header = () => {
+  const { t, i18n } = useTranslation();
+  const options = [
+    { image: IM_VN_Flag, title: "VI" },
+    { image: IM_EN_Flag, title: "EN" }]
+
+  const { Option } = Select;
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [language, setLanguage] = useState(localStorage.language);
   const navigate = useNavigate();
   const [response, setResponse] = useState('');
   const Token = localStorage.getItem('Token');
@@ -59,17 +72,43 @@ const Header = () => {
       <img className={styles.headerLogo} src={SVG_LOGO} alt="Logo" />
       <div className={styles.headerOthers}>
         <div className={styles.searchAndSignInContainer}>
-          <div className={styles.search}>
-            <input
-              className={styles.searchInput}
-              type="text"
-              placeholder="Search..."
-            />
-            <img className={styles.searchLogo} src={SVG_Search} alt="Search" />
-          </div>
+          <Select
+                style={{ width: 200, marginRight: 20 }}
+                placeholder="Choose Language"
+                value={language}
+                onChange={
+                  (e) =>
+                  {
+                    setLanguage(e);
+                    i18n.changeLanguage(e);
+                    localStorage.setItem('language', e);
+                  } 
+                }
+              >
+                {options.map((option, index) => (
+                  <Option key={index} value={option.title}>
+                    <div
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "space-between",
+                        width: "100%",
+                      }}
+                    >
+                      <div>{option.title}</div>
+                      <img
+                        src={option.image}
+                        alt="Flag"
+                        style={{ width: "30px", height: "20px" }}
+                      />
+                    </div>
+                  </Option>
+                ))}
+              </Select>
+
           {!isLogin() ? (
             <div className={styles.signIn} onClick={showModal} isDefault={true}>
-              <div className={styles.signInText}>Sign In</div>
+              <div className={styles.signInText}>{t('login.login')}</div>
             </div>
           ) : (
             <div class={styles.dropdown}>
