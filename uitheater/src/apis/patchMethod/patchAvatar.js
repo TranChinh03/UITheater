@@ -1,6 +1,9 @@
-export const patchAvatarFunction = async index => {
-  const axios = require('axios');
-  let data = JSON.stringify({});
+import axios from 'axios';
+
+export const patchAvatarFunction = async avtId => {
+  let data = JSON.stringify({avtId: avtId});
+
+  const Token = localStorage.getItem('Token');
 
   let config = {
     method: 'patch',
@@ -8,6 +11,7 @@ export const patchAvatarFunction = async index => {
     url: 'https://uitlogachcu.onrender.com/me/avatar',
     headers: {
       'Content-Type': 'application/json',
+      Authorization: 'Bearer ' + Token,
     },
     data: data,
   };

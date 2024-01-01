@@ -60,8 +60,6 @@ const columns = [
 function Info() {
   const [user, setUser] = useState('');
   const [combinedData, setCombinedData] = useState([]);
-  const [avatarUrl, setAvatarUrl] = useState('');
-  const avatarInputRef = useRef(null);
 
   useEffect(() => {
     getHistoryFunction().then(res => {
@@ -87,23 +85,6 @@ function Info() {
       setAvatarUrl(res.avatar);
     });
   }, []);
-
-  const handleAvatarChange = async event => {
-    const file = event.target.files[0].name;
-    console.log('file', file);
-
-    const formData = new FormData();
-    formData.append('file', file);
-    console.log('hm', formData.append('avatar', file));
-
-    // Using process.env.PUBLIC_URL
-    const serPath = process.env.PUBLIC_URL + file;
-    console.log('sss', serPath);
-
-    const response = await patchAvatarFunction(user._id, serPath);
-    console.log('res', response);
-    setAvatarUrl(serPath);
-  };
 
   const [action, setAction] = useState(true);
   const [state, setState] = useState({
@@ -187,25 +168,15 @@ function Info() {
               {`Welcome, ${state.name}!`}
             </div>
             <div className={styles.avatar}>
-              {avatarUrl ? (
-                <img
-                  src={avatarUrl}
-                  alt="User Avatar"
-                  className={styles.avatar}
-                />
+              {'' ? (
+                <img src={''} alt="User Avatar" className={styles.avatar} />
               ) : (
                 <div className={styles.defaultAvatar}>Default Avatar</div>
               )}
             </div>
-            <input
-              type="file"
-              accept="/*"
-              onChange={handleAvatarChange}
-              style={{display: 'none'}}
-              ref={avatarInputRef}
-            />
+
             <button
-              onClick={() => avatarInputRef.current.click()}
+              onClick={() => {}}
               className={styles.buttonChangeAvt}
               style={{backgroundColor: '#BEBEBE'}}>
               <div style={{color: '#FFFFFF'}}>Change</div>
