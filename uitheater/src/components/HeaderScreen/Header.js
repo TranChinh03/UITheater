@@ -72,7 +72,7 @@ const Header = () => {
       <div className={styles.headerOthers}>
         <div className={styles.searchAndSignInContainer}>
           <Select
-            style={{width: '150px', marginRight: '50px'}}
+            style={{width: '150px', marginRight: '100px'}}
             placeholder="Choose Language"
             value={language}
             onChange={e => {
