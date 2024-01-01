@@ -74,8 +74,9 @@ function Booking() {
             onChange={selectedSeats => setSeats(selectedSeats)}>
           </BookingSeats>
           <div className={styles.btnContainer}>
+
             <button className={styles.btnReturn} onClick={() => {navigate(-1)}}>
-              Return
+              Back
             </button>
             <button className={styles.btnNext} onClick={() => {paymentsFunction()}}>
               Pay

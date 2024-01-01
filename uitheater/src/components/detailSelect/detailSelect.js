@@ -159,7 +159,7 @@ function DetailSelect(props) {
         </div>
         <div className={styles.btnContainer}>
           <button className={styles.btnReturn} onClick={() => {}}>
-            Return
+            Back
           </button>
           <button
             className={styles.btnNext}

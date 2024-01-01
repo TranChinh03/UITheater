@@ -1,11 +1,11 @@
+import axios from 'axios';
 
-export const patchAvatarFunction = async ( avtId) => {
-    const axios = require('axios');
-    let data = JSON.stringify({
-      avtId: avtId,
-    });
-  
-    const Token = localStorage.getItem('Token');
+export const patchAvatarFunction = async avtId => {
+  let data = JSON.stringify({
+    avtId: avtId,
+  });
+
+  const Token = localStorage.getItem('Token');
 
     let config = {
       method: 'patch',
@@ -28,4 +28,14 @@ export const patchAvatarFunction = async ( avtId) => {
       });
     return result;
   };
-  
+
+  const result = await axios
+    .request(config)
+    .then(response => {
+      return response.data;
+    })
+    .catch(error => {
+      console.log(error);
+    });
+  return result;
+};

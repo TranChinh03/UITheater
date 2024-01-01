@@ -121,17 +121,16 @@ const Header = () => {
                 <img className={styles.human} src={SVG_Human} alt="avt" />
                 <div className={styles.signInText}>{getLastWord(response)}</div>
               </button>
-              <div style={{width: "100%", height: "0.5vw"}} />
+              <div style={{width: '100%', height: '0.5vw'}} />
               <div class={styles.dropdownContent}>
                 <a href="\me">Information</a>
-                <a href="\password">Password</a>
+                <a href="\changepassword">Password</a>
                 <a href="#" onClick={Logout}>
                   Log Out
                 </a>
               </div>
             </div>
             // Code cho sidebarDrawer
-            
           )}
         </div>
         <div className={styles.NavBar}>

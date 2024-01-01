@@ -34,9 +34,16 @@
 .avatar {
   width: 200px;
   height: 200px;
-  background-color: yellow;
   border-radius: 90%;
   margin-bottom: 20px;
+}
+
+.defaultAvatar {
+  width: 200px;
+  height: 200px;
+  border-radius: 90%;
+  margin-bottom: 20px;
+  background-color: yellow;
 }
 
 .buttonChangeAvt {
