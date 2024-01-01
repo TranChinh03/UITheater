@@ -2,7 +2,6 @@ import React, {useState, useEffect, useRef} from 'react';
 import axios from 'axios';
 import styles from './infoscreen.module.scss';
 
-
 import {patchAvatarFunction} from '../../apis/patchMethod/patchAvatar';
 import {getAvatarsFunction} from '../../apis/GetMethod/getAvatars';
 
@@ -72,30 +71,32 @@ function Info() {
     getHistoryFunction().then(res => {
       setCombinedData(res);
     });
-  }, []);
-  const HistoryData = combinedData.map((item, index) => {
-    return {
-      key: index + 1,
-      movieName: item.movieName,
-      date: item.date,
-      time: item.time,
-      seatId: item.seatId,
-      price: item.price,
-    };
-  });
-  console.log(combinedData);
-  const Token = localStorage.getItem('Token');
-  useEffect(() => {
     getUserInfomationFunction().then(res => {
-      setState({...res});
-      setUser(res);
-      setCurrentAva(res.avatar);
+      if (res && res.avatar) {
+        setState({...res});
+        setUser(res);
+        setCurrentAva(res.avatar);
+      } else {
+        // Handle the case where 'res' or 'res.avatar' is undefined
+        console.error('User information or avatar is undefined.');
+      }
     });
     getAvatarsFunction().then(res => {
       setAvaList(res);
     });
   }, []);
-
+  const HistoryData = combinedData
+    ? combinedData.map((item, index) => ({
+        key: index + 1,
+        movieName: item.movieName,
+        date: item.date,
+        time: item.time,
+        seatId: item.seatId,
+        price: item.price,
+      }))
+    : [];
+  console.log(combinedData);
+  const Token = localStorage.getItem('Token');
   const [action, setAction] = useState(true);
   const [state, setState] = useState({
     name: '',
@@ -418,12 +419,15 @@ function Info() {
             <div className={styles.title}>History:</div>
           </div>
           <div className={styles.historyContainer}>
-            <Table
-              columns={columns}
-              dataSource={HistoryData}
-              onChange={onChange}
-            />
-            ;
+            {Array.isArray(HistoryData) && HistoryData.length > 0 ? (
+              <Table
+                columns={columns}
+                dataSource={HistoryData}
+                onChange={onChange}
+              />
+            ) : (
+              <p>No history data available.</p>
+            )}
           </div>
         </div>
       </div>

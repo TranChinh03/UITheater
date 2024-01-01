@@ -29,13 +29,3 @@ export const patchAvatarFunction = async avtId => {
     return result;
   };
 
-  const result = await axios
-    .request(config)
-    .then(response => {
-      return response.data;
-    })
-    .catch(error => {
-      console.log(error);
-    });
-  return result;
-};
