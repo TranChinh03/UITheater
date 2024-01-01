@@ -10,6 +10,7 @@ import BookingSeats from '../../components/BookingSeats/BookingSeats';
 import {useLocation} from 'react-router-dom';
 import { getShowtimesFunction } from '../../apis/GetMethod/getShowtimes';
 import {getTicketsFunction} from '../../apis/GetMethod/getTickets';
+import { postProcessFunction } from '../../apis/PostMethod/postProcess';
 import {useNavigate} from 'react-router-dom';
 
 function Booking() {
@@ -33,26 +34,42 @@ function Booking() {
 
   }, [search])
 
-  const [tickets, setTickets] = useState(0);
+  const [ticketS, setTicketS] = useState(0);
+  const [ticketD, setTicketD] = useState(0);
   const [price, setPrice] = useState(0);
   const [seats, setSeats] = useState([]);
 
+  const paymentsFunction = () => {
+    console.log(seats)
+    console.log(search.get('showTime'));
+
+    const json = seats.map((seatId, index) => ({
+      ticketId: Math.floor(Math.random() * 9000) + 1000, // Example ticketId logic
+      showtimeId: search.get('showTime').id, // Example showtimeId logic
+      seatId: seatId,
+      price: seatId%177 <= 169 ? 75000 : 120000, // Example price value
+    }));
+
+    // Creating the final data object with the json array
+    const data = JSON.stringify({ json });
+    console.log(data);
+  }
 
 
-  console.log(search.get('showTime'));
 
   return (
     <div className={styles.container}>
       <BookingInfo
         selectedSeats={seats}
         showTime={search.get('showTime')}
-        ticket={tickets ?? undefined}
+        ticket={ticketS + ticketD ?? undefined}
         price={price ?? undefined}
       />
-      {tickets ? (
+      {ticketS || ticketD ? (
         <div style={{backgroundColor: '#231B5B'}}>
           <BookingSeats
-            ticketNum={tickets}
+            ticketSNum={ticketS}
+            ticketDNum={ticketD}
             bookedSeats={SEAT}
             onChange={selectedSeats => setSeats(selectedSeats)}>
           </BookingSeats>
@@ -60,15 +77,16 @@ function Booking() {
             <button className={styles.btnReturn} onClick={() => {navigate(-1)}}>
               Return
             </button>
-            <button className={styles.btnNext} onClick={() => {}}>
+            <button className={styles.btnNext} onClick={() => {paymentsFunction()}}>
               Pay
             </button>
           </div>
         </div>
       ) : (
         <DetailSelect
-          onChange={(ticket, price) => {
-            setTickets(ticket);
+          onChange={(ticketS, ticketD, price) => {
+            setTicketS(ticketS);
+            setTicketD(ticketD);
             setPrice(price);
           }}></DetailSelect>
       )}
