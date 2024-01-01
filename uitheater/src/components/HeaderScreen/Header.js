@@ -129,16 +129,16 @@ const Header = () => {
         </div>
         <div className={styles.NavBar}>
           <NavLink to="/" exact={true}>
-            <div className={styles.NavBarText}>Home</div>
+            <div className={styles.NavBarText}>{t('home')}</div>
           </NavLink>
           <NavLink to="/movies" className={styles.BetweenNav}>
-            <div className={styles.NavBarText}>Movies</div>
+            <div className={styles.NavBarText}>{t('movies')}</div>
           </NavLink>
           <NavLink to="/schedule" className={styles.BetweenNav}>
-            <div className={styles.NavBarText}>Schedule</div>
+            <div className={styles.NavBarText}>{t('schedule')}</div>
           </NavLink>
           <NavLink to="/about" className={styles.EndNav}>
-            <div className={styles.NavBarText}>About</div>
+            <div className={styles.NavBarText}>{t('about')}</div>
           </NavLink>
         </div>
       </div>
