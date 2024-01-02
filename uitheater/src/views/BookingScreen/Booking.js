@@ -13,8 +13,9 @@ import {getTicketsFunction} from '../../apis/GetMethod/getTickets';
 import { postProcessFunction } from '../../apis/PostMethod/postProcess';
 import {useNavigate} from 'react-router-dom';
 import { message } from 'antd';
-import { postPaymentFunction } from '../../apis/PostMethod/postTicket';
+import { postPaymentFunction } from '../../apis/PostMethod/PaymentWithMomo';
 import { getProcess } from '../../apis/GetMethod/getProcess';
+import { postTicketFunction } from '../../apis/PostMethod/PostTickets';
 
 function Booking() {
   const navigate = useNavigate();
@@ -59,13 +60,15 @@ function Booking() {
     const data = seats.map((seatId, index) => ({
       ticketId: Math.floor(Math.random() * 9000) + 1000, 
       showtimeId: Number(search.get('showTime')), 
-      seatId: seatId*SHOWTIMES.hallId,
+      seatId: seatId+177*(SHOWTIMES.hallId-1),
       price: seatId <= 169 ? 75000 : 120000,
     }));
 
     console.log(data)
+
     postProcessFunction(data)
     postPaymentFunction(data).then(res => window.open(res.payUrl, "_blank", "noreferrer"));
+    postTicketFunction(data)
   }
 
 
