@@ -1,4 +1,4 @@
-export const postProcessFunction = async (ticketArray) => {
+export const postTicketFunction = async (ticketArray) => {
     const axios = require('axios');
   // mau
   // "ticketArray": [
@@ -20,7 +20,7 @@ export const postProcessFunction = async (ticketArray) => {
     let config = {
       method: 'post',
       maxBodyLength: Infinity,
-      url: 'https://uitlogachcu.onrender.com/postProcess',
+      url: 'https://uitlogachcu.onrender.com/postTickets',
       headers: {
         'Content-Type': 'application/json',
         Authorization: 'Bearer ' + Token,

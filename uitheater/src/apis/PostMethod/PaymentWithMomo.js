@@ -1,26 +1,13 @@
-export const postProcessFunction = async (ticketArray) => {
+export const postPaymentFunction = async (ticketArray) => {
     const axios = require('axios');
-  // mau
-  // "ticketArray": [
-  //   {
-  //     "ticketId": 1234,
-  //     "showtimeId": 456,
-  //     "seatId": 789,
-  //   },
-  //   {
-  //     "ticketId": 4567,
-  //     "showtimeId": 789,
-  //     "seatId": 101,
-  //   }
-  // ]
-  let data = JSON.stringify({
-    "ticketArray": ticketArray,
-  });
+    let data = JSON.stringify({
+      "json": ticketArray,
+    });
     const Token = localStorage.getItem('Token');
     let config = {
       method: 'post',
       maxBodyLength: Infinity,
-      url: 'https://uitlogachcu.onrender.com/postProcess',
+      url: 'https://uitlogachcu.onrender.com/payment',
       headers: {
         'Content-Type': 'application/json',
         Authorization: 'Bearer ' + Token,
