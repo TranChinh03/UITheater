@@ -1,5 +1,5 @@
+import axios from 'axios';
 export const postTicketFunction = async (ticketArray) => {
-    const axios = require('axios');
   // mau
   // "ticketArray": [
   //   {

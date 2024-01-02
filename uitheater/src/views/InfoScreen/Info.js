@@ -41,15 +41,6 @@ const columns = [
   },
   {
     width: 150,
-    title: 'Seat',
-    dataIndex: 'seatId',
-    sorter: {
-      compare: (a, b) => a.seatId - b.seatId,
-      multiple: 2,
-    },
-  },
-  {
-    width: 150,
     title: 'Price',
     dataIndex: 'price',
     sorter: {

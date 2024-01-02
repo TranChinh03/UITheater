@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import styles from './passwordscreen.module.scss';
 import {useNavigate} from 'react-router-dom';
 import {ChangePasswordFunction} from '../../apis/patchMethod/changePassword';
+import { message } from 'antd';
 
 function ChangePassword() {
   const [email, setEmail] = useState('');
@@ -14,6 +15,7 @@ function ChangePassword() {
       console.log('doi duoc chua nhi');
     });
     localStorage.removeItem('Token');
+    message.success("Password Changed")
     navigate('/');
   }
 

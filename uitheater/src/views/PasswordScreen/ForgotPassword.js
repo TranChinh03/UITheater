@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import styles from './passwordscreen.module.scss';
 import {useNavigate} from 'react-router-dom';
 import axios from 'axios';
+import { message } from 'antd';
 
 function ForgotPassword() {
   const [email, setEmail] = useState('');
@@ -49,7 +50,12 @@ function ForgotPassword() {
                 setEmail(e.target.value);
               }} ></input>
           </div>
-          <button onClick={onForgotPassword} className={styles.sendBtn}>
+          <button onClick={
+            () => {
+              onForgotPassword();
+              message.success("Email sent!")
+            }
+              } className={styles.sendBtn}>
             <div>Send to email</div>
           </button>
         </div>

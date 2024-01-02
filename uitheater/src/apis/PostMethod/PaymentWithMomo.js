@@ -1,5 +1,6 @@
+import axios from 'axios';
+
 export const postPaymentFunction = async (ticketArray) => {
-    const axios = require('axios');
     let data = JSON.stringify({
       "json": ticketArray,
     });
